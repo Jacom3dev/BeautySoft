@@ -46,6 +46,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
                         <select class="form-control" class="form-control @error('document_id') is-invalid border border-warning  @enderror" name="document_id">
+                            <option value="">Tipo de documento</option>
                             @foreach ($documentos as $documento)
                             <option value="{{$documento->id}}">{{$documento->name}}</option>
                             @endforeach
@@ -78,7 +79,7 @@
                 <div class="row py-4 justify-content-end">
                     <div class="col-6 col-sm-6 col-lg-4">
                         <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($cliente)?'Editar Cliente':'Registrar Cliente'}}
+                            {{isset($cliente)?'Editar':'Registrar'}}
                         </button>
                     </div>
                     <div class="col-6 col-sm-4 col-lg-2">

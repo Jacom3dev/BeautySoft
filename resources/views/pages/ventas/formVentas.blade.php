@@ -182,7 +182,7 @@
                 <div class="row justify-content-end">
                     <div class="col-6 col-lg-2">
                         <button type="submit" class="btn btn-block principal-color text-white">
-                            Crear Venta.
+                            Crear
                         </button>
                     </div>
                     <div class="col-3 col-lg-1">
@@ -193,21 +193,10 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-
-@endsection 
-
-
-
-
- @section('script_ventas')
-
-=======
 @endsection
 
 
 @section('script_ventas')
->>>>>>> 577c2e8e31317e832b192ff5ff48ad5068819cd7
 <script>
     function todoprod() {
         cargar_preciop(), cargar_cantidad();

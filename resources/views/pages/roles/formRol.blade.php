@@ -25,7 +25,7 @@
                 <div class="row mt-3 justify-content-end py-3 ">
                     <div class="col-4">
                         <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($rol)?'Editar Rol':'Registrar Rol'}}
+                            {{isset($rol)?'Editar':'Registrar'}}
                         </button>
                     </div>
                     

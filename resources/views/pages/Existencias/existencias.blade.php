@@ -31,7 +31,7 @@
 
                 @if($value->amount < 5)
                     <div class="col-3">
-                        <div class="card "  style="width: 15rem;">
+                        <div class="card "  style="width: 16rem;">
                             <img src="{{$value->img}}" class="card-img-top" style=" height: 13rem;" alt="{{$value->img}}">
                             <div class="card-body d-flex justify-content-center">
                                 <h5 class="card-title"><b>{{$value->name}}</b></h5>
@@ -52,7 +52,7 @@
                     </div>
                 @else
                     <div class="col-3 flex-wrap-row">
-                        <div class="card w-1" style="width: 15rem;">
+                        <div class="card w-1" style="width: 16rem;">
                             <img src="{{$value->img}}" class="card-img-top" style=" height: 13rem;" alt="{{$value->img}}">
                             <div class="card-body d-flex justify-content-center">
                                 <h5 class="card-title"><b>{{$value->name}}</b></h5>

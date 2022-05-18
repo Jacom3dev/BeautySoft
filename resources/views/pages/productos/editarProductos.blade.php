@@ -5,60 +5,48 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col">
-            <div id="Crear"  >
-                <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="CrearLabel">Editar Producto</h5>
+    <div class="row justify-content-center">
+        <div class="col -10 col-md-8 col-lg-7 mt-4 p-2 px-4 bg-white rounded">
+            <h3 class="text-center"> <strong style="color: rgba(2, 93, 113, 1);">Editar producto.</strong></h3>
+            <form action="{{route('productos.update',$productos->id)}}" method="POST" class="formulario-Crear" enctype="multipart/form-data">
+                @csrf
+                @method("PUT")
+                <div class="row px-4 pt-3 ">
+                    <input type="hidden" name="id" value="{{$productos->id}}"/>
+                    <div class="col-md-6 form-group">
+                        <input type="text"  placeholder="Nombre*"class="form-control  @error('name') is-invalid @enderror" name="name" value="{{$productos->name}}">
+                        @error('name')
+                        <div class="invalid-feedback">{{$message}}</div>                         
+                        @enderror
                     </div>
-                    <div class="modal-body">
-                
-                        <form action="{{route('productos.update',$productos->id)}}" method="POST" class="formulario-Crear row g-3" enctype="multipart/form-data">
-                            @csrf
-                            @method("PUT")
-                            <input type="hidden" name="id" value="{{$productos->id}}"/>
-                            <div class="col-md-6">
-                                
-                                    <br>
-                                    <input type="text"  placeholder="Nombre*"class="form-control  @error('name') is-invalid @enderror" name="name" value="{{$productos->name}}">
-                                    @error('name')
-                                    <div class="invalid-feedback">{{$message}}</div>                         
-                                    @enderror
-
-                                
-                            </div>
-                            
-                            <div class="col-md-6">
-                                
-                                <br>
-                                <input type="file"  placeholder="Imagen" value="{{$productos->img}} "class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*"   >
-                                @error('img')
-                                <div class="invalid-feedback">{{$message}}</div>                         
-                                @enderror
-                            
-                            </div>
-
-                            <div class="col-md-6">
-                                
-                                <br>
-                                <input type="number"  placeholder="Precio*" class="form-control @error('price') is-invalid @enderror" name="price" value="{{$productos->price}}">
-                                @error('price')
-                                <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
-                                @enderror
-                            
-                            </div>
-
-                            </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn principal-color text-white float-right" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar">Actualizar</button>
-                            <a class="btn btn-outline-dark" href="/productos" data-bs-toggle="tooltip" data-bs-placement="left" title="Retroceder"><i class="glyphicon glyphicon-edit"></i>Cancelar</a>
-                        </div>
-                        </form>
+                    
+                    <div class="col-md-6 form-group">
+                        <input type="file"  placeholder="Imagen" value="{{$productos->img}} "class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*"   >
+                        @error('img')
+                        <div class="invalid-feedback">{{$message}}</div>                         
+                        @enderror
+                    </div>
+    
+                    <div class="col-md-6 form-group">
+                        <input type="number"  placeholder="Precio*" class="form-control @error('price') is-invalid @enderror" name="price" value="{{$productos->price}}">
+                        @error('price')
+                        <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                        @enderror
                     </div>
                 </div>
-            </div>
+                
+
+                <div class="row px-4 pb-3 justify-content-end">
+                    <div class="col-6 col-lg-4">
+                        <button type="submit" class="btn btn-block principal-color text-white">
+                            Editar
+                        </button>
+                    </div>
+                    <div class="col-3 col-lg-2">
+                        <a href="/productos" class="btn btn-outline-dark btn-block">Volver</a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div> 

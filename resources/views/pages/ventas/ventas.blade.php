@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col mt-4">
-                <a href="{{ route('ventas.create') }}" class="btn principal-color text-white"><i
-                        class="fas fa-user-plus"></i>
+                <a href="{{ route('ventas.create') }}" class="btn principal-color text-white">
+                    <i class="fas fa-tag"></i>
                     Crear Venta</a>
             </div>
         </div>
@@ -51,7 +51,7 @@
                                     <td>{{ $value->created_at }}</td>
                                     <td class="text-center">
                                         @if ($value->state)
-                                            <span class="badge badge-success">Realizada</span>
+                                            <span class="badge badge-primary">Realizada</span>
                                         @elseif(!$value->state)
                                             <span class="badge badge-danger">Anulada</span>
                                         @endif
@@ -68,7 +68,7 @@
 
                                        
                                         <a href="{{ route('ventas.show', $value->id) }}" class=""><i
-                                                class="fas fa-info-circle text-success"></i></a>
+                                                class="fas fa-info-circle text-primary"></i></a>
 
                                     </td>
                                 </tr>

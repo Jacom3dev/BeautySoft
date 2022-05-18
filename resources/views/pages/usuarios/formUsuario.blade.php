@@ -51,6 +51,7 @@
                     
                     <div class="col-12 col-sm-6 mt-2">
                         <select name="rol_id" class="form-control">
+                            <option value="" disabled selected>Rol</option>
                             @foreach ($roles as $rol)
                                 <option value="{{$rol->id}}">{{$rol->name}}</option>
                             @endforeach

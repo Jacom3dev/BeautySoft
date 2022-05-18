@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3 class="text-center text-warning mt-2">Detalle Usuario</h3>
+                <h3 class="text-center"> <strong style="color: rgba(2, 93, 113, 1);">Detalle Usuario.</strong></h3>
             </div>
         </div>
         <div class="row mt-3">

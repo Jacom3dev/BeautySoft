@@ -62,46 +62,123 @@ class ComprasController extends Controller
      */
     public function store(Request $request)
     {
-            $input = $request->all();
+        $input = $request->all();
+        
 
-           try { 
+       try { 
+            // dd($input);
+        DB::beginTransaction();
+       
 
-            DB::beginTransaction();
+                if (count($input) == 10) {
+                    $compra = Compra::create([
+                        "id_supplier" => $input["id_supplier"],
+                        "user_id"=>  auth()->user()->id, 
+                        "price" => $input["price_total"], 
+                        "state" => 1
+                    ]); 
 
-           
-           
-            // if(count($input)==7){
-                $compra = Compra::create([
-                    "id_supplier" => $input["id_supplier"],
-                    "user_id"=>  auth()->user()->id,
-                    "price" => $input["price_total"], 
-                    "state" => 1
-                ]); 
-
-                foreach ($input["ids"] as $key => $value) {
-                    DetalleCompra::create([ 
-                        "buys_id" => $compra->id,
-                        "product_id" => $value,
-                        "amount" => $input["amount"] 
+                    foreach ($input["ids"] as $key => $value) {
+                        DetalleCompra::create([ 
+                            "buys_id" => $compra->id,
+                            "product_id" => $value,
+                            "amount" => $input["amounts"] 
+                        ]);
+    
+                        $producto = Productos::find($value);
+                        $producto->update(["amount"=> $producto->amount +  $input["amounts"][$key]
                     ]);
-
-                    $producto = Productos::find($value);
-                    $producto->update(["amount"=> $producto->amount +  $input["amounts"][$key]
-                ]);
                 }
-                    DB::commit();
-                    alert()->success('Compra','Compra realizada con exito.');
+                    
+                }elseif (count($input)==11) {
+                   
+                    $compra = Compra::create([
+                        "id_supplier" => $input["id_supplier"],
+                        "user_id"=>  auth()->user()->id, 
+                        "price" => $input["price_total"], 
+                        "state" => 1
+                    ]); 
+                    foreach ($input["idPN"] as $key => $value) {
+                  
+                        $productos = productos::create([
+                            "name"=>$input["namePN"][$key],
+                            "img"=>null,
+                            "amount"=>$input["amountsPN"][$key],
+                            "price"=>$input["pricesPN"][$key],
+                            "state"=>1, 
+                        ]);
+                        
+                        DetalleCompra::create([ 
+                            "buys_id" => $compra->id,
+                            "product_id" => $productos->id,
+                            "price"=>$input["pricesPN"][$key],
+                            "amount" => $input["amountsPN"][$key] 
+                            
+                        ]);
+    
+                    }
+                    
+                }
+                    
+                elseif(count($input)==14) {
 
-                  return redirect("compras");
-                // } else{
-                    alert()->error('Compra','debe agregar un producto como minimo.');
+                    $compra = Compra::create([
+                        "id_supplier" => $input["id_supplier"],
+                        "user_id"=>  auth()->user()->id, 
+                        "price" => $input["price_total"], 
+                        "state" => 1
+                    ]); 
+                   
+                    foreach ($input["idPN"] as $key => $value) {
+                        /* dd($input["pricesPN"][$key]); */
+                        $productos = productos::create([
+                            "name"=>$input["namePN"][$key],
+                            "img"=>null,
+                            "amount"=>$input["amountsPN"][$key],
+                            "price"=>$input["pricesPN"][$key],
+                            "state"=>1, 
+                        ]);
+                        
+                        $detalle=DetalleCompra::create([ 
+                            "buys_id" => $compra->id,
+                            "product_id" => $productos->id,
+                            "price"=>$input["pricesPN"][$key],
+                            "amount" => $input["amountsPN"][$key] 
+                          
+                            
+                        ]);
+                                
+                    }
+                    foreach ($input["ids"] as $key => $value) {
+                        $detalle->create([ 
+                            "buys_id" => $compra->id,
+                            "product_id" => $value,
+                            "amount" => $input["amounts"][$key],
+                            "price"=>$input["prices"][$key]
+                        ]);
+                       
+                            $producto = Productos::find($value);
+                            $producto->update(["amount"=> $producto->amount +  $input["amounts"][$key]
+                        ]);
+                     }
+                }
+                    
+         
+                
+           
+                DB::commit();
+                 alert()->success('Compra','Compra realizada con exito.');
 
-                  return redirect("compras/create");
-                // }   
-            } catch (\Exception $e) {
-            DB::rollBack(); 
+             
+              return redirect("compras/create");
+               
+        } catch (\Exception $e) {
+        DB::rollBack(); 
+            
+    
             alert()->error('Compra', 'No se pudo crear la compra');
-           } 
+            return redirect("compras/create");
+        }
 
     }
 

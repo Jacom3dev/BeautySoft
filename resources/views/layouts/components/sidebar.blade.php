@@ -52,14 +52,61 @@
               </a>
             </li>
           @endif
+          
           <li class="nav-item">
-            <a href="{{route('agenda.index')}}" class="nav-link">
-              <i class="fas fa-money-check"></i>
+            <a href="#" class="nav-link">
+              <i class="fab fa-product-hunt"></i>
               <p>
-                Agenda
+                Productos
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('productos.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('servicios.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Servicios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('existencias.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Existencias</p>
+                </a>
+              </li>
+            </ul>
           </li>
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-shopping-cart"></i>
+              <p>
+                Compras
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="{{route('compras.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Compras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('proveedores.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Proveedores</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fas fa-tags"></i>
@@ -83,57 +130,14 @@
               </li>
             </ul>
           </li>
+          
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-shopping-cart"></i>
+            <a href="{{route('agenda.index')}}" class="nav-link">
+              <i class="fas fa-money-check"></i>
               <p>
-                Compras
-                <i class="right fas fa-angle-left"></i>
+                Agenda
               </p>
             </a>
-            <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="{{route('compras.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compras.</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('proveedores.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Proveedores.</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-store-alt-slash"></i>
-              <p>
-                Inventario
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('productos.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Productos.</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('servicios.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Servicios.</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('existencias.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Existencias.</p>
-                </a>
-              </li>
-            </ul>
           </li>
          
         </ul>

@@ -48,7 +48,7 @@
                                     </a>
                                 @endif
                                
-                                <a href="{{route("usuarios.show",$user->id)}}"><i class="fas fa-info-circle text-success"></i></a>
+                                <a href="{{route("usuarios.show",$user->id)}}"><i class="fas fa-info-circle text-primary"></i></a>
                               </div>
                            </td>
                         </tr>

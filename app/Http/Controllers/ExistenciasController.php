@@ -24,7 +24,7 @@ class ExistenciasController extends Controller
         $productos = DB::table('productos')->select('productos.*')
         ->where('name', 'LIKE', '%'.$buscar.'%')
         ->orderby('amount', 'asc', '&&', 'state', 'asc')
-        ->paginate(9);
+        ->paginate(6);
 
         return view("pages.Existencias.existencias", compact("productos", "buscar"));
     }

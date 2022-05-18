@@ -41,11 +41,11 @@
 
 
                           @if ($cliente->state)
-                            <td><span class="badge badge-primary">Activo</span></td>  
+                            <td class="text-center"><span class="badge badge-primary">Activo</span></td>  
                           @else
-                            <td><span class="badge badge-danger">Deshabilitado</span></td>
+                            <td class="text-center"><span class="badge badge-danger">Deshabilitado</span></td>
                           @endif
-                          <td>
+                          <td class="">
                               <div class="d-flex justify-content-between flex-wrap">
                                 @if ($cliente->state)
                                     <a href="{{route("clientes.edit",$cliente->id)}}"><i class="far fa-edit text-warning"></i></a>
@@ -56,7 +56,7 @@
                                 @else
                                     <i class="far fa-user text-primary"></i> 
                                 @endif</a>
-                                <a href="{{route("clientes.show",$cliente->id)}}"><i class="fas fa-info-circle text-success"></i></a>
+                                <a href="{{route("clientes.show",$cliente->id)}}"><i class="fas fa-info-circle text-primary"></i></a>
                               </div>
                            </td>
                         </tr>

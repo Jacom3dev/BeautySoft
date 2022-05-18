@@ -5,8 +5,11 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col mt-3">
-           <a href="{{route('roles.create')}}" class="btn principal-color text-white"><i class="fas fa-user-plus"></i> Registrar Rol</a>
+        <div class="col mt-3">  
+            <a href="{{route('roles.create')}}" class="btn principal-color text-white">
+                <i class="fas fa-lock"></i>
+                Registrar Rol
+            </a>
         </div>
     </div>
     <div class="row mt-2 px-3 py-2">

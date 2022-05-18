@@ -144,15 +144,11 @@
     
                                     </div>
                                     
-                                    <div class="col-12 text-center">
-                                        <h5 class=" text-secondary">Servicios.</h5>
-                                    </div>
     
                                     <div class="col-12 mt-2 tbl2_scroll table-responsive ">
                                         <table id="TadaBaseCitas w-100" class="table  table-bordered">
                                             <thead>
-                                                <tr>
-                                                    
+                                                <tr class="text-center">
                                                     <th scope="col">Servicio</th>
                                                     <th scope="col">Precio</th>
                                                     <th scope="col">Accion</th>
@@ -173,7 +169,7 @@
                     <div class="col-6 col-md-4 col-lg-3">
                         {{-- <button type="submit"  class="btn btn-success">crear</button> --}}
                         <button type="button" onclick="CrearCita()" class="btn principal-color text-white w-100"
-                            id="btnCrear">Crear</button>
+                            id="btnCrear">Agendar</button>
                     </div>
                     <div class="col-6 col-md-4 col-lg-2">
                         <a  onclick="limpiar()" class="btn btn-outline-dark btn-block"
@@ -245,7 +241,8 @@
                 <input type="hidden" name="servicios_id[]" value="${id}"/>
                 ${servicio}</td>
                 <td>${precio}</td>
-                <td><button type="button" class="btn btn-danger float-right " onclick="Eliminar(${id},${precio})">Eliminar</button>
+                <td class="text-center">
+                    <button  type="button" class="btn btn-danger" onclick="Eliminar(${id},${precio})"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
         
