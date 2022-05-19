@@ -15,14 +15,14 @@
         <div class="col">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             
                             <th>Proveedor</th>
                             <th>Empresa</th>
                             <th>Teléfono</th>
                             <th>Correo</th>
-                            <th>Direccion</th>
+                            <th>Dirección</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>

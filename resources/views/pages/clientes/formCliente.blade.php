@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre" value="{{isset($cliente)?$cliente->name:old('name')}}">
+                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="{{isset($cliente)?$cliente->name:old('name')}}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -58,7 +58,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento" value="{{isset($cliente)?$cliente->document:old('document')}}">
+                        <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="{{isset($cliente)?$cliente->document:old('document')}}">
                         @error('document')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>

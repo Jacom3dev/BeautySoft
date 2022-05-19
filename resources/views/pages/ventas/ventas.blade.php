@@ -14,9 +14,9 @@
             <div class="col p-3  bg-white rounded">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover nowrap" style="width:100%" cellpadding="0" id="tabla">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
-                                <th>Registrado por</th>
+                                <th>Nombre Vendedor</th>
                                 <th>Nombre Cliente</th>
                                 <th>Precio</th>
                                 <th>Fecha</th>

@@ -106,6 +106,15 @@
               </li>
             </ul>
           </li>
+          
+          <li class="nav-item">
+            <a href="{{route('agenda.index')}}" class="nav-link">
+              <i class="fas fa-money-check"></i>
+              <p>
+                Agenda
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -131,14 +140,6 @@
             </ul>
           </li>
           
-          <li class="nav-item">
-            <a href="{{route('agenda.index')}}" class="nav-link">
-              <i class="fas fa-money-check"></i>
-              <p>
-                Agenda
-              </p>
-            </a>
-          </li>
          
         </ul>
       </nav>

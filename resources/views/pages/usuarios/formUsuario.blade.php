@@ -11,7 +11,7 @@
                 @csrf
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input  type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" value="{{old('name')}}" placeholder="Nombre">
+                        <input  type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" value="{{old('name')}}" placeholder="Nombre*">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <small>{{ $message }}</small>
@@ -30,7 +30,7 @@
 
                 <div class="row">
                     <div class="col mt-2">
-                        <input  type="email"class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" value="{{old('email')}}" placeholder="Correo">
+                        <input  type="email"class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" value="{{old('email')}}" placeholder="Correo*">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <small>{{ $message }}</small>
@@ -41,7 +41,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input  type="text" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña">
+                        <input  type="text" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <small>{{ $message }}</small>

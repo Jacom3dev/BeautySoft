@@ -13,14 +13,14 @@
         <div class="col p-4  bg-white rounded">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th>Nombre</th>
-                            <th>Email</th>
+                            <th>EMail</th>
                             <th>Tipo documento</th>
                             <th>Documento</th>
                             <th>Celular</th>
-                            <th>Direccion</th>
+                            <th>Dirección</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>

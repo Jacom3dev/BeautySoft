@@ -16,7 +16,7 @@
         <div class="col">
             <div class="dt-responsive">
                 <table class="table table-striped table-bordered nowrap" style="width:100%" id="tabla">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th>usuario</th>
                             <th>Proveedor</th>

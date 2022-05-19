@@ -25,15 +25,15 @@ Productos
             <div class="col">
                 <div class="dt-responsive">
                     <table class="table table-striped table-bordered nowrap" cellpadding="0" id="tabla">
-                         <thead>
+                         <thead class="text-center">
                             <tr>
                                
                                 <th scope="col">Nombre Producto</th>
                                 <th scope="col">Imagen</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Precios</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Accion</th>
+                                <th scope="col">Acciones</th>
          
                             </tr>
                         </thead>
@@ -91,7 +91,7 @@ $('#TadaBaseProductos').DataTable({
 
         processing: true,
         serverSide: true,
-        ajax:,
+        // ajax:,
         columns:[
           
             {
