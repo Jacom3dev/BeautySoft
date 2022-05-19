@@ -15,14 +15,14 @@
         <div class="col">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             
                             <th>Proveedor</th>
                             <th>Empresa</th>
                             <th>Teléfono</th>
                             <th>Correo</th>
-                            <th>Direccion</th>
+                            <th>Dirección</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -51,9 +51,9 @@
 
                             @endif
                           @if ($value->state)
-                            <td><span class="badge badge-primary">Activo</span></td>  
+                            <td class="text-center"><span class="badge badge-primary">Activo</span></td>  
                           @else
-                            <td><span class="badge badge-danger">Deshabilitado</span></td>
+                            <td class="text-center"><span class="badge badge-danger">Deshabilitado</span></td>
                           @endif
                           <td>
                               <div class="d-flex justify-content-between flex-wrap">
@@ -65,7 +65,7 @@
                                         <i class="far fa-user text-primary"  data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"></i> 
                                     @endif</a>
                                 </a>
-                                <a href="{{route("proveedores.show",$value->NIT)}}"><i class="fas fa-info-circle text-success"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle"></i></a>
+                                <a href="{{route("proveedores.show",$value->NIT)}}"><i class="fas fa-info-circle text-primary"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle"></i></a>
                               </div>
                            </td>
                            

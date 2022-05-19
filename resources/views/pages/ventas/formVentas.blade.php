@@ -30,7 +30,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-6 form-group">
+                                <div class="col-5 form-group">
                                     <select class="js-example-basic-single form-control
                                         @error('cliente') is-invalid border border-warning  @enderror" name="cliente"
                                         id="cliente">
@@ -49,6 +49,15 @@
                                     </span>
                                     @enderror
                                 </div>
+                                <div class="col-1">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-block principal-color text-white" data-toggle="modal" data-target="#exampleModal">
+                                        +
+                                    </button>
+                                    
+                                </div>
+
+
                                 <div class="col-md-6 form-group">
                                     <input class="form-control text-center" type="number" name="precio_total"
                                         id="precio_total" placeholder="precio Total" readonly />
@@ -182,7 +191,7 @@
                 <div class="row justify-content-end">
                     <div class="col-6 col-lg-2">
                         <button type="submit" class="btn btn-block principal-color text-white">
-                            Crear Venta.
+                            Crear
                         </button>
                     </div>
                     <div class="col-3 col-lg-1">
@@ -190,24 +199,113 @@
                     </div>
                 </div>
             </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3> <strong style="color: rgba(2, 93, 113, 1);">Nuevo Cliente</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST"  action="{{route('cliente2.store')}}" id="form-cliente">
+                                @csrf
+                
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mt-2">
+                                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="">
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 col-sm-6 mt-2">
+                                        <input type="text" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" placeholder="Correo" value="">
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mt-2">
+                                        <input type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="">
+                                        @error('cell')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mt-2">
+                                        <select class="form-control" class="form-control @error('document_id') is-invalid border border-warning  @enderror" name="document_id">
+                                            <option value="">Tipo de documento</option>
+                                            @foreach ($documentos as $documento)
+                                            <option value="{{$documento->id}}">{{$documento->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('document_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 col-sm-6 mt-2">
+                                        <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="">
+                                        @error('document')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mt-2">
+                                        <input type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="">
+                                        @error('direction')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="state" value="1">
+
+
+                                <div class="row py-4 justify-content-end">
+                                    <div class="col-6 col-sm-6 col-lg-4">
+                                        <button type="submit" class="btn principal-color btn-block text-white">
+                                            {{isset($cliente)?'Editar':'Registrar'}}
+                                        </button>
+                                    </div>
+                                    <div class="col-6 col-sm-4 col-lg-2">
+                                        <button type="button" class="btn btn-outline-dark btn-block" data-dismiss="modal">Volver</button>
+                                        {{-- <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" ">Volver</a> --}}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-
-@endsection 
-
-
-
-
- @section('script_ventas')
-
-=======
 @endsection
 
 
 @section('script_ventas')
->>>>>>> 577c2e8e31317e832b192ff5ff48ad5068819cd7
 <script>
     function todoprod() {
         cargar_preciop(), cargar_cantidad();

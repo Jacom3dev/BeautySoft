@@ -17,7 +17,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre" value="{{isset($cliente)?$cliente->name:old('name')}}">
+                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="{{isset($cliente)?$cliente->name:old('name')}}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="telefono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
+                        <input type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
                         @error('cell')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -46,6 +46,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
                         <select class="form-control" class="form-control @error('document_id') is-invalid border border-warning  @enderror" name="document_id">
+                            <option value="">Tipo de documento</option>
                             @foreach ($documentos as $documento)
                             <option value="{{$documento->id}}">{{$documento->name}}</option>
                             @endforeach
@@ -57,7 +58,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento" value="{{isset($cliente)?$cliente->document:old('document')}}">
+                        <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="{{isset($cliente)?$cliente->document:old('document')}}">
                         @error('document')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -67,7 +68,7 @@
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Direccion" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
+                        <input type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
                         @error('direction')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -78,7 +79,7 @@
                 <div class="row py-4 justify-content-end">
                     <div class="col-6 col-sm-6 col-lg-4">
                         <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($cliente)?'Editar Cliente':'Registrar Cliente'}}
+                            {{isset($cliente)?'Editar':'Registrar'}}
                         </button>
                     </div>
                     <div class="col-6 col-sm-4 col-lg-2">

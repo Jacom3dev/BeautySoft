@@ -7,7 +7,10 @@
 <div class="container">
     <div class="row pt-2">
         <a href="{{route('servicios.create')}}">
-            <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear servicio" >Crear servicios</button>
+            <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear servicio" >
+                <i class="fas fa-concierge-bell"></i>
+                Crear servicio
+            </button>
         </a>
     </div>
   
@@ -15,13 +18,11 @@
             <div class="col">
                 <div class="dt-responsive">
                     <table class="table table-striped table-bordered nowrap" cellpadding="0" id="tabla">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
-                            
-                               
                                 <th scope="col">Nombre Servicio</th>
                                 <th scope="col">Precio</th>
-                                <th scope="col">Descripcion</th>
+                                <th scope="col">Descripción</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -33,9 +34,9 @@
                                 <td>{{$value->name}}</td>
                                 <td>{{$value->price}}</td>
                                 <td>{{$value->description}}</td>
-                                <td>
+                                <td class="text-center">
                                 @if($value->state == 1)
-                                <span class="badge badge-success">Activo</span>
+                                <span class="badge badge-primary">Activo</span>
 
                                 @else 
                                 <span class="badge badge-danger">Desactivado</span>
@@ -49,7 +50,7 @@
                                     <a href="{{route("servicios.changeState",["id"=>$value->id,"state"=>1])}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Activar"  ><span class=""><i class="far fa-check-circle text-primary"></i></span></a>
                                     @endif   
                                     <a href="{{route('servicios.edit',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar" ><i class="far fa-edit text-warning"></i></a>
-                                    <a href="{{route('servicios.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle" ><i class="fas fa-info-circle text-success"></i></a>
+                                    <a href="{{route('servicios.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle" ><i class="fas fa-info-circle text-primary"></i></a>
                                 
                                 </td>
                             </tr>

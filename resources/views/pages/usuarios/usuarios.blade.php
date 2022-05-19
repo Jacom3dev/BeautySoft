@@ -13,7 +13,7 @@
         <div class="col p-4  bg-white rounded">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th>Nombre</th>
                             <th>Email</th>
@@ -29,11 +29,11 @@
                           <td>{{$user->email}}</td>
                           <td>{{$user->rol_name}}</td>
                           @if ($user->state)
-                            <td><span class="badge badge-primary">Activo</span></td>  
+                            <td class="text-center"><span class="badge badge-primary">Activo</span></td>  
                           @else
-                            <td><span class="badge badge-danger">Deshabilitado</span></td>
+                            <td class="text-center"><span class="badge badge-danger">Deshabilitado</span></td>
                           @endif 
-                           <td>
+                           <td class="text-center">
                               <div class="d-flex justify-content-between flex-wrap">
                                 @if ($user->rol_id != 1 && $user->rol_state == 1)
                                     @if ($user->state)    
@@ -48,7 +48,7 @@
                                     </a>
                                 @endif
                                
-                                <a href="{{route("usuarios.show",$user->id)}}"><i class="fas fa-info-circle text-success"></i></a>
+                                <a href="{{route("usuarios.show",$user->id)}}"><i class="fas fa-info-circle text-primary"></i></a>
                               </div>
                            </td>
                         </tr>

@@ -14,7 +14,7 @@
            <div class="icon">
              <i class="ion ion-person-stalker"></i>
            </div>
-           <a href="{{route('usuarios.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('usuarios.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -27,7 +27,7 @@
            <div class="icon">
              <i class="ion ion-cash"></i>
            </div>
-           <a href="{{route('ventas.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('ventas.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -40,7 +40,7 @@
            <div class="icon">
              <i class="ion ion-bag"></i>
            </div>
-           <a href="{{route('compras.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('compras.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -53,7 +53,7 @@
            <div class="icon">
              <i class="ion ion-calendar"></i>
            </div>
-           <a href="{{route('agenda.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('agenda.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
    </div>

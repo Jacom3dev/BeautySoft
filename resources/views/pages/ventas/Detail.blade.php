@@ -7,7 +7,7 @@
         
         <div class="row" >
             <div class="col-12 text-center py-2">
-                <h3> <strong style="color: rgba(2, 93, 113, 1);">Informacion de la Venta.</strong></h3>
+                <h3> <strong style="color: rgba(2, 93, 113, 1);">Detalle de la Venta.</strong></h3>
             </div>
             <div class="col-4">
                 <div class="card" style="width: 16rem; margin-left:100px;">

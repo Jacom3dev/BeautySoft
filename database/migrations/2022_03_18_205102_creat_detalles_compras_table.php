@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');  
             $table->foreign('product_id')->references('id')->on('productos');
             $table->Integer('amount');
-            
+            $table->float('price',11,2);
         });
     }
 

@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row">
             <div class="col mt-4">
-                <a href="{{ route('ventas.create') }}" class="btn principal-color text-white"><i
-                        class="fas fa-user-plus"></i>
+                <a href="{{ route('ventas.create') }}" class="btn principal-color text-white">
+                    <i class="fas fa-tag"></i>
                     Crear Venta</a>
             </div>
         </div>
@@ -14,9 +14,9 @@
             <div class="col p-3  bg-white rounded">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover nowrap" style="width:100%" cellpadding="0" id="tabla">
-                        <thead>
+                        <thead class="text-center">
                             <tr>
-                                <th>Registrado por</th>
+                                <th>Nombre Vendedor</th>
                                 <th>Nombre Cliente</th>
                                 <th>Precio</th>
                                 <th>Fecha</th>
@@ -51,7 +51,7 @@
                                     <td>{{ $value->created_at }}</td>
                                     <td class="text-center">
                                         @if ($value->state)
-                                            <span class="badge badge-success">Realizada</span>
+                                            <span class="badge badge-primary">Realizada</span>
                                         @elseif(!$value->state)
                                             <span class="badge badge-danger">Anulada</span>
                                         @endif
@@ -68,7 +68,7 @@
 
                                        
                                         <a href="{{ route('ventas.show', $value->id) }}" class=""><i
-                                                class="fas fa-info-circle text-success"></i></a>
+                                                class="fas fa-info-circle text-primary"></i></a>
 
                                     </td>
                                 </tr>

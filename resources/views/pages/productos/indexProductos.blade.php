@@ -6,9 +6,18 @@ Productos
 @section('content')
 
 <div class="container">
-    <div class="row pt-2">
+    {{-- <div class="row pt-2">
         <a href="{{route('productos.create')}}">
             <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="crear producto">Crear producto</button>
+        </a>
+    </div> --}}
+    
+    <div class="row pt-2">
+        <a href="{{route('productos.create')}}">
+            <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="crear producto">
+                <i class="fab fa-product-hunt"></i>
+                Crear producto
+            </button>
         </a>
     </div>
 
@@ -16,15 +25,15 @@ Productos
             <div class="col">
                 <div class="dt-responsive">
                     <table class="table table-striped table-bordered nowrap" cellpadding="0" id="tabla">
-                         <thead>
+                         <thead class="text-center">
                             <tr>
                                
                                 <th scope="col">Nombre Producto</th>
                                 <th scope="col">Imagen</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Precios</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Accion</th>
+                                <th scope="col">Acciones</th>
          
                             </tr>
                         </thead>
@@ -37,7 +46,7 @@ Productos
                                       
                                         
                                
-                                <a href="{{route('productos.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="ver imagen"><i class="fas fa-image text-success"></i></i></a>    
+                                <a href="{{route('productos.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="ver imagen"><i class="fas fa-image text-primary"></i></i></a>    
                                 @else 
                                         
                                         
@@ -48,7 +57,7 @@ Productos
                                 <td>{{$value->price}}</td>
                                 <td class="text-center">
                                 @if($value->state == 1)
-                                <span class="badge badge-success">Activo</span>
+                                <span class="badge badge-primary">Activo</span>
 
                                 @else 
                                 <span class="badge badge-danger">Desactivado</span>
@@ -62,7 +71,7 @@ Productos
                                     <a href="{{route("productos.changeState",["id"=>$value->id,"state"=>1])}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Activar"  ><span class=""><i class="far fa-check-circle text-primary"></i></span></a>
                                     @endif 
                                     <a href="{{route('productos.edit',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar" ><i class="far fa-edit text-warning"></i></a>
-                                    <a href="{{route('productos.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle" ><i class="fas fa-info-circle text-success"></i></a>
+                                    <a href="{{route('productos.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle" ><i class="fas fa-info-circle text-primary"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -82,7 +91,7 @@ $('#TadaBaseProductos').DataTable({
 
         processing: true,
         serverSide: true,
-        ajax:,
+        // ajax:,
         columns:[
           
             {

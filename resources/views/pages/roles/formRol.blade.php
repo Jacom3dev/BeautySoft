@@ -14,7 +14,7 @@
                 <input type="hidden" name="state" value="{{isset($rol)?$rol->state:'1'}}">
                 <div class="row mt-3">
                     <div class="col">
-                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Rol" value="{{isset($rol)?$rol->name:old('name')}}">
+                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Rol*" value="{{isset($rol)?$rol->name:old('name')}}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -25,7 +25,7 @@
                 <div class="row mt-3 justify-content-end py-3 ">
                     <div class="col-4">
                         <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($rol)?'Editar Rol':'Registrar Rol'}}
+                            {{isset($rol)?'Editar':'Registrar'}}
                         </button>
                     </div>
                     

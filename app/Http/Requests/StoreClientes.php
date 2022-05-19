@@ -24,7 +24,7 @@ class StoreClientes extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string','min:2' ,'max:50'],
+            'name' => ['required', 'regex:/^[\pL\s\-]+$/u','min:3','max:50'],
             'email' => ['nullable', 'string','min:8','max:50', 'email', 'unique:clientes'],
             'cell'=>['nullable','min:9','max:13'],
             'direction'=>['nullable','max:30'],

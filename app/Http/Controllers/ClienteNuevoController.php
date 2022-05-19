@@ -3,30 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\productos;
-// use Iluminate\Support\Facedes\DB;
-use DB;
+use App\Models\Clientes;
+use App\Models\Documentos;
+use App\Http\Requests\StoreClientes;
+use App\Http\Requests\UpdateClientes;
 
-class ExistenciasController extends Controller
+class ClienteNuevoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+    public function index()
     {
-        $this->middleware('auth'); 
-    }
-    public function index(request $request)
-    {
-        $buscar= trim($request->get('textoBusqueda'));
-        $productos = DB::table('productos')->select('productos.*')
-        ->where('name', 'LIKE', '%'.$buscar.'%')
-        ->orderby('amount', 'asc', '&&', 'state', 'asc')
-        ->paginate(6);
-
-        return view("pages.Existencias.existencias", compact("productos", "buscar"));
+        //
     }
 
     /**
@@ -47,7 +38,10 @@ class ExistenciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            
+        Clientes::create($request->all());
+        alert()->success('Cliente','Cliente registrado');
+        return Redirect()->route('ventas.create');
     }
 
     /**
