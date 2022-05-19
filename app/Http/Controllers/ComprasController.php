@@ -7,6 +7,7 @@ use App\Models\DetalleCompra;
 use App\Models\Compra;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCompras;
+use App\Http\Requests\StoreProductos;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -60,13 +61,13 @@ class ComprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(request $request)
     {
         $input = $request->all();
         
-
+        
        try { 
-            // dd($input);
+            
         DB::beginTransaction();
        
 
@@ -82,7 +83,8 @@ class ComprasController extends Controller
                         DetalleCompra::create([ 
                             "buys_id" => $compra->id,
                             "product_id" => $value,
-                            "amount" => $input["amounts"] 
+                            "price"=>$input["prices"][$key],
+                            "amount" => $input["amounts"][$key] 
                         ]);
     
                         $producto = Productos::find($value);
@@ -130,7 +132,6 @@ class ComprasController extends Controller
                     ]); 
                    
                     foreach ($input["idPN"] as $key => $value) {
-                        /* dd($input["pricesPN"][$key]); */
                         $productos = productos::create([
                             "name"=>$input["namePN"][$key],
                             "img"=>null,
@@ -170,12 +171,11 @@ class ComprasController extends Controller
                  alert()->success('Compra','Compra realizada con exito.');
 
              
-              return redirect("compras/create");
+              return redirect("compras/");
                
         } catch (\Exception $e) {
         DB::rollBack(); 
-            
-    
+            dd($e);
             alert()->error('Compra', 'No se pudo crear la compra');
             return redirect("compras/create");
         }
@@ -191,7 +191,9 @@ class ComprasController extends Controller
     public function show($id)
     {
         $Compra = Compra::find($id);
-        $productos = Productos::select("productos.*", "detalle_compra.*")->join("detalle_compra", "productos.id", "=", "detalle_compra.product_id")
+        $productos = Productos::select("productos.*", "detalle_compra.*")
+        ->join("detalle_compra", "productos.id", "=", "detalle_compra.product_id")
+        ->where("detalle_compra.buys_id", $id)
         ->get();
          return view("pages.compras.Detail",compact("Compra","productos"));
     }
@@ -228,5 +230,27 @@ class ComprasController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function changeState($id,$state)
+    {
+        
+        $Comp = Compra::find($id);
+        
+            $Comp->update([
+                'state' => !$state
+            ]);
+    
+
+            $products = DetalleCompra::where("buys_id", $id)->get();
+            
+                foreach ($products as $produc) {
+                    $produ = Productos::find($produc->product_id);
+                    $produ ->update([
+                        "amount" => $produ ->amount - $produc->amount,
+                    ]);
+                }
+           
+        alert()->success('Compra','cambio de estado exitoso.');
+        return Redirect()->route('compras.index');
     }
 }

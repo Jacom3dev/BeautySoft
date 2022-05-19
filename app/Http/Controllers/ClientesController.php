@@ -47,6 +47,12 @@ class ClientesController extends Controller
         alert()->success('Cliente','Cliente registrado');
         return Redirect()->route('clientes.index');
     }
+    public function storedos(StoreClientes $request)
+    {
+        Clientes::create($request->all());
+        alert()->success('Cliente','Cliente registrado');
+        return Redirect()->route('ventas.create');
+    }
 
     /**
      * Display the specified resource.

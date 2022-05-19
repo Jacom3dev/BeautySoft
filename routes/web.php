@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ClienteNuevoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ Route::resources([
     'productos' => ProductosController::class,
     'servicios' => ServiciosController::class,
     'roles' => RolesController::class,
+    'cliente2'=>ClienteNuevoController::class,
 ]);
 //PROVEEDOR
 Route::get('proveedores/{NIT}/{state}',[ProveedoresController::class,'changeState'])->name('proveedores.changeState');
@@ -69,4 +71,5 @@ Route::get('/servicios/{id}/{state}', [App\Http\Controllers\serviciosController:
 
 
 Route::get('/ventas/{id}/{state}',[VentasController::class,'changeState'])->name('changeState');
+Route::get('/compras/{id}/{state}',[ComprasController::class,'changeState'])->name('changeState');
 

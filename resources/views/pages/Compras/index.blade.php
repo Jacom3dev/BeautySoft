@@ -66,6 +66,7 @@
                             <th>Proveedor</th>
                             <th>Precio</th>
                             <th>Fecha de registro</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead> 
@@ -82,13 +83,19 @@
                                 {{$value->price}}
                             </td>
                             <td> {{$value->created_at}}</td>
+                            <td class="text-center">
+                                @if ($value->state)
+                                <span class="badge badge-primary">Realizada</span>
+                            @elseif(!$value->state)
+                                <span class="badge badge-danger">Cancelada</span>
+                            @endif
+                            </td>
                             <td class="d-flex justify-content-around">
                             @if($value->state)
                                     <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"><i class="fas fa-times-circle text-danger"></i></a>
-                                @elseif(!$value->state)
-                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Deshabilitar"><i class="fas fa-check-circle text-success"></i></a>
+                                
                                 @endif
-                                    <a href="{{route('compras.show', $value->id)}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle"><i class="fas fa-info-circle text-success"></i></a>
+                                    <a href="{{route('compras.show', $value->id)}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle"><i class="fas fa-info-circle text-primary"></i></a>
 
                             </td>
                         </tr>

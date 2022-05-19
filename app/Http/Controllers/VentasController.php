@@ -11,6 +11,7 @@ use App\Models\Servicios;
 use App\Models\detalle_productos_servicios;
 use App\Models\Detalle_ventas_productos;
 use App\Models\Detalle_ventas_servicios;
+use App\Models\Documentos;
 use DB;
 use Illuminate\Support\Carbon;
 
@@ -50,13 +51,14 @@ class VentasController extends Controller
      */
     public function create()
     {
+        $documentos = Documentos::all();
         
         $productos = Productos::where('state',1)->get();
         $clientes = Clientes::where('state',1)->get();
         $servicios = Servicios::where('state',1)->get();
         $productos_servicio = Servicios::all();
 
-        return view("pages.ventas.formVentas", compact('productos', 'clientes', 'servicios', 'productos_servicio'));
+        return view("pages.ventas.formVentas", compact('productos', 'clientes', 'servicios', 'productos_servicio', 'documentos'));
     }
 
     /**
@@ -149,6 +151,7 @@ class VentasController extends Controller
 
         // }
     }
+
     public function preciop($id, $cant){
         $precio = 0;
         foreach($id as $key => $value){
@@ -254,6 +257,7 @@ class VentasController extends Controller
                     }
                 }
             // }
+            
            
         }else {
 
@@ -292,6 +296,7 @@ class VentasController extends Controller
         }
 
            
+        alert()->success('Venta','cambio de estado exitoso.');
         return Redirect()->route('ventas.index');
     }
 }

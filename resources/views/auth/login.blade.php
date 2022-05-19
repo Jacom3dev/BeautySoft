@@ -57,7 +57,7 @@
                             <div class="row mb-2">
                                 <div class="col d-flex justify-content-center">
                                     <button type="submit" class="boton">
-                                       Iniciar sesion
+                                       Iniciar sesión
                                     </button>
                                 </div>
                             </div>

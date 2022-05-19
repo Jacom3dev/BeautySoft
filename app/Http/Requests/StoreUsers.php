@@ -25,7 +25,7 @@ class StoreUsers extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:50',
+            'name' => 'required|required','regex:/^[\pL\s\-]+$/u|min:3|max:50',
             'email' => 'required|string|max:50|email|unique:users',
             'cell'=>'nullable|min:8|max:13',
             'direction'=>'nullable|min:5|max:40',
