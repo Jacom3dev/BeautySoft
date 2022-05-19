@@ -46,6 +46,8 @@ Route::resources([
     'roles' => RolesController::class,
     'cliente2'=>ClienteNuevoController::class,
 ]);
+
+Route::get('compras/export/excel',[DashBoardController::class,'export'])->name('compras.export');
 //PROVEEDOR
 Route::get('proveedores/{NIT}/{state}',[ProveedoresController::class,'changeState'])->name('proveedores.changeState');
 //CLIENTE

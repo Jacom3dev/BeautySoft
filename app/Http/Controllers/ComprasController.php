@@ -12,6 +12,7 @@ use App\Http\Requests\StoreProductos;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
+
 class ComprasController extends Controller
 {
     /**
@@ -23,6 +24,8 @@ class ComprasController extends Controller
     {
         $this->middleware('auth'); 
     }
+
+  
 
     public function index(Request $request)
     {
@@ -191,7 +194,11 @@ class ComprasController extends Controller
     public function show($id)
     {
         $Compra = Compra::find($id);
-        $productos = Productos::select("productos.*", "detalle_compra.*")
+        if ($Compra==null) {
+            alert()->error('Compra','Compra no encontrada');
+            return redirect("/compra/index");
+        }
+        $productos = Productos::select("productos.*", "detalle_compra.*")->join("detalle_compra", "productos.id", "=", "detalle_compra.product_id")
         ->join("detalle_compra", "productos.id", "=", "detalle_compra.product_id")
         ->where("detalle_compra.buys_id", $id)
         ->get();
@@ -204,9 +211,14 @@ class ComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function cambioestado($id,$state)
     {
-        //
+            $Compra=Compra::find($id);
+        if ($Compra==null) {
+            
+            alert()->error('Compra','Compra no encontrada');
+            return redirect("/compra/index");
+        }
     }
 
     /**

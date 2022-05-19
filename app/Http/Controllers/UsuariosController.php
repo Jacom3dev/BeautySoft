@@ -70,6 +70,10 @@ class UsuariosController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        if ($user == null) {
+            alert()->error('Usuario','Usuario no encontrado');
+            return  Redirect()->route('usuarios.index');
+        }
         return view('pages.usuarios.detalle',compact("user"));
     }
 
@@ -83,6 +87,11 @@ class UsuariosController extends Controller
     {
         $user = User::find($id);
         $roles = Roles::all()->where('id','!=', 1)->where('state',1);
+        if ($user == null) {
+            alert()->error('Usuario','Usuario no encontrado');
+            return  Redirect()->route('usuarios.index');
+        }
+        
         return view('pages.usuarios.editUsuario',compact("user","roles"));
     }
 
@@ -97,6 +106,10 @@ class UsuariosController extends Controller
     {
         $input = $request->all();
         $usuario = User::find($id);
+        if ($usuario == null) {
+            alert()->error('Usuario','Usuario no encontrado');
+            return  Redirect()->route('usuarios.index');
+        }
         $usuario->update($input);
         alert()->success('Usuario','Usuario  editado con exito');
         return  Redirect()->route('usuarios.index');
@@ -108,13 +121,14 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+   
     public function changeState($id,$state)
     {
         $usuario = User::find($id);
+        if ($usuario == null) {
+            alert()->error('Usuario','Usuario no encontrado');
+            return  Redirect()->route('usuarios.index');
+        }
         $usuario->update([
             'state' => !$state
         ]);
@@ -126,6 +140,10 @@ class UsuariosController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
         $usuario = User::find($id);
+        if ($usuario == null) {
+            alert()->error('Usuario','Usuario no encontrado');
+            return  Redirect()->route('usuarios.index');
+        }
         $usuario->update($input);
         alert()->success('Usuario','Contraseña editada con exito');
         return  Redirect()->route('usuarios.index');

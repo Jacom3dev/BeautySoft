@@ -168,8 +168,8 @@ class ServiciosController extends Controller
         $producto=productos::all();
         
         if ($servicios==null) {
-            session()->flash('errorE','servicio no encontrado');
-            return redirect("/Servicios");
+            alert()->error('servicios','servicio no encontrado');
+            return redirect("/servicios/index");
         }
         return view("pages.servicios.detalleServicios",compact("servicios","detalle","producto"));
     }
@@ -205,8 +205,8 @@ class ServiciosController extends Controller
         $prec = $prec-$precio;
         
         if ($servicios==null) {
-            alert()->error('servicios','El producto no existe');
-            return redirect("/servicios/create");
+            alert()->error('servicios','servicio no encontrado');
+            return redirect("/servicios/index");
         }
         return view("pages.servicios.editarServicios",compact("servicios","producto","detalle","precio","prec"));
     }
@@ -350,7 +350,10 @@ class ServiciosController extends Controller
         $servicios=Servicios::find($id); 
         $cita=Cita::all();
         $citaD=detalle_cita_servicios::all(); 
-        
+        if ($servicios==null) {
+            alert()->error('servicios','servicios no encontrado');
+            return redirect("/servicios/index");
+        }
         foreach ($cita as $key ) {
             
             foreach ($citaD as  $value) {
