@@ -12,7 +12,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6 fondo mt-5 px-5 py-2">
+            <div class="col-12 col-lg-6 fondo mt-5 px-5 py-2">
                 <form method="POST" action="{{ route('password.email') }}">
                     @csrf
 
@@ -44,9 +44,23 @@
                         </div>
                     </div>
                 </form>
+
+                
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
+    {{-- Sweetalert2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('status'))
+    <script>
+       Swal.fire(
+            'Correo enviado',
+            'Se ha enviado el correo, por favor, revise su bandeja de entrada',
+            'success'
+        )
+    </script>
+    @endif
 </body>
 </html>
 

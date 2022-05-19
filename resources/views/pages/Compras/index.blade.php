@@ -49,6 +49,7 @@
                 
                     </tbody>
                 </table>
+                <a href="{{route('compras.export')}}">descargar</a>
             </div> 
         </div>
     </div>

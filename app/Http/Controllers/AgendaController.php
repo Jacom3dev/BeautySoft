@@ -184,9 +184,11 @@ class AgendaController extends Controller
         
         $horaI =null;
         $horaF = null;
+       
         if ($citas==null) {
             
-            return redirect("/agenda");
+            alert()->error('Agenda','Cita no encontrada');
+            return  Redirect()->route('agenda.index');
         }
         foreach ($cita as $key => $value) {
             $horaI = \Carbon\Carbon::parse($value->hourI)->format('h:i A');
@@ -204,7 +206,12 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $citas =Citas::find($id);
+        if ($citas==null) {
+            
+            alert()->error('Agenda','Cita no encontrada');
+            return  Redirect()->route('agenda.index');
+        }
     }
 
     /**
@@ -216,7 +223,12 @@ class AgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $citas =Citas::find($id);
+        if ($citas==null) {
+            
+            alert()->error('Agenda','Cita no encontrada');
+            return  Redirect()->route('agenda.index');
+        }
     }
 
     /**
@@ -228,13 +240,15 @@ class AgendaController extends Controller
     public function changeState($id,$state){
        
 
-        $cita=Cita::find($id);
-        // estados 
-        //  1 = cancelado
-        //  2 = pendiente
-        //  3 = en ejecucion
+    
+        $citas =Cita::find($id);
+        if ($citas==null) {
+            
+            alert()->error('Agenda','Cita no encontrada');
+            return redirect("/agenda/index");
+        }
          
-            $cita->update(["state"=>$state]);
+            $citas->update(["state_id"=>$state]);
             alert()->success('Agenda','Cambio de estado hecho');
             return redirect("/agenda");
         
