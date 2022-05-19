@@ -21,7 +21,6 @@
                         </li>
                     </ul>
                 </div>
-                
             </div>
             <hr>
             <form action="{{ route('ventas.store') }}" method="post">

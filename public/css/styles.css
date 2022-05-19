@@ -6,7 +6,10 @@
 .principal-color {
     background: rgba(2, 93, 113, 1);
 }
-
+.principal-color:hover {
+    background: rgb(5, 120, 146);
+    
+}
 i {
     color: white;
 }
