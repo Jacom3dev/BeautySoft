@@ -52,11 +52,7 @@ class ProductosController extends Controller
         try{
         
        
-        $request->validate([        
-        'name'=>'required|unique:productos,name|min:3|string',
-        'price'=>'required|min:0',
-        ]);
-        // try{
+   
             
             if (count($input) != 4) {
                 $img = $request->file('img')->store('public/img');

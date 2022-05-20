@@ -59,12 +59,7 @@ class ServiciosController extends Controller
         return view('pages.servicios.crearServicios', compact('producto'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(StoreServicios $request)
     {
         $input=$request->all();
@@ -155,12 +150,7 @@ class ServiciosController extends Controller
         
         return $precio;
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $servicios=Servicios::find($id);
@@ -174,12 +164,7 @@ class ServiciosController extends Controller
         return view("pages.servicios.detalleServicios",compact("servicios","detalle","producto"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         $servicios=servicios::find($id);
@@ -211,13 +196,7 @@ class ServiciosController extends Controller
         return view("pages.servicios.editarServicios",compact("servicios","producto","detalle","precio","prec"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(UpdateServicios $request, $id)
     {
         $input=$request->all();
@@ -274,7 +253,7 @@ class ServiciosController extends Controller
                         DB::rollBack();
                         
                         alert()->error('Servicios','Servicio no  creado');
-                        return redirect("/servicios/".$id."/edit");
+                        return redirect("/servicios/ceate");
                    
                     }
                 }
@@ -304,7 +283,7 @@ class ServiciosController extends Controller
             dd($e);
 
             alert()->error('Servicios','Servicio no editado con exito');
-            return redirect("/servicios/create/");
+            return redirect("/servicios/".$id."/edit");
         }
     }
 

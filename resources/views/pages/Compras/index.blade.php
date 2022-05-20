@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col mt-3">
-           <a href="{{route('compras.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar compra">
+           <a href="{{route('compras.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar Compra">
                 <i class="fas fa-cart-plus"></i>
                 Crear Compra
             </a>

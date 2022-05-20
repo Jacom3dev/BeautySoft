@@ -50,12 +50,36 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       // --------------------------------
       eventClick: function(info) {
-        let id =info.event.extendedProps.idC;
+        let id =info.event.id;
+        let state = info.event.extendedProps.estado;
         
         
         $("#Opciones").modal("show");
-        $("#opcionesDetalle").prop('href','/agenda/detalle/'+id);
-        $("#opcionesEditar").prop('href','http://127.0.0.1:8000/Cita/Editar/'+id);
+        $("#op").show();
+        $("#estado").append(
+          `
+       
+        <option cita_id="${id}"  value="2">Pendiente</option>
+        <option cita_id="${id}"  value="3">En ejecucion</option>
+        <option cita_id="${id}"  value="1">Cancelado</option>
+       `);
+      //  alert(state);
+        if (state == 2) {
+          
+          $("#edit").show();
+          $("#opcionesEditar").prop('href','/agenda/'+id+'/edit');
+          $("#opcionesDetalle").prop('href','/agenda/'+id);
+          
+          
+        }else{
+          $("#edit").hide();
+          $("#opcionesDetalle").prop('href','/agenda/'+id);
+          
+        }
+          
+      
+
+      
         
         
 
@@ -87,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
   });
 
-        // CLIENTE CREAT
-      // -------------------------
+// CLIENTE CREAT
+// -------------------------
 function limpiar() {
   $("#Opciones").modal('hide');
   $("#Crear").modal('hide');
@@ -96,6 +120,9 @@ function limpiar() {
   $("#Cantidad").val(1);
   $(".sr").remove();
   $(".pr").remove();
+  $("#estado").fresh();
+  $("#edit").hide();
+  
 }
 
 function CrearCita() {
@@ -117,7 +144,7 @@ function CrearCita() {
    
   form.append("hourF",hora_final); 
    $.ajax({
-    url:"/agenda/guardar",
+    url:"/agenda/",
     type: 'post',
     data: form,
     processData: false,

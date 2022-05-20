@@ -57,13 +57,15 @@ Route::put('perfil/{id}/password',[PerfilController::class,'updatePassword'])->n
 
 Route::get('roles/{id}/{state}',[RolesController::class,'changeState'])->name('roles.changeState');
 //AGENDA
-Route::get('/agenda/listar/lista/agenda', [App\Http\Controllers\AgendaController::class, 'list'])->name('listar');
-Route::post('/agenda/guardar', [App\Http\Controllers\AgendaController::class, 'store'])->name('Guardar');
-Route::get('/agenda/detalle/{id}', [App\Http\Controllers\AgendaController::class, 'show'])->name('Detalle');
+Route::get('/agenda/listar/lista/agenda', [AgendaController::class, 'list'])->name('listar');
+Route::get('/agenda/{id}/{state}', [AgendaController::class, 'changeState'])->name('agenda.changeState');
+
+
+
 //PRODUCTOS
-Route::get('/productos/{id}/{state}', [App\Http\Controllers\productosController::class, 'changeState'])->name('productos.changeState');
+Route::get('/productos/{id}/{state}', [productosController::class, 'changeState'])->name('productos.changeState');
 //SERVICIOS
-Route::get('/servicios/{id}/{state}', [App\Http\Controllers\serviciosController::class, 'changeState'])->name('servicios.changeState');
+Route::get('/servicios/{id}/{state}', [serviciosController::class, 'changeState'])->name('servicios.changeState');
 
 //VENTAS
 

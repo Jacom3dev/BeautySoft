@@ -9,6 +9,11 @@ use App\models\Productos;
 use App\models\Estado_cita;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Requests\StoreAgenda;
+use App\Http\Requests\UpdateAgenda;
+use DateTime;
+
 
 class AgendaController extends Controller
 {
@@ -21,50 +26,48 @@ class AgendaController extends Controller
     {
         $this->middleware('auth'); 
     }
-    public function index()
-    {
+    public function index(){
         $cita=Cita::all();
         $servicios=Servicios::all(); 
-        $clientes=Clientes::all();     
-        
-        
-
-        return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes"));
-        
+        $clientes=Clientes::all();    
+        $estado = Estado_cita::all(); 
+        return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado"));    
     }
     public function list(){
         $citas = Cita::all();
         $cliente =Clientes::all();
         
+        
         $citaN = [];
-        $color= "";
+        
         foreach ($citas as  $value) {
            foreach ($cliente as $key ) {
-            if ($value->client_id == $key->id) {
-                
-                if($value->state == 2){
-                        $color ="#008000"; 
-                }elseif ($value->state ==1) {
-                        $color ="#FF0000";
-                }elseif($value->state == 3){
-                        $color = "#FFA600";
+               
+                if ($value->client_id == $key->id) {
+                  
+                        
+                    $citaN[]=[
+                            "id"=>$value->id,
+                            "start"=>$value->date." ".$value->hourI,
+                            "hora"=>$value->hourI,
+                            "end"=>$value->date." ".$value->hourF,
+                            "title"=>$key->name,
+                            "backgroundColor"=>"#01676D",
+                            "textColor"=>"#ffffff",
+                            "borderColor"=>"#01676D",
+                            "extendedProps"=>[
+                                "client_id"=>$value->client_id,
+                                "estado"=>$value->state_id,
+                                "descripcion"=>$value->description,
+                                "date"=>$value->date,
+                                "hourI"=>$value->hourI
+                            ]
+                    ];
                 }
-                
-                $citaN[]=[
-                    "id"=>$value->id,
-                    "start"=>$value->date." ".$value->hourI,
-                    "hora"=>$value->hourI,
-                    "end"=>$value->date." ".$value->hourF,
-                    "title"=>$key->name,
-                    "backgroundColor"=>$color,
-                    "textColor"=>"#ffffff",
-                    "borderColor"=>$color,
-                    "extendedProps"=>[
-                        "idC"=>$value->id,
-                        "estado"=>$value->state
-                    ]
-                ];
-            } 
+
+               
+               
+            
            }         
             
         }
@@ -74,12 +77,8 @@ class AgendaController extends Controller
         }else{
         return response()->json($citaN);
         }
-}
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    }
+ 
     public function validFecha($fecha,$horaI,$horaF){
         $cita= DB::table("citas")
         ->select("*")
@@ -104,8 +103,7 @@ class AgendaController extends Controller
      
     }
 
-    public function store(Request $request)
-    {
+    public function store(StoreAgenda $request){
 
         $input=$request->all();
         
@@ -150,11 +148,11 @@ class AgendaController extends Controller
            }catch(\Exception $e){
            
                DB::rollBack();
-                    dd($e);
+                    
                return response()->json(["ok"=>false]);
            }
       }else{
-        dd($this->validFecha($input["date"],$input["hourI"],$input["hourF"]));
+        
         return response()->json(["ok"=>false]);
       }
     }
@@ -164,59 +162,177 @@ class AgendaController extends Controller
             $servis=Servicios::find($value);
             $precio += $servis->price;
         }
-        
         return $precio;
-}
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $citas=Cita::find($id);
-        $cita=Cita::all();
-        $ids=$id;
-        $servicios=Servicios::all();
-     
-        $detalleS=detalle_cita_servicios::all();
+    }
+    
+    public function show($id){
+        $cita=Cita::find($id);
+        $servicios=Servicios::all(); 
+        $clientes=Clientes::all();    
+        $estados = Estado_cita::all();
+        $detalle =detalle_cita_servicios::all();
+        $nombre ="";
+        $fecha = $cita->date;
+        $horaI = $cita->hourI;
+        $horaF = $cita->hourF;
+
+        $horaI = \Carbon\Carbon::parse($cita->hourI)->format('h:i A');
+        $horaF = \Carbon\Carbon::parse($cita->hourF)->format('h:i A');
+        $fecha = strftime("  %d %b %Y", strtotime( date('Y-m-d') ));
         
-        $horaI =null;
-        $horaF = null;
-        if ($citas==null) {
-            
-            return redirect("/agenda");
+        if ($cita==null) {
+            alert()->error('Cita','La cita no existe');
+            return redirect("/agenda/");
         }
-        foreach ($cita as $key => $value) {
-            $horaI = \Carbon\Carbon::parse($value->hourI)->format('h:i A');
-            $horaF = \Carbon\Carbon::parse($value->hourF)->format('h:i A');
+        foreach ($clientes as $value) {
+            if ($value->id == $cita->client_id) {
+                $nombre = $value->name;
+
+            }
+
         }
-        return view("pages.agenda.detalleAgenda",compact("citas","servicios","detalleS","ids","horaF","horaI"));
+        
+        return view("pages.agenda.detalleAgenda",compact("cita","fecha","horaF","horaI","servicios","clientes","nombre","estados"));
        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $cita=Cita::find($id);
+        $servicios=Servicios::all(); 
+        $clientes=Clientes::all();    
+        $estados = Estado_cita::all();
+        $detalle =detalle_cita_servicios::all();
+        $nombre ="";
+        $fecha = $cita->date;
+        $horaI = $cita->hourI;
+        $horaF = $cita->hourF;
+        $hoy = date("dmy");
+      
+
+        $horaI = \Carbon\Carbon::parse($cita->hourI)->format('h:i A');
+        $horaF = \Carbon\Carbon::parse($cita->hourF)->format('h:i A');
+        $fecha = strftime("  %d %b %Y", strtotime( date('Y-m-d') ));
+        $hoy  =   strftime("%d %b %Y", strtotime(date('Y-m-d')));
+       
+        
+        if ($cita==null) {
+            alert()->error('Cita','La cita no existe');
+            return redirect("/agenda/");
+        }
+        foreach ($clientes as $value) {
+            if ($value->id == $cita->client_id) {
+                $nombre = $value->name;
+
+            }
+
+        }
+        
+        $inicio = new DateTime($cita->hourI);
+        $fin= new DateTime($cita->hourF);
+        $minutos=$inicio->diff($fin);
+        $i =$minutos->format('%i');
+        strval($i); 
+        if ($cita==null) {
+            alert()->error('Agenda','El producto no existe');
+            return redirect("/agenda/create");
+        }
+        return view("pages.agenda.editarAgenda",compact("cita","hoy","i","horaF","horaI","servicios","clientes","detalle","nombre","estados"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+
+
+    public function update(UpdateAgenda $request, $id){
+        $input=$request->all();
+            
+        $cita= Cita::find($id);   
+        dd($input);
+        try{
+            DB::beginTransaction();
+         
+            
+               
+                $servicios_id = $input["servicios_id"];
+                
+                
+                $precio = $this->precio($servicios_id);
+                $prec=$this->eliminar($id,$cita->price);
+               
+                if ($cita==null) {
+                    alert()->error('Agenda','La agenda no existe');
+                    return redirect("agenda/create");
+                }
+              
+                $cita->update([
+                   "user_id"=>auth()->user()->id,
+                   "client_id"=>$input["cliente_id"],
+                   "date"=>$input["date"],
+                   "hourI"=>$input["hourI"],
+                   "hourF"=>$input["hourF"],
+                   "direction"=>$input["direction"],
+                   "description"=>$input["description"],
+                   "price"=>$precio
+                ]);
+              
+           
+                foreach ($servicios_id as $key => $value) {
+                    $servi= Servicios::find($value);
+                    $prec=$servi->price;
+                
+                    $detalle=detalle_cita_servicios::create([
+                    "schedule_id"=>$cita->id,
+                    "servis_id"=>$value,
+                    "price"=>$prec,
+
+                ]);
+
+                DB::commit();
+                alert()->success('Agenda','La cita fue editada con exito');
+                return redirect("/Agenda");
+                }
+            
+   
+            
+        }catch(\Exception $e){
+            DB::rollBack();
+            dd($e);
+
+            alert()->error('Agenda','La cita no se pudo editar');
+            return redirect("/Agenda/".$id."/edit");
+        }
+    }
+
+    public function eliminar($id,$precio){
+        
+        $pe = [];
+        $r=0;
+        $pre = $precio;
+        $servicios =servicios::all();
+        $detalle =detalle_cita_servicios::all();
+       
+      
+        
+        
+           
+            foreach ($detalle as $key ) {
+                foreach ($servicios as $e) {
+                    if ($id == $key->schedule_id) {
+                        if ($e->id == $key->servis_id) {
+                            
+                            $pe=[$r => $key->id];
+                            $pre = $pre-($key->price*$key->amount);
+                            $deta= detalle_cita_servicios::find($pe[$r]);
+                            $deta->delete();
+                            
+                            $r++;
+                        }
+                    }
+        
+                } 
+            }
+
+            return $pre;
+
+
     }
 
     /**
@@ -229,12 +345,9 @@ class AgendaController extends Controller
        
 
         $cita=Cita::find($id);
-        // estados 
-        //  1 = cancelado
-        //  2 = pendiente
-        //  3 = en ejecucion
+  
          
-            $cita->update(["state"=>$state]);
+            $cita->update(["state_id"=>$state]);
             alert()->success('Agenda','Cambio de estado hecho');
             return redirect("/agenda");
         
