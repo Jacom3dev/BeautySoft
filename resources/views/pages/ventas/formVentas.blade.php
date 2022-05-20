@@ -51,15 +51,24 @@
                                 <div class="col-1">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-block principal-color text-white" data-toggle="modal" data-target="#exampleModal">
-                                        +
+                                    <i class="fas fa-plus"></i>
                                     </button>
                                     
                                 </div>
 
 
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control text-center" type="number" name="precio_total"
-                                        id="precio_total" placeholder="precio Total" readonly />
+                                    <div class="row justify-content-end">
+                                        <div class="col-auto">
+                                            <span class="principal-colorl" style="font-size: 1.4rem;"> <b> Precio &#36;:</b></span>
+                                        </div>
+                                        <div class=" contenedor-input  mr-2">
+                                            <input class=" text-center" type="hidden" name="precio_total"
+                                            id="precio_total" placeholder="0"
+                                            readonly />
+                                            <div class="input px-2 pt-1" contenteditable="true" id="precio_total_dos">0</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -214,27 +223,9 @@
                                 @csrf
                 
                                 <div class="row">
-                                    <div class="col-12 col-sm-6 mt-2">
+                                    <div class="col-12  mt-2">
                                         <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="">
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <small>{{ $message }}</small>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-12 col-sm-6 mt-2">
-                                        <input type="text" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" placeholder="Correo" value="">
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <small>{{ $message }}</small>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mt-2">
-                                        <input type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="">
-                                        @error('cell')
                                         <span class="invalid-feedback" role="alert">
                                             <small>{{ $message }}</small>
                                         </span>
@@ -258,16 +249,6 @@
                                     <div class="col-12 col-sm-6 mt-2">
                                         <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="">
                                         @error('document')
-                                        <span class="invalid-feedback" role="alert">
-                                            <small>{{ $message }}</small>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col mt-2">
-                                        <input type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="">
-                                        @error('direction')
                                         <span class="invalid-feedback" role="alert">
                                             <small>{{ $message }}</small>
                                         </span>
@@ -331,7 +312,6 @@
     function agregar_producto() {
         let producto_id = $("#producto option:selected").val();
         let cantidad = $("#cantidad").val();
-
         if (producto_id > 0) {
             if (cantidad > 0) {
 
@@ -370,6 +350,7 @@
                             parseInt(precio) * parseInt(cantidad)
                         );
 
+
                         $("#producto").val("");
                         $("#cantidad").val("");
                         $("#precio_producto").val("");
@@ -407,6 +388,8 @@
                 text: `Seleccionar un producto.`,
             })
         }
+        
+        $("#precio_total_dos").text( $("#precio_total").val());
     }
 
     function validar_producto() {
@@ -419,7 +402,7 @@
 
                 if ($(this).find("input.id_producto").val() == $("#producto option:selected").val()) {
                     validation = true;
-
+                    
                     $(this)
                         .find("input.cantidad_producto")
                         .val(
@@ -510,6 +493,8 @@
             //     </div>
             //     `);
         }
+        $("#precio_total_dos").text( $("#precio_total").val());
+
     }
 
     function eliminar(id) {
@@ -518,6 +503,8 @@
         fila.remove();
         let precioT = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(precioT) - parseInt(subtotal));
+        $("#precio_total_dos").text( $("#precio_total").val());
+
 
     }
 
@@ -525,6 +512,8 @@
         $("#tr-" + id).remove();
         let price_t = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(price_t) - price);
+        $("#precio_total_dos").text( $("#precio_total").val());
+
 
 
     }
