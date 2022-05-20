@@ -60,13 +60,13 @@
                                 <div class="col-md-6 form-group">
                                     <div class="row justify-content-end">
                                         <div class="col-auto">
-                                            <span class="principal-colorl" style="font-size: 1.4rem;"> <b> Precio &#36;:</b></span>
+                                            <span class="principal-colorl" style="font-size: 1.4rem;"> <b> Precio: &#36;</b></span>
                                         </div>
                                         <div class=" contenedor-input  mr-2">
                                             <input class=" text-center" type="hidden" name="precio_total"
                                             id="precio_total" placeholder="0"
                                             readonly />
-                                            <div class="input px-2 pt-1" contenteditable="true" id="precio_total_dos">0</div>
+                                            <div class="input px-2 pt-0" style="margin-top: 1.5px;" contenteditable="true" id="precio_total_dos">0</div>
                                         </div>
                                     </div>
                                 </div>
@@ -403,6 +403,17 @@
                 if ($(this).find("input.id_producto").val() == $("#producto option:selected").val()) {
                     validation = true;
                     
+                    let sumaCanti = parseInt($(this).find("td.cantidad_p").text()) + parseInt($("#cantidad").val());
+                    let cantExistente = $("#canti").val();
+
+                    if (parseInt(sumaCanti) >= parseInt(cantExistente)) {
+                        
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Atención!',
+                    text: `Limite de cantidad alcanzado.`,
+                })
+                    } else {
                     $(this)
                         .find("input.cantidad_producto")
                         .val(
@@ -440,6 +451,9 @@
                     $("#producto").val("");
                     $("#cantidad").val("");
                     $("#precio_producto").val("");
+                    }
+                    
+
                 }
             });
         }
