@@ -60,13 +60,13 @@
                                 <div class="col-md-6 form-group">
                                     <div class="row justify-content-end">
                                         <div class="col-auto">
-                                            <span class="principal-colorl" style="font-size: 1.4rem;"> <b> Precio: &#36;</b></span>
+                                            <span class="principal-colorl" style="font-size: 1.4rem;"> <b> Precio: </b></span>
                                         </div>
                                         <div class=" contenedor-input  mr-2">
                                             <input class=" text-center" type="hidden" name="precio_total"
                                             id="precio_total" placeholder="0"
                                             readonly />
-                                            <div class="input px-2 pt-0" style="margin-top: 1.5px;" contenteditable="true" id="precio_total_dos">0</div>
+                                            <div class="input pl-0 pt-0" style="margin-top: 1.5px; color: rgba(2, 93, 113, 1); text-justify: auto;" contenteditable="true" id="precio_total_dos"><b>&#36;<r> 0</r></b> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -389,7 +389,7 @@
             })
         }
         
-        $("#precio_total_dos").text( $("#precio_total").val());
+        $("#precio_total_dos b r").text( $("#precio_total").val());
     }
 
     function validar_producto() {
@@ -468,7 +468,7 @@
         let precioS = $("#precio_servicio").val();
         if (id_servicio != 0) {
             $("#tblServicios").append(`
-            <tr id="tr-${id_servicio}">
+            <tr id="tr-s-${id_servicio}">
                 
                     <input type="hidden" name="servicio_id[]" value="${id_servicio}"/>
                 <td>
@@ -507,7 +507,7 @@
             //     </div>
             //     `);
         }
-        $("#precio_total_dos").text( $("#precio_total").val());
+        $("#precio_total_dos b r").text( $("#precio_total").val());
 
     }
 
@@ -517,16 +517,16 @@
         fila.remove();
         let precioT = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(precioT) - parseInt(subtotal));
-        $("#precio_total_dos").text( $("#precio_total").val());
+        $("#precio_total_dos b r").text( $("#precio_total").val());
 
 
     }
 
     function eliminar_servicio(id, price) {
-        $("#tr-" + id).remove();
+        $("#tr-s-" + id).remove();
         let price_t = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(price_t) - price);
-        $("#precio_total_dos").text( $("#precio_total").val());
+        $("#precio_total_dos b r").text( $("#precio_total").val());
 
 
 
