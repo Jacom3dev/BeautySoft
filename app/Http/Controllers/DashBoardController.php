@@ -22,9 +22,10 @@ class DashBoardController extends Controller
     {
         $this->middleware('auth'); 
     }
-    public function export() 
+    public function export(Request $request) 
     {
-       /* return (new ComprasExport('2022-05-18 23:42:43','2022-05-19 23:42:43'))->download('compras.xlsx'); */
+        $input = $request->all();
+       return (new ComprasExport($input['date1'],$input['date2']))->download('compras.xlsx');
        /* $compras = DB::table('compras')
         ->select('compras.id','users.name as userName','proveedores.supplier','productos.name as productName','compras.price as compraPrice','compras.created_at')
         ->join('users','compras.user_id','=','users.id')
