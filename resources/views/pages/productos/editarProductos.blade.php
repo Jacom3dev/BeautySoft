@@ -33,6 +33,18 @@
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror
                     </div>
+                    <div class="col-md-6 form-group">
+                        <form action="{{route('productos.destroy',$productos->id)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <div class="col-md-6 form-group">
+                                <button type="submit" class="btn btn-danger">
+                                    eliminar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                   
                 </div>
                 
 
@@ -47,6 +59,7 @@
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
 </div> 

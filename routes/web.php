@@ -66,6 +66,8 @@ Route::post('/agenda/guardar', [App\Http\Controllers\AgendaController::class, 's
 Route::get('/agenda/detalle/{id}', [App\Http\Controllers\AgendaController::class, 'show'])->name('Detalle');
 //PRODUCTOS
 Route::get('/productos/{id}/{state}', [App\Http\Controllers\productosController::class, 'changeState'])->name('productos.changeState');
+Route::delete('/productos/{id}/eliminar/elimin', [App\Http\Controllers\productosController::class, 'destroy'])->name('productos.destroy');
+
 //SERVICIOS
 Route::get('/servicios/{id}/{state}', [App\Http\Controllers\serviciosController::class, 'changeState'])->name('servicios.changeState');
 

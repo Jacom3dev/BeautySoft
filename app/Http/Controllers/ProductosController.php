@@ -179,12 +179,16 @@ class ProductosController extends Controller
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function destroy($id)
+    {
+        $producto=productos::find($id);
+        $destroy = str_replace('storage','public',$producto->img);
+                    
+        Storage::delete($destroy);
+        $producto->update(["img"=>null]);
+        alert()->success('Productos','La imagen se a eliminado con exito');
+        return redirect("/productos/".$id."/edit");
+    }
     public function changeState($id,$state){
        
         $productos=Productos::find($id);    
