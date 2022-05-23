@@ -142,7 +142,7 @@
                         </button>
                 </div>
                 <div class="col-3 col-lg-1">
-                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-placement="left" title="Ir atrás">Volver</a>
+                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
                 </div>
             </div>
         </div>

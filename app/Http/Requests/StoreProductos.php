@@ -27,7 +27,7 @@ class StoreProductos extends FormRequest
             'name' => ['required', 'string','min:2' ,'max:100','unique:productos'],
             'img' => ['nullable', 'image'],
             'price'=>['required','min:3','numeric'],
-            'amount'=>['required','min:1','max:100','numeric'],
+            'amount'=>['required','min:1','numeric'],
             
         ];
     }
