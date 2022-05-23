@@ -351,9 +351,6 @@
                         );
 
 
-                        $("#producto").val("");
-                        $("#cantidad").val("");
-                        $("#precio_producto").val("");
                     } else {
 
                         Swal.fire({
@@ -448,9 +445,6 @@
                             parseInt($("#cantidad").val())
                         );
 
-                    $("#producto").val("");
-                    $("#cantidad").val("");
-                    $("#precio_producto").val("");
                     }
                     
 
@@ -487,8 +481,6 @@
             let precioT = $("#precio_total").val() || 0;
             $("#precio_total").val(parseInt(precioT) + parseInt(precioS));
 
-            $("#servicio").val("");
-            $("#precio_servicio").val("");
         } else {
             Swal.fire({
                 icon: 'warning',
