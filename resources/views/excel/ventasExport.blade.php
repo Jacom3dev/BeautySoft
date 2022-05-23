@@ -1,3 +1,4 @@
+
 <table>
     <thead>
     <tr>
@@ -7,6 +8,7 @@
         <th><b>Telefono</b></th>
         <th><b>Documento</b></th>
         <th><b>Productos</b></th>
+        <th><b>Servicios</b></th>
         <th><b>Precio</b></th>
         <th><b>fecha</b></th>
     </tr>
@@ -20,6 +22,12 @@
             <td>{{$venta->cell}}</td>
             <td>{{$venta->document}}</td>
             <td><?php foreach ($productos as $key => $value) {
+                if ($venta->id == $value->id) {     
+                    echo $value->name.'<br>';
+                }
+             } ?>
+            </td>
+            <td><?php foreach ($servicios as $key => $value) {
                 if ($venta->id == $value->id) {     
                     echo $value->name.'<br>';
                 }
