@@ -91,20 +91,20 @@
               <div class="row">
                 <div class="col tab-content">
                   <div class="chart tab-pane active" id="Vent" style="position: relative;">
-                    <form action="" method="POST" >
+                    <form action="{{route('ventas.export')}}" method="POST" >
                       @csrf
                       <div class="row py-4">
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="date1" id="">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="date1" required>
                         </div>
 
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="date2" id="">
+                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="date2" required>
                         </div>
                       </div>
                       <div class="modal-footer">
                             <button type="submit" class="btn principal-color text-white">Generar</button>
-                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Volver</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
                       </div>
                     </form>
                   </div>
@@ -114,16 +114,16 @@
                       @csrf
                       <div class="row py-4">
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*" name="date1" id="">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*" name="date1" required>
                         </div>
 
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Fin*" name="date2" id="">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Fin*" name="date2" required>
                         </div>
                       </div>
                       <div class="modal-footer">
                             <button type="submit" class="btn principal-color text-white">Generar</button>
-                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Volver</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
                       </div>
                     </form>
                   </div>

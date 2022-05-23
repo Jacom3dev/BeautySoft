@@ -39,7 +39,7 @@ class ComprasExport implements FromView,ShouldAutoSize
         ->where('compras.state','1')
         ->whereBetween('compras.created_at', [$this->date1, $this->date2])
         ->get();
-        return view('excel.excel', [
+        return view('excel.comprasExport', [
             'productos' => $productos,
             'compras' => $compras
         ]);

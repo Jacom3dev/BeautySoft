@@ -47,7 +47,8 @@ Route::resources([
     'cliente2'=>ClienteNuevoController::class,
 ]);
 
-Route::post('compras/export/excel',[DashBoardController::class,'export'])->name('compras.export');
+Route::post('compras/export/excel',[DashBoardController::class,'exportCompras'])->name('compras.export');
+Route::post('ventas/export/excel',[DashBoardController::class,'exportVentas'])->name('ventas.export');
 //PROVEEDOR
 Route::get('proveedores/{NIT}/{state}',[ProveedoresController::class,'changeState'])->name('proveedores.changeState');
 //CLIENTE

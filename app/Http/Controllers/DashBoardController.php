@@ -9,7 +9,7 @@ use App\Models\Ventas;
 use App\Models\Compra;
 use App\Models\Cita;
 use App\Exports\ComprasExport;
-
+use App\Exports\VentasExport;
 
 class DashBoardController extends Controller
 {
@@ -22,10 +22,15 @@ class DashBoardController extends Controller
     {
         $this->middleware('auth'); 
     }
-    public function export(Request $request) 
+    public function exportCompras(Request $request) 
     {
         $input = $request->all();
        return (new ComprasExport($input['date1'],$input['date2']))->download('compras.xlsx');
+    }
+    public function exportVentas(Request $request) 
+    {
+        $input = $request->all();
+       return (new VentasExport($input['date1'],$input['date2']))->download('ventas.xlsx');
     }
     
     private function filter($table){
