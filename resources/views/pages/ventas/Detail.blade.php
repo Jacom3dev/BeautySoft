@@ -73,7 +73,11 @@
                                                             <tr class="text-center">
                                                                 <td>{{ $value->name }}</td>
                                                                 <td>
-                                                                    <img src="{{ $value->img }}" style="width: 2rem; height: 2rem;" alt="">
+                                                                    @if($value->img != '')
+                                                                    <img src="{{ $value->img }}" style="width: 2rem; height: 2rem;" alt="">   
+                                                                    @else 
+                                                                        <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="sin imagen"    ></i>
+                                                                    @endif
                                                                 </td>
                                                                 <td>{{ $value->amount }}</td>
                                                                 <td>{{ $value->price }}</td>
@@ -157,7 +161,11 @@
                                                             <tr class="text-center">
                                                                 <td>{{ $value->name }}</td>
                                                                 <td>
-                                                                    <img src="{{ $value->img }}" style="width: 2rem; height: 2rem;" alt="">
+                                                                    @if($value->img != '')
+                                                                        <img src="{{ $value->img }}" style="width: 2rem; height: 2rem;" alt="">   
+                                                                    @else 
+                                                                        <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="sin imagen"    ></i>
+                                                                    @endif
                                                                 </td>
                                                                 <td>{{ $value->amount }}</td>
                                                                 <td>{{ $value->price }}</td>
