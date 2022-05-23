@@ -60,7 +60,7 @@ input:valid + span::after {
                 </div>
                 {{-- </div> --}}
                 <div class="modal-body ">
-                    <form class=" row justify-content-around" method="POST" action="{{route('agenda.update',$cita->id)}}" id="formulario-Editar">
+                    <form class="formulario-Editar row justify-content-around" method="POST" action="{{route('agenda.update',$cita->id)}}" id="formulario-Editar">
                         @csrf
                         @method("PUT")
                         <div class="row"> 
@@ -68,16 +68,11 @@ input:valid + span::after {
                             <div class="col-12  col-md-12 col-lg-6">
                                 <div class="row p-4 ">
                                     <div class="col-6 form-group">
-                                        <select name="cliente_id"
-                                            class="js-example-basic-single form-control @error('cliente_id') is-invalid @enderror "
-                                            style="width: 100%">
-                                            <option value="{{ $cita->id }}">{{ $nombre }}</option>
-                                            @foreach ($clientes as $value)
-                                                @if($value->state != 0)
-                                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                       
+                                           
+                                                <input type="text"    value="{{$nombre}}" class="form-control @error('cliente_id') is-invalid @enderror"
+                                            name="cliente_id" readonly>
+                                             
     
                                         @error('cliente_id')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -94,7 +89,7 @@ input:valid + span::after {
                                     </div>
     
                                     <div class="col-4 form-group">
-                                        <input type="time"  id="appt-time" id="horaC" value="{{$cita->hourI}}"min="09:00" max="19:30"  class="form-control @error('hora') is-invalid @enderror"
+                                        <input type="time"  id="appt-time" value="{{$cita->hourI}}"min="09:00" max="19:30"  class="form-control @error('hora') is-invalid @enderror"
                                             name="hourI">                                                
                                             <span class="validity"></span>
                                     
@@ -104,7 +99,7 @@ input:valid + span::after {
                                     </div>
                                     <div class="col-4 form-group">
                                         <input type="number" id="tiempo" class="form-control "  value="{{$i}}"placeholder="Duración Min*">
-    
+                                        <input type="hidden" name="hourF" id="hora_final">
                                     </div>
                                     <div class="col-4 form-group">
                                         <input type="text" id="direc"
@@ -143,7 +138,7 @@ input:valid + span::after {
                                     </div>
     
                                     <div class="col-6  form-group">
-    
+                                        
                                         <input type="text" id="precio"
                                             class="form-control @error('precio') is-invalid @enderror" name="precio" 
                                             placeholder="Precio de Servicio" readonly>
@@ -219,7 +214,7 @@ input:valid + span::after {
                 </div>
                 <div class="row mb-4 mr-3 justify-content-end">
                     <div class="col-3">
-                        <button type="submit"  class="btn principal-color text-white w-100" data-bs-toggle="tooltip" data-bs-placement="left" title="Actualizar" >Actualizar</button> 
+                        <button type="submit"   onclick="actualizar()"  class="btn principal-color text-white w-100" data-bs-toggle="tooltip" data-bs-placement="left" title="Actualizar" >Actualizar</button> 
                         
                     </div>
                     <div class="col-1">
@@ -237,7 +232,10 @@ input:valid + span::after {
     </div>
 @endsection
 @section('js-alert')
+<script src="/plugins/fullcalendar-5.10.1/moment/moment.min.js "></script>
+    
     <script>
+        
         // SERVICIO FORM
         function precio_total() {
 
@@ -246,7 +244,68 @@ input:valid + span::after {
             $("#precio").val(precio);
 
         }
+        
+        // ALERT CREAT CITA
+        function actualizar(){
+            $('.formulario-Editar').submit(function(e){
+                e.preventDefault();
+               
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: true
+                })
 
+                swalWithBootstrapButtons.fire({
+                    title: '¿Estas seguro?',
+                    text: "El servico se Editara",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Si, seguro',
+                    cancelButtonText: 'No, cancele',
+                    reverseButtons: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'El servico se ha Editado',
+                            showConfirmButton: false,
+                            timer:2000
+                        })
+                        this.submit();
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Revice que desea cambiar e intente de nuevo ',
+                            showConfirmButton: false,
+                            timer:2000
+                        })
+                    }
+                })
+
+            });
+           
+            // var fecha = new Date();
+            // var min = $("#tiempo").val();
+            // var Hora = $("#appt-time").val();
+
+            // let re = fecha.setMinutes(Hora + min);
+            // let ret=  Hora + ":" + fecha.getMinutes();
+            
+            let fecha = $("#fechaC").val();
+            let hora = $("#appt-time").val();
+            let tiempo = $("#tiempo").val();
+            let hora_final = moment( moment(fecha+" "+hora).add(tiempo,'m')).format('HH:mm:ss');
+            
+            $("#hora_final").val(hora_final);
+        }    
         function agregar_Servicio() {
 
             let servicio = $("#servicio option:selected").text();
@@ -310,51 +369,7 @@ input:valid + span::after {
             $("#preciototalP").val(parseInt(precioTotalP) - $precioP);
             $("#Cantidad").val(1);
         }
-        // ALERT CREAT CITA
-        $('#formulario-Editar').submit(function(e){
-
-        e.preventDefault();
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: true
-        })
-
-        swalWithBootstrapButtons.fire({
-            title: '¿Estas seguro?',
-            text: "El servico se Editara",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Si, seguro',
-            cancelButtonText: 'No, cancele',
-            reverseButtons: false
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'El servico se ha Editado',
-                    showConfirmButton: false,
-                    timer:2000
-                })
-                this.submit();
-            } else if (
-                /* Read more about handling dismissals below */
-                result.dismiss === Swal.DismissReason.cancel
-            ) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'error',
-                    title: 'Revice que desea cambiar e intente de nuevo ',
-                    showConfirmButton: false,
-                    timer:2000
-                })
-            }
-        })
-
-        });
+        
         
     </script>
 @endsection

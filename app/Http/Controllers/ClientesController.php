@@ -47,6 +47,12 @@ class ClientesController extends Controller
         alert()->success('Cliente','Cliente registrado');
         return Redirect()->route('clientes.index');
     }
+    public function storedos(StoreClientes $request)
+    {
+        Clientes::create($request->all());
+        alert()->success('Cliente','Cliente registrado');
+        return Redirect()->route('ventas.create');
+    }
 
     /**
      * Display the specified resource.
@@ -57,6 +63,10 @@ class ClientesController extends Controller
     public function show($id)
     {
         $cliente = Clientes::find($id);
+        if ($cliente == null) {
+            alert()->error('Cliente','Cliente no encontrado');
+            return  Redirect()->route('clientes.index');
+        }
         return view('pages.clientes.detalle',compact("cliente"));
     }
 
@@ -69,6 +79,10 @@ class ClientesController extends Controller
     public function edit($id)
     {
         $cliente = Clientes::find($id);
+        if ($cliente == null) {
+            alert()->error('Cliente','Cliente no encontrado');
+            return  Redirect()->route('clientes.index');
+        }
         $documentos = Documentos::all();
         return view('pages.clientes.formCliente',compact('cliente','documentos'));
     }

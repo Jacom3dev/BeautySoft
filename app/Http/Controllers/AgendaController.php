@@ -13,6 +13,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Requests\StoreAgenda;
 use App\Http\Requests\UpdateAgenda;
 use DateTime;
+use DateTimeZone;
 
 
 class AgendaController extends Controller
@@ -27,11 +28,42 @@ class AgendaController extends Controller
         $this->middleware('auth'); 
     }
     public function index(){
+
         $cita=Cita::all();
-        $servicios=Servicios::all(); 
-        $clientes=Clientes::all();    
-        $estado = Estado_cita::all(); 
-        return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado"));    
+
+        // $hoy = new DateTime("now");
+        // $hoy= strftime("%Y-%m-%d", strtotime(date('Y-m-d')));
+        // $fecha= "";
+        // $hora=  new DateTime("now", new DateTimeZone('America/Bogota'));
+        // $ci="";
+        // $hora = $hora->format('H:i:s');
+
+        // foreach ($cita as $key => $value) {
+        //     $ci = Cita::find($value->id);
+        //     $fecha= $ci->date;
+        //     $horaI= $ci->hourI;
+           
+        //     dd($hora,$horaI);
+        //     if ($fecha == $hoy) {
+        //         if ($hora >= $ci->hourI) {
+                  
+                   
+        //         } 
+
+               
+        //     }else{
+        //         $servicios=Servicios::all(); 
+        //         $clientes=Clientes::all();    
+        //         $estado = Estado_cita::all(); 
+        //         return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado"));
+        //     }
+        // }
+        
+                $servicios=Servicios::all(); 
+                $clientes=Clientes::all();    
+                $estado = Estado_cita::all(); 
+                return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado"));
+               
     }
     public function list(){
         $citas = Cita::all();
@@ -180,9 +212,13 @@ class AgendaController extends Controller
         $horaF = \Carbon\Carbon::parse($cita->hourF)->format('h:i A');
         $fecha = strftime("  %d %b %Y", strtotime( date('Y-m-d') ));
         
-        if ($cita==null) {
-            alert()->error('Cita','La cita no existe');
-            return redirect("/agenda/");
+        $horaI =null;
+        $horaF = null;
+       
+        if ($citas==null) {
+            
+            alert()->error('Agenda','La cita no se  encontro');
+            return  Redirect()->route('agenda.index');
         }
         foreach ($clientes as $value) {
             if ($value->id == $cita->client_id) {
@@ -206,7 +242,7 @@ class AgendaController extends Controller
         $fecha = $cita->date;
         $horaI = $cita->hourI;
         $horaF = $cita->hourF;
-        $hoy = date("dmy");
+       
       
 
         $horaI = \Carbon\Carbon::parse($cita->hourI)->format('h:i A');
@@ -236,16 +272,17 @@ class AgendaController extends Controller
             alert()->error('Agenda','El producto no existe');
             return redirect("/agenda/create");
         }
-        return view("pages.agenda.editarAgenda",compact("cita","hoy","i","horaF","horaI","servicios","clientes","detalle","nombre","estados"));
+        return view("pages.agenda.editarAgenda",compact("cita","i","horaF","horaI","servicios","clientes","detalle","nombre","estados"));
     }
 
 
 
-    public function update(UpdateAgenda $request, $id){
+    public function updateAgenda(updateAgenda $request, $id){
+       
         $input=$request->all();
-            
-        $cita= Cita::find($id);   
-        dd($input);
+        $cita= Cita::find($id);  
+        // dd($input); 
+        
         try{
             DB::beginTransaction();
          
@@ -263,8 +300,6 @@ class AgendaController extends Controller
                 }
               
                 $cita->update([
-                   "user_id"=>auth()->user()->id,
-                   "client_id"=>$input["cliente_id"],
                    "date"=>$input["date"],
                    "hourI"=>$input["hourI"],
                    "hourF"=>$input["hourF"],
@@ -287,7 +322,7 @@ class AgendaController extends Controller
 
                 DB::commit();
                 alert()->success('Agenda','La cita fue editada con exito');
-                return redirect("/Agenda");
+                return redirect("/agenda");
                 }
             
    
@@ -344,10 +379,15 @@ class AgendaController extends Controller
     public function changeState($id,$state){
        
 
-        $cita=Cita::find($id);
-  
+    
+        $citas =Cita::find($id);
+        if ($citas==null) {
+            
+            alert()->error('Agenda','Cita no encontrada');
+            return redirect("/agenda/index");
+        }
          
-            $cita->update(["state_id"=>$state]);
+            $citas->update(["state_id"=>$state]);
             alert()->success('Agenda','Cambio de estado hecho');
             return redirect("/agenda");
         

@@ -57,6 +57,82 @@
          </div>
       </div>
    </div>
+   <div class="row justify-content-end">
+     <div class="col-2">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+        Generar informe
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3> <strong style="color: rgba(2, 93, 113, 1);">Generar Informe.</strong></h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">  
+              <div class="row pb-3">
+                <div class="col-12">
+                    <ul class="nav nav-pills d-flex justify-content-around">
+                        <li class="nav-item">
+                            <a class=" btn btn-outline-dark active" aria-current="page" data-toggle="tab" href="#Vent">Informe Ventas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" btn btn-outline-dark" href="#Comp" data-toggle="tab">Informe Compras</a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col tab-content">
+                  <div class="chart tab-pane active" id="Vent" style="position: relative;">
+                    <form action="">
+                      <div class="row py-4">
+                        <div class="col-6">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="" id="">
+                        </div>
+
+                        <div class="col-6">
+                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="" id="">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                            <button type="button" class="btn principal-color text-white">Generar</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Volver</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="chart tab-pane" id="Comp" style="position: relative;"> 
+                    <form action="">
+                      <div class="row py-4">
+                        <div class="col-6">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*" name="" id="">
+                        </div>
+
+                        <div class="col-6">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Fin*" name="" id="">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                            <button type="button" class="btn principal-color text-white">Generar</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Volver</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+   </div>
    <div class="row">
       <div class="col-12  my-2">
         <div id="container"></div>

@@ -75,7 +75,10 @@ class ProveedoresController extends Controller
     public function show($id)
     {
         $proveedor = Proveedor::find($id);
-      
+        if ($proveedor==null) {
+            alert()->error('Proveedores','proveedor no encontrado');
+            return redirect("/proveedores/index");
+        }
          return view("pages.proveedores.Detail",compact("proveedor"));
 
         // $proveedor = Proveedor::find($NIT);
@@ -93,9 +96,9 @@ class ProveedoresController extends Controller
         //
         $proveedor = Proveedor::find($id);
         // dd($proveedor);
-        if ($proveedor == null) {
-           
-           return redirect("proveedores");
+        if ($proveedor==null) {
+            alert()->error('Proveedores','proveedor no encontrado');
+            return redirect("/proveedores/index");
         }
         
         return view("pages.proveedores.edit",compact("proveedor"));
@@ -139,6 +142,10 @@ class ProveedoresController extends Controller
 
     public function changeState($NIT,$state){
         $proveedor = Proveedor::find($NIT);
+        if ($proveedor==null) {
+            alert()->error('Proveedores','proveedor no encontrado');
+            return redirect("/proveedores/index");
+        }
         $proveedor->update([
             'state' => !$state
         ]);

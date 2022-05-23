@@ -35,7 +35,7 @@
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="telefono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
+                        <input type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
                         @error('cell')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Direccion" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
+                        <input type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
                         @error('direction')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>

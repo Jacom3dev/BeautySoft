@@ -8,6 +8,9 @@ use App\Models\Clientes;
 use App\Models\Ventas;
 use App\Models\Compra;
 use App\Models\Cita;
+use App\Exports\ComprasExport;
+
+
 class DashBoardController extends Controller
 {
     /**
@@ -18,6 +21,21 @@ class DashBoardController extends Controller
     public function __construct()
     {
         $this->middleware('auth'); 
+    }
+    public function export() 
+    {
+       /* return (new ComprasExport('2022-05-18 23:42:43','2022-05-19 23:42:43'))->download('compras.xlsx'); */
+       /* $compras = DB::table('compras')
+        ->select('compras.id','users.name as userName','proveedores.supplier','productos.name as productName','compras.price as compraPrice','compras.created_at')
+        ->join('users','compras.user_id','=','users.id')
+        ->join('proveedores','compras.id_supplier','=','proveedores.NIT')
+        ->join('detalle_compra','compras.id','=','detalle_compra.buys_id')
+        ->join('productos','detalle_compra.product_id','=','productos.id')
+        ->where('compras.state','1')
+        ->whereBetween('compras.created_at', ['2022-05-18 23:42:43','2022-05-19 23:42:43'])
+        ->get();
+
+        dd($compras); */
     }
     
     private function filter($table){

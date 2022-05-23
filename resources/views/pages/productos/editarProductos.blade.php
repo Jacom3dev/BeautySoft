@@ -33,6 +33,9 @@
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror
                     </div>
+                    <div class="col-md-6 form-group">
+                        <a  class="btn btn-danger" href="{{route('productos.destroy',$productos->id)}}">Eliminar imagen</a>
+                    </div>
                 </div>
                 
 

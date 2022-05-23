@@ -98,7 +98,7 @@ class ProductosController extends Controller
         
         if ($productos==null) {
             alert()->error('Productos','producto no encontrado');
-            dd($productos);
+            return redirect("/productos/index");
         }
         return view("pages.productos.detalleProductos",compact("productos"));
         
@@ -115,8 +115,8 @@ class ProductosController extends Controller
         $productos=productos::find($id);
         
         if ($productos==null) {
-            alert()->error('Productos','El producto no existe');
-            return redirect("/productos/create");
+            alert()->error('Productos','producto no encontrado');
+            return redirect("/productos/index");
         }
         return view("pages.productos.editarProductos",compact("productos"));
     }
@@ -175,16 +175,24 @@ class ProductosController extends Controller
         
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function destroy($id){
+        
+        $producto = Productos::find($id);
+        dd($producto);
+        $destroy = str_replace('storage','public',$producto->img);
+        Storage::delete($destroy);
+
+        $producto->update(["img"=>null]);
+        
+        return redirect("/productos/".$id."/edit");
+    }
     public function changeState($id,$state){
        
         $productos=Productos::find($id);    
-       
+        if ($productos==null) {
+            alert()->error('Productos','producto no encontrado');
+            return redirect("/productos/index");
+        }
             $productos->update(["state"=>$state]);
             alert()->success('Productos','Cambio de estado hecho');
             return redirect("/productos");

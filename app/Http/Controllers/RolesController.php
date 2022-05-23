@@ -67,6 +67,10 @@ class RolesController extends Controller
     public function edit($id)
     {
         $rol = Roles::find($id);
+        if ($rol==null) {
+            alert()->error('roles','rol no encontrado');
+            return redirect("/roles/index");
+        }
         return view('pages.roles.formRol',compact('rol'));
     }
 
@@ -101,6 +105,10 @@ class RolesController extends Controller
         if ($state == 0 || $state == 1) {
             $users = User::all();
             $rol = Roles::find($id);
+            if ($rol==null) {
+                alert()->error('roles','rol no encontrado');
+                return redirect("/roles/index");
+            }
             if ($id == 1) {
                 alert()->error('Ups','No se puede deshabilitar el rol administrador');
                 return Redirect()->route('roles.index');

@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <input name="cell" type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" id="cell" placeholder="Teléfono Celular" value="{{isset($proveedor)?$proveedor->cell:old('cell')}}">
+                        <input name="cell" type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" id="cell" placeholder="Teléfono Celular" value="{{isset($proveedor)?$proveedor->cell:old('cell')}}">
                         @error('cell')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>

@@ -21,7 +21,6 @@
                         </li>
                     </ul>
                 </div>
-                
             </div>
             <hr>
             <form action="{{ route('ventas.store') }}" method="post">
@@ -30,7 +29,7 @@
                     <div class="col-12">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-6 form-group">
+                                <div class="col-5 form-group">
                                     <select class="js-example-basic-single form-control
                                         @error('cliente') is-invalid border border-warning  @enderror" name="cliente"
                                         id="cliente">
@@ -49,9 +48,27 @@
                                     </span>
                                     @enderror
                                 </div>
+                                <div class="col-1">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-block principal-color text-white" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fas fa-plus"></i>
+                                    </button>
+                                    
+                                </div>
+
+
                                 <div class="col-md-6 form-group">
-                                    <input class="form-control text-center" type="number" name="precio_total"
-                                        id="precio_total" placeholder="precio Total" readonly />
+                                    <div class="row justify-content-end">
+                                        <div class="col-auto">
+                                            <span class="principal-colorl" style="font-size: 1.4rem;"> <b> Precio &#36;:</b></span>
+                                        </div>
+                                        <div class=" contenedor-input  mr-2">
+                                            <input class=" text-center" type="hidden" name="precio_total"
+                                            id="precio_total" placeholder="0"
+                                            readonly />
+                                            <div class="input px-2 pt-1" contenteditable="true" id="precio_total_dos">0</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -190,6 +207,78 @@
                     </div>
                 </div>
             </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3> <strong style="color: rgba(2, 93, 113, 1);">Nuevo Cliente</strong></h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST"  action="{{route('cliente2.store')}}" id="form-cliente">
+                                @csrf
+                
+                                <div class="row">
+                                    <div class="col-12  mt-2">
+                                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="">
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mt-2">
+                                        <select class="form-control" class="form-control @error('document_id') is-invalid border border-warning  @enderror" name="document_id">
+                                            <option value="">Tipo de documento</option>
+                                            @foreach ($documentos as $documento)
+                                            <option value="{{$documento->id}}">{{$documento->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('document_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-12 col-sm-6 mt-2">
+                                        <input type="text" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="">
+                                        @error('document')
+                                        <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="state" value="1">
+
+
+                                <div class="row py-4 justify-content-end">
+                                    <div class="col-6 col-sm-6 col-lg-4">
+                                        <button type="submit" class="btn principal-color btn-block text-white">
+                                            {{isset($cliente)?'Editar':'Registrar'}}
+                                        </button>
+                                    </div>
+                                    <div class="col-6 col-sm-4 col-lg-2">
+                                        <button type="button" class="btn btn-outline-dark btn-block" data-dismiss="modal">Volver</button>
+                                        {{-- <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" ">Volver</a> --}}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button> --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -223,7 +312,6 @@
     function agregar_producto() {
         let producto_id = $("#producto option:selected").val();
         let cantidad = $("#cantidad").val();
-
         if (producto_id > 0) {
             if (cantidad > 0) {
 
@@ -262,6 +350,7 @@
                             parseInt(precio) * parseInt(cantidad)
                         );
 
+
                         $("#producto").val("");
                         $("#cantidad").val("");
                         $("#precio_producto").val("");
@@ -299,6 +388,8 @@
                 text: `Seleccionar un producto.`,
             })
         }
+        
+        $("#precio_total_dos").text( $("#precio_total").val());
     }
 
     function validar_producto() {
@@ -311,7 +402,7 @@
 
                 if ($(this).find("input.id_producto").val() == $("#producto option:selected").val()) {
                     validation = true;
-
+                    
                     $(this)
                         .find("input.cantidad_producto")
                         .val(
@@ -402,6 +493,8 @@
             //     </div>
             //     `);
         }
+        $("#precio_total_dos").text( $("#precio_total").val());
+
     }
 
     function eliminar(id) {
@@ -410,6 +503,8 @@
         fila.remove();
         let precioT = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(precioT) - parseInt(subtotal));
+        $("#precio_total_dos").text( $("#precio_total").val());
+
 
     }
 
@@ -417,6 +512,8 @@
         $("#tr-" + id).remove();
         let price_t = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(price_t) - price);
+        $("#precio_total_dos").text( $("#precio_total").val());
+
 
 
     }

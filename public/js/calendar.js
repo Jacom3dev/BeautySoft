@@ -127,14 +127,8 @@ function limpiar() {
 
 function CrearCita() {
   var form =  new FormData(document.getElementById("formulario-Crear"));
-  let nombre = $("#nombre").val();
   let fecha = $("#fechaC").val();
   let hora = $("#horaC").val();
-  let direccion = $("#direc").val();
-  let descrip = $("#descri").val();
-  let servicio = $("#servicio").val();
-  let producto = $("#producto").val();
-
   let tiempo = $("#tiempo").val();
   let hora_final = moment( moment(fecha+" "+hora).add(tiempo,'m')).format('HH:mm:ss');
 
