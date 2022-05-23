@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('title', 'Crear Compras')
-
- @section('content')
+@extends('layouts.app') @section('title', 'Crear Compras') @section('content')
 <div class="row justify-content-center">
     <div class="col">
         <div class="card  shadow-lg border-0 rounded-lg mt-3 booking">
@@ -28,7 +24,7 @@
                         <div class="col-12 text-dark form-group mb-4">
                             <div class=" row">
                                 <div class="col-6  ">
-                                    <select class="form-control" name="id_supplier" id="id_supplier" required="required" required>
+                                    <select class="js-example-basic-single form-control w-100" name="id_supplier" id="id_supplier" required="required" required>
                                             <option value="">Proveedor</option>
                                             @foreach ($proveedor as $Key => $provider)
                                                 <option value="{{ $provider->NIT }}">{{ $provider->supplier }}</option>
@@ -49,11 +45,14 @@
                                 <div class="chart tab-pane active" id="Exis" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
-                                            <select class="form-control" name="productos" id="productos" onchange="Agg_Attr()">
+                                            <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()">
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
+                                                        @if($product->state == 1)
                                                         <option price="{{ $product->price }}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
+                                                            @endif
+                                                        
                                                     @endforeach
                                                 </select>
                                         </div>
@@ -67,7 +66,7 @@
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end ">
-                                            
+
                                             <button class="btn principal-color text-white" onclick="Agg()" type="button">
                                                         <i class="fas fa-plus"></i>
                                                         <span> Agregar Producto</span>
@@ -151,8 +150,7 @@
 </div>
 
 
-@endsection
-@section('JS')
+@endsection @section('JS')
 <script>
     function Agg_Attr() {
         let price = $("#productos option:selected").attr("price");
@@ -161,11 +159,11 @@
     let p = 0;
     //NUEVOS PRODUCTOS 
     function AgNuevoP() {
-       
+
         p++;
         let idp = p;
-        
-        
+
+
         let name = $("#nombre").val();
         let amount = $("#cantidad").val();
         let price = $("#precio").val();
@@ -204,7 +202,7 @@
 
         let price_t = $("#total").val() || 0;
         $("#total").val(parseInt(price_t) + parseInt(price) * parseInt(amount));
-        
+
     }
 
     //PRODUCTOS YA EXISTENTES
@@ -319,10 +317,11 @@
 
         return validation;
     }
-    function DeleteNP(idp,price) {
 
-        
-        let fila = $("#tr-0" +idp);
+    function DeleteNP(idp, price) {
+
+
+        let fila = $("#tr-0" + idp);
 
         let subtotal = price;
 
@@ -334,19 +333,18 @@
 
 
     }
+
     function Delete(id) {
-       
+
         let fila = $("#tr-" + id);
         let subtotal = parseInt(fila.find("td.sub_p").text());
         fila.remove();
         let precioT = $("#total").val() || 0;
 
         $("#total").val(parseInt(precioT) - parseInt(subtotal));
-        
+
 
 
     }
 </script>
 @endsection
-
-

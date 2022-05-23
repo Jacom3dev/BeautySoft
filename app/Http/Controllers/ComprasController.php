@@ -198,7 +198,8 @@ class ComprasController extends Controller
             alert()->error('Compra','Compra no encontrada');
             return redirect("/compra/index");
         }
-        $productos = Productos::select("productos.*", "detalle_compra.*")->join("detalle_compra", "productos.id", "=", "detalle_compra.product_id")
+        $productos = Productos::select("productos.*", "detalle_compra.*")
+        
         ->join("detalle_compra", "productos.id", "=", "detalle_compra.product_id")
         ->where("detalle_compra.buys_id", $id)
         ->get();
