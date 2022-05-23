@@ -9,7 +9,7 @@ use App\Models\Ventas;
 use App\Models\Compra;
 use App\Models\Cita;
 use App\Exports\ComprasExport;
-
+use App\Exports\VentasExport;
 
 class DashBoardController extends Controller
 {
@@ -22,20 +22,15 @@ class DashBoardController extends Controller
     {
         $this->middleware('auth'); 
     }
-    public function export() 
+    public function exportCompras(Request $request) 
     {
-       /* return (new ComprasExport('2022-05-18 23:42:43','2022-05-19 23:42:43'))->download('compras.xlsx'); */
-       /* $compras = DB::table('compras')
-        ->select('compras.id','users.name as userName','proveedores.supplier','productos.name as productName','compras.price as compraPrice','compras.created_at')
-        ->join('users','compras.user_id','=','users.id')
-        ->join('proveedores','compras.id_supplier','=','proveedores.NIT')
-        ->join('detalle_compra','compras.id','=','detalle_compra.buys_id')
-        ->join('productos','detalle_compra.product_id','=','productos.id')
-        ->where('compras.state','1')
-        ->whereBetween('compras.created_at', ['2022-05-18 23:42:43','2022-05-19 23:42:43'])
-        ->get();
-
-        dd($compras); */
+        $input = $request->all();
+       return (new ComprasExport($input['date1'],$input['date2']))->download('compras.xlsx');
+    }
+    public function exportVentas(Request $request) 
+    {
+        $input = $request->all();
+       return (new VentasExport($input['date1'],$input['date2']))->download('ventas.xlsx');
     }
     
     private function filter($table){

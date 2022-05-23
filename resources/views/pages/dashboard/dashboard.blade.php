@@ -14,7 +14,7 @@
            <div class="icon">
              <i class="ion ion-person-stalker"></i>
            </div>
-           <a href="{{route('usuarios.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('clientes.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-6">
@@ -60,7 +60,7 @@
    <div class="row justify-content-end">
      <div class="col-2">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-primary btn-block principal-color" data-toggle="modal" data-target="#exampleModal">
         Generar informe
       </button>
 
@@ -82,7 +82,7 @@
                             <a class=" btn btn-outline-dark active" aria-current="page" data-toggle="tab" href="#Vent">Informe Ventas</a>
                         </li>
                         <li class="nav-item">
-                            <a class=" btn btn-outline-dark" href="#Comp" data-toggle="tab">Informe Compras</a>
+                            <a class="btn btn-outline-dark" href="#Comp" data-toggle="tab">Informe Compras</a>
                         </li>
                         </li>
                     </ul>
@@ -91,37 +91,39 @@
               <div class="row">
                 <div class="col tab-content">
                   <div class="chart tab-pane active" id="Vent" style="position: relative;">
-                    <form action="">
+                    <form action="{{route('ventas.export')}}" method="POST" >
+                      @csrf
                       <div class="row py-4">
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="" id="">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="date1" required>
                         </div>
 
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="" id="">
+                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="date2" required>
                         </div>
                       </div>
                       <div class="modal-footer">
-                            <button type="button" class="btn principal-color text-white">Generar</button>
-                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Volver</button>
+                            <button type="submit" class="btn principal-color text-white">Generar</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
                       </div>
                     </form>
                   </div>
 
                   <div class="chart tab-pane" id="Comp" style="position: relative;"> 
-                    <form action="">
+                    <form action="{{route('compras.export')}}" method="POST">
+                      @csrf
                       <div class="row py-4">
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*" name="" id="">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*" name="date1" required>
                         </div>
 
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Fin*" name="" id="">
+                          <input class="form-control" type="datetime-local" placeholder="Fecha Fin*" name="date2" required>
                         </div>
                       </div>
                       <div class="modal-footer">
-                            <button type="button" class="btn principal-color text-white">Generar</button>
-                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Volver</button>
+                            <button type="submit" class="btn principal-color text-white">Generar</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
                       </div>
                     </form>
                   </div>

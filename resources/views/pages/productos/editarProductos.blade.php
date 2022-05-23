@@ -34,8 +34,17 @@
                         @enderror
                     </div>
                     <div class="col-md-6 form-group">
-                        <a  class="btn btn-danger" href="{{route('productos.destroy',$productos->id)}}">Eliminar imagen</a>
+                        <form action="{{route('productos.destroy',$productos->id)}}" method="POST">
+                            @csrf
+                            @method("DELETE")
+                            <div class="col-md-6 form-group">
+                                <button type="submit" class="btn btn-danger">
+                                    eliminar
+                                </button>
+                            </div>
+                        </form>
                     </div>
+                   
                 </div>
                 
 
@@ -50,6 +59,7 @@
                     </div>
                 </div>
             </form>
+            
         </div>
     </div>
 </div> 

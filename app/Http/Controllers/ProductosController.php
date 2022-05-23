@@ -175,15 +175,14 @@ class ProductosController extends Controller
         
     }
 
-    public function destroy($id){
-        
-        $producto = Productos::find($id);
-        dd($producto);
+    public function destroy($id)
+    {
+        $producto=productos::find($id);
         $destroy = str_replace('storage','public',$producto->img);
+                    
         Storage::delete($destroy);
-
         $producto->update(["img"=>null]);
-        
+        alert()->success('Productos','La imagen se a eliminado con exito');
         return redirect("/productos/".$id."/edit");
     }
     public function changeState($id,$state){

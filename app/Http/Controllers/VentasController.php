@@ -142,7 +142,7 @@ class VentasController extends Controller
             }
             
             DB::commit();
-            alert()->success('Venta','Venta realizada con exito.');
+            alert()->success('Venta','Venta realizada con éxito.');
             return redirect()->route('ventas.index');
         // } catch (\Exception $e) {
         //    DB::rollback();
@@ -257,6 +257,8 @@ class VentasController extends Controller
                     }
                 }
             // }
+            
+            alert()->success('Venta','Cambio de estado exitoso.');
             
            
         }else {

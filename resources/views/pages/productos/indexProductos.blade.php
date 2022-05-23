@@ -42,16 +42,13 @@ Productos
                             <tr>
                                 
                                 <td>{{$value->name}}</td>
-                                <td class="text-center">  @if($value->img != '')
-                                      
-                                        
-                               
-                                <a href="{{route('productos.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="ver imagen"><i class="fas fa-image text-primary"></i></i></a>    
+                                <td class="text-center">  
+                                    
+                                @if($value->img != '')
+                                    <a href="{{route('productos.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="ver imagen"><i class="fas fa-image text-primary"></i></i></a>    
                                 @else 
-                                        
-                                        
                                     <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="sin imagen"    ></i>
-                                    @endif
+                                @endif
                                 </td>
                                 <td>{{$value->amount}}</td>
                                 <td>{{$value->price}}</td>

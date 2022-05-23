@@ -47,7 +47,8 @@ Route::resources([
     'cliente2'=>ClienteNuevoController::class,
 ]);
 
-Route::get('compras/export/excel',[DashBoardController::class,'export'])->name('compras.export');
+Route::post('compras/export/excel',[DashBoardController::class,'exportCompras'])->name('compras.export');
+Route::post('ventas/export/excel',[DashBoardController::class,'exportVentas'])->name('ventas.export');
 //PROVEEDOR
 Route::get('proveedores/{NIT}/{state}',[ProveedoresController::class,'changeState'])->name('proveedores.changeState');
 //CLIENTE
@@ -67,7 +68,9 @@ Route::put('/agenda/{id}/update/actualizar/as',[AgendaController::class,'updateA
 
 
 //PRODUCTOS
-Route::get('/productos/{id}/{state}', [productosController::class, 'changeState'])->name('productos.changeState');
+Route::get('/productos/{id}/{state}', [App\Http\Controllers\productosController::class, 'changeState'])->name('productos.changeState');
+Route::delete('/productos/{id}/eliminar/elimin', [App\Http\Controllers\productosController::class, 'destroy'])->name('productos.destroy');
+
 //SERVICIOS
 Route::get('/servicios/{id}/{state}', [serviciosController::class, 'changeState'])->name('servicios.changeState');
 
