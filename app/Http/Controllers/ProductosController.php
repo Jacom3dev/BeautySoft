@@ -66,7 +66,8 @@ class ProductosController extends Controller
                 "name"=>$input["name"],
                 "img"=>$url,
                 "amount"=>$input["amount"],
-                "price"=>$input["price"],
+                "price_buy"=>$input["price"],
+                "price_sale"=>$input["price"],
                 "state"=>1,
                 
                 
@@ -161,7 +162,8 @@ class ProductosController extends Controller
                 $producto->update([
                     "name"=>$input["name"],
                     "img"=>$url,
-                    "price"=>$input["price"],
+                    "price_buy"=>$input["price"],
+                    "price_sale"=>$input["price"],
                     
                 ]);
                 

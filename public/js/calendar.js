@@ -58,12 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#op").show();
         $("#estado").append(
           `
-       
-        <option cita_id="${id}"  value="2">Pendiente</option>
-        <option cita_id="${id}"  value="3">En ejecucion</option>
-        <option cita_id="${id}"  value="1">Cancelado</option>
+          <option cita_id="${id}"  value="2">Pendiente</option>
+          <option cita_id="${id}"  value="3">En ejecucion</option>
+          <option cita_id="${id}"  value="1">Cancelado</option>
        `);
-      //  alert(state);
         if (state == 2) {
           
           $("#edit").show();
@@ -71,10 +69,16 @@ document.addEventListener('DOMContentLoaded', function() {
           $("#opcionesDetalle").prop('href','/agenda/'+id);
           
           
-        }else{
+        }else if(state == 3){
           $("#edit").hide();
           $("#opcionesDetalle").prop('href','/agenda/'+id);
           
+        }else if(state == 1){
+          $("#edit").hide();
+          $("#select").hide();
+          $("#cambio-btn").hide();
+          $("#opcionesDetalle").prop('href','/agenda/'+id);
+        
         }
           
       
@@ -100,9 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
           },
 
     
-        // any other sources...
+       
       },
-      // eventBackgroundColor:'#008000',
+     
+      
      
      
       
@@ -110,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     calendar.render();
     
   });
+
 
 // CLIENTE CREAT
 // -------------------------
@@ -120,7 +126,9 @@ function limpiar() {
   $("#Cantidad").val(1);
   $(".sr").remove();
   $(".pr").remove();
-  $("#estado").fresh();
+  $("#estado").remove();
+  $("#select").show();
+  $("#cambio-btn").show();
   $("#edit").hide();
   
 }

@@ -142,7 +142,7 @@ class ServiciosController extends Controller
         foreach ($productos as $key=> $item) {
             $producto=Productos::find($item);
 
-            $precio += $producto->price*intval($cantidad[$key]);
+            $precio += $producto->price_sale*intval($cantidad[$key]);
             
         }
         
@@ -179,7 +179,7 @@ class ServiciosController extends Controller
                 if($servicios->id == $value->servis_id){
                     if ($value->product_id == $key->id) {
                         
-                        $precio = ($value->amount * $key->price)+$precio;
+                        $precio = ($value->amount * $key->price_sale)+$precio;
                         
                        
                         
@@ -212,9 +212,8 @@ class ServiciosController extends Controller
                 
                 $cantidad=$input["Cantidad_id"];
                 $precioSe=$this->precio($input["productos_id"],$input["Cantidad_id"],$input["price"]);
-                $prec=$this->eliminar($id,$servicios->price);
-                // $precioSe = $precioSe-$prec;
-                // dd($prec);
+                $prec=$this->eliminar($id,$servicios->price_sale);
+                
                 if ($servicios==null) {
                     alert()->error('Servicios','El servicio no existe');
                     return redirect("servicios/create");
@@ -227,7 +226,7 @@ class ServiciosController extends Controller
                 ]);
                $pe = [];
                $r=0;
-            //    dd($producto_id);
+           
                 foreach ($producto_id as $key => $value) {
                 
                     $productos=Productos::find($value);
@@ -235,7 +234,7 @@ class ServiciosController extends Controller
                     $detalle=detalle_productos_servicios::all();
                     
                     if ($productos->amount>=$cantidad[$key]) {
-                        $precioP=$productos->price;
+                        $precioP=$productos->price_sale;
                       
                         
                         $detall=detalle_productos_servicios::create([
@@ -280,8 +279,6 @@ class ServiciosController extends Controller
             
         }catch(\Exception $e){
             DB::rollBack();
-            dd($e);
-
             alert()->error('Servicios','Servicio no editado con exito');
             return redirect("/servicios/".$id."/edit");
         }

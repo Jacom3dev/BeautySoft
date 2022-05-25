@@ -13,28 +13,28 @@
                 
                 <div class="row pt-3 px-3">
                     <div class="col-md-6 form-group">
-                            <input type="text"  placeholder="Nombre*" class="form-control  @error('name') is-invalid @enderror" name="name">
+                            <input type="text"  placeholder="Nombre*"  value="{{old('name')}}" class="form-control  @error('name') is-invalid @enderror" name="name">
                             @error('name')
                             <div class="invalid-feedback">{{$message}}</div>                         
                             @enderror
                     </div>
                     
                     <div class="col-md-6 form-group">
-                        <input type="file" placeholder="Imagen"  class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*" value="null" >
+                        <input type="file" placeholder="Imagen"   value="{{old('img')}}"class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*" value="null" >
                         @error('img')
                         <div class="invalid-feedback">{{$message}}</div>                         
                         @enderror
                     </div>
                     
                     <div class="col-md-6 form-group">
-                        <input type="number"   placeholder="Cantidad*"class="form-control @error('amount') is-invalid @enderror" name="amount" value="1">
+                        <input type="number"   placeholder="Cantidad*" class="form-control @error('amount') is-invalid @enderror" name="amount" value="1">
                         @error('amount')
                         <div class="invalid-feedback">El campo debe tener como minimo 1 de cantidad.</div>                         
                         @enderror
                     </div>
 
                     <div class="col-md-6 form-group">
-                        <input type="number"  placeholder="Precio*" class="form-control @error('price') is-invalid @enderror" name="price">
+                        <input type="number"  placeholder="Precio*"   value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror" name="price">
                         @error('price')
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror
