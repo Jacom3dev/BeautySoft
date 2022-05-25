@@ -33,19 +33,26 @@ class VentasExport implements FromView,ShouldAutoSize
         ->where('ventas.state','1')
         ->whereBetween('ventas.created_at', [$this->date1, $this->date2])
         ->get();
-
-        $ventas = DB::table('ventas')
-        ->select('ventas.id','users.name','clientes.name as clientName','clientes.cell','clientes.document','ventas.price','ventas.created_at')
-        ->join('users','ventas.user_id','=','users.id')
-        ->join('detalle_ventas_productos','ventas.id','=','detalle_ventas_productos.sale_id')
-        ->join('clientes','ventas.client_id','=','clientes.id')
-        ->join('productos','detalle_ventas_productos.product_id','=','productos.id')
+        
+        $servicios = DB::table('ventas')
+        ->select('ventas.id','servicios.name')
+        ->join('detalle_ventas_servicios','ventas.id','=','detalle_ventas_servicios.sale_id')
+        ->join('servicios','detalle_ventas_servicios.servis_id','=','servicios.id')
         ->where('ventas.state','1')
         ->whereBetween('ventas.created_at', [$this->date1, $this->date2])
         ->get();
+        $ventas = DB::table('ventas')
+        ->select('ventas.id','users.name','clientes.name as clientName','clientes.cell','clientes.document','ventas.price','ventas.created_at')
+        ->join('users','ventas.user_id','=','users.id')
+        ->join('clientes','ventas.client_id','=','clientes.id')
+        ->where('ventas.state','1')
+        ->whereBetween('ventas.created_at', [$this->date1, $this->date2])
+        ->get();
+
         return view('excel.ventasExport', [
             'productos' => $productos,
-            'ventas' => $ventas
+            'ventas' => $ventas,
+            'servicios' => $servicios
         ]);
     }
 }
