@@ -156,11 +156,11 @@ const chart3 = Highcharts.chart('container', {
     title: {
       text: ''
     },
-    exporting: {
+    /* exporting: {
       buttons: {
         contextButton: null
       }
-    },
+    }, */
     xAxis: {
       categories: ['Ene','Feb', 'Mar','Abr','May','Jun','Jul','Agt','Sep','Oct','Nov','Dic'],
     },
@@ -176,15 +176,13 @@ const chart3 = Highcharts.chart('container', {
         type: 'column',
         name: 'Compras',
         color: '#6c757d',
-        /* data: <?php echo json_encode($arrayVentas);?> */
-        data: [14,20,7,12,5,10,30,8,9,20,20,12]
+        data: <?php echo json_encode($arrayCompras);?>
       } ,
       {
         type: 'column',
         name : 'Ventas',
         color: '#17A2B8',
-        /* data: <?php echo json_encode($arrayVentas);?> */
-        data: [10,5,7,12,5,2,7,8,9,10,11,5]
+        data: <?php echo json_encode($arrayVentas);?>
       }
     ],
     legend: {
