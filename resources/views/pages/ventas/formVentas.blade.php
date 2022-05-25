@@ -469,8 +469,8 @@
                     <td>
                         ${servicio_text}
                     </td>
-                    <td>${formato.format(precioS)}</td>
-                    <td>${formato.format(parseInt(precioS))}</td>
+                    <td>${precioS}</td>
+                    <td>${parseInt(precioS)}</td>
                     <td class="text-center">
                         <button  type="button" class="btn btn-danger" onclick="eliminar_servicio(${id_servicio},(${parseInt(
                     precioS

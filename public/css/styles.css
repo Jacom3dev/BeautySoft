@@ -122,3 +122,8 @@ i {
     width: 100%;
     font-size: 1.2rem;
 }
+
+.tabla_informe{
+    border: 2px;
+    background-color: #174853;
+}

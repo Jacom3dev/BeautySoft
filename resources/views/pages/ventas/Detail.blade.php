@@ -12,14 +12,14 @@
             <div class="col-4">
                 <div class="card" style="width: 16rem; margin-left:100px;">
                     <div class="card-body">
-                        <h5 class="text-center">Detalle Servicios</h5>
+                        <h5 class="text-center">Detalle Venta</h5>
                         <p class="card-title">Registrado por: </p><p class="card-text">{{ $Ventas->usuario->name }}</p>
                         <p class="card-title ">Nombre Cliente: </p><p class="card-text">{{ $Ventas->cliente->name }}</p>
                         <p class="card-title ">Precio Total: </p><p class="card-text">{{ $Ventas->price}}</p>
                         <p class="card-title ">Fecha: </p><p class="card-text">{{ $Ventas->created_at }}</p>
                         <p class="card-title ">Estado: </p><p class="card-text">
                         @if ($Ventas->state)
-                            <i><p class="alert alert-info">Relaizada</p></i>           
+                            <i><p class="alert alert-info">Realizada</p></i>           
                         @else
                             <i><p class="alert alert-danger">Cancelada.</p></i>  
                         @endif
