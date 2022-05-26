@@ -41,7 +41,7 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input  type="text" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
+                        <input  type="password" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <small>{{ $message }}</small>

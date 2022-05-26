@@ -62,7 +62,11 @@
                                         </div>
 
                                         <div class="col-6 form-group">
+<<<<<<< HEAD
+                                            <input name="price" type="text" class="form-control" id="price" placeholder="Precio*">
+=======
                                             <input name="price" type="text" class="form-control" id="price" placeholder="Precio*" readonly required="required" required>
+>>>>>>> 1fe9d1fd412f0c1f4b2778345af5b8c48a826edf
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end ">
@@ -93,7 +97,7 @@
 
 
                                         <div class="col-6 form-group">
-                                            <input type="number" placeholder="Precio*" class="form-control @error('price') is-invalid @enderror" name="price" id="precio"> @error('price')
+                                            <input type="number" placeholder="Precio" class="form-control @error('price') is-invalid @enderror" name="price" id="precio"> @error('price')
                                             <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
                                         </div>

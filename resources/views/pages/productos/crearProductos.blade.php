@@ -12,7 +12,7 @@
                 @csrf
                 
                 <div class="row pt-3 px-3">
-                    <div class="col-md-6 form-group">
+                    <div class="col-md-12 form-group">
                             <input type="text"  placeholder="Nombre*"  value="{{old('name')}}" class="form-control  @error('name') is-invalid @enderror" name="name">
                             @error('name')
                             <div class="invalid-feedback">{{$message}}</div>                         
@@ -27,20 +27,20 @@
                     </div>
                     
                     <div class="col-md-6 form-group">
-                        <input type="number"   placeholder="Cantidad*" class="form-control @error('amount') is-invalid @enderror" name="amount" value="1">
+                        <input type="number"   placeholder="Cantidad*" class="form-control @error('amount') is-invalid @enderror" name="amount">
                         @error('amount')
                         <div class="invalid-feedback">El campo debe tener como minimo 1 de cantidad.</div>                         
                         @enderror
                     </div>
 
                     <div class="col-md-6 form-group">
-                        <input type="number"  placeholder="Precio venta"   value="{{old('price_sale')}}" class="form-control @error('price') is-invalid @enderror" name="price_sale">
+                        <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price') is-invalid @enderror" name="price_sale">
                         @error('price')
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror
                     </div>
                     <div class="col-md-6 form-group">
-                        <input type="number"  placeholder="Precio compra*"   value="{{old('price_buy')}}" class="form-control @error('price') is-invalid @enderror" name="price_buy">
+                        <input type="number"  placeholder="Precio compra"   value="{{old('price_buy')}}" class="form-control @error('price') is-invalid @enderror" name="price_buy">
                         @error('price')
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror

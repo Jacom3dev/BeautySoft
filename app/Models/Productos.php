@@ -13,7 +13,7 @@ class Productos extends Model
         "img",
         "amount",
         "price_sale",
-        "price_buy",
+        "price_buys",
         "state",
 
     ];

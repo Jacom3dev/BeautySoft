@@ -51,7 +51,7 @@ Productos
                                 @endif
                                 </td>
                                 <td>{{$value->amount}}</td>
-                                <td>{{$value->price}}</td>
+                                <td>{{$value->price_sale}}</td>
                                 <td class="text-center">
                                 @if($value->state == 1)
                                 <span class="badge badge-primary">Activo</span>

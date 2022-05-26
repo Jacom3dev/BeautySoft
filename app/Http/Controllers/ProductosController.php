@@ -60,16 +60,13 @@ class ProductosController extends Controller
                 $url=null;
             }
             
-          
             productos::create([
                 "name"=>$input["name"],
                 "img"=>$url,
                 "amount"=>$input["amount"],
-                "price_buy"=>$input["price_buy"],
+                "price_buys"=>$input["price_buy"],
                 "price_sale"=>$input["price_sale"],
-                "state"=>1,
-                
-                
+                "state"=>1,  
             ]);
            
            
