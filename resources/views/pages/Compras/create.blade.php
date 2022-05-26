@@ -50,9 +50,8 @@
                                             <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()" required="required" required>
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
-                                                        <option price="{{ $product->price_buy }}" amount="{{ $product->amount }}"
+                                                        <option price="{{ $product->price_buys }}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
-                                                            @endif
                                                         
                                                     @endforeach
                                                 </select>
