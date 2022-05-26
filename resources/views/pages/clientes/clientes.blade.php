@@ -5,8 +5,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col mt-3">
-           <a href="{{route('clientes.create')}}" class="btn principal-color text-white"><i class="fas fa-user-plus"></i> Registrar Cliente</a>
+        <div class="col mt-3" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar cliente">
+           <a href="{{route('clientes.create')}}" class="btn principal-color text-white"><i class="fas fa-user-plus" ></i> Crear cliente</a>
         </div>
     </div>
     <div class="row mt-2">
@@ -16,7 +16,7 @@
                     <thead class="text-center">
                         <tr>
                             <th>Nombre</th>
-                            <th>EMail</th>
+                            <th>Email</th>
                             <th>Tipo documento</th>
                             <th>Documento</th>
                             <th>Celular</th>
@@ -48,15 +48,15 @@
                           <td class="">
                               <div class="d-flex justify-content-between flex-wrap">
                                 @if ($cliente->state)
-                                    <a href="{{route("clientes.edit",$cliente->id)}}"><i class="far fa-edit text-warning"></i></a>
+                                    <a href="{{route("clientes.edit",$cliente->id)}}"><i class="far fa-edit text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"></i></a>
                                 @endif
                                 <a href="{{route("clientes.changeState",['id'=>$cliente->id,'state'=>$cliente->state])}}">
                                 @if ($cliente->state)
-                                    <i class="fas fa-user-slash text-danger"></i>
+                                    <i class="fas fa-user-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Inhablitar"></i>
                                 @else
-                                    <i class="far fa-user text-primary"></i> 
+                                    <i class="far fa-user text-primary" data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"></i> 
                                 @endif</a>
-                                <a href="{{route("clientes.show",$cliente->id)}}"><i class="fas fa-info-circle text-primary"></i></a>
+                                <a href="{{route("clientes.show",$cliente->id)}}"><i class="fas fa-info-circle text-primary"data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle"></i></a>
                               </div>
                            </td>
                         </tr>

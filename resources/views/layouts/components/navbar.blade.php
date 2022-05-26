@@ -11,7 +11,7 @@
       
       <li class="nav-item">
         <div class="dropdown">
-          <i class="fas fa-sign-in-alt" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" title="Cerrar sesion"></i>
+          <i class="fas fa-sign-in-alt" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" title="Cerrar sesión"></i>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a href="#" class="dropdown-item"onclick="document.getElementById('logout-form').submit()">Cerrar sesión</a>
           </div>

@@ -131,7 +131,7 @@
                             </button>
                         </div>
                         <div class="col-3 col-lg-1">
-                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block">Volver</a>
+                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
 

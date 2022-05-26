@@ -9,11 +9,11 @@
                     <div class="col-12">
                         <ul class="nav nav-pills d-flex justify-content-around">
                             <li class="nav-item">
-                                <a class=" btn btn-outline-dark active  m-2 m-md-0" aria-current="page" data-toggle="tab" href="#prod">Generar Venta de
+                                <a class=" btn btn-outline-dark active  m-2 m-md-0" aria-current="page" data-toggle="tab" href="#prod" data-bs-toggle="tooltip" data-bs-placement="left" title="Vender productos">Generar Venta de
                                     Productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class=" btn btn-outline-dark  m-2 m-md-0" href="#serv" data-toggle="tab">Generar Venta de Servicios</a>
+                                <a class=" btn btn-outline-dark  m-2 m-md-0" href="#serv" data-toggle="tab" data-bs-toggle="tooltip" data-bs-placement="left" title=" Vender servicios">Generar Venta de Servicios</a>
                             </li>
                             </li>
                         </ul>
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-2 col-sm-1">
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-block principal-color text-white" data-toggle="modal" title="Agregar Cliente Rapido" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-block principal-color text-white" data-toggle="modal" title="Agregar cliente inmediato" data-target="#exampleModal">
                                         <i class="fas fa-plus"></i>
                                         </button>
                                         
@@ -102,7 +102,7 @@
                                                         </div>
                                                         <div class="col-12 pb-3 d-flex justify-content-end">
                                                             <button class="btn principal-color text-white"
-                                                                onclick="agregar_producto()" type="button">
+                                                                onclick="agregar_producto()" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto">
                                                                 <i class="fas fa-plus"></i>
                                                                 <span> Agregar Producto</span>
                                                             </button>
@@ -200,7 +200,7 @@
                             </button>
                         </div>
                         <div class="col-3 col-lg-1">
-                            <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark">Volver</a>
+                            <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
                 </form>
@@ -340,7 +340,7 @@
                                     <td class="sub_p">
                                     ${parseInt(precio) * parseInt(cantidad) }</td>
                                     <td class="text-center">
-                                        <button  type="button" class="btn btn-danger" onclick="eliminar(${producto_id})"><i class="fas fa-trash"></i></button>
+                                        <button  type="button" class="btn btn-danger" onclick="eliminar(${producto_id})" data-bs-toggle="tooltip" data-bs-placement="left" title="Eliminar de la lista"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 `);
