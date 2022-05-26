@@ -11,12 +11,17 @@ use App\Http\Requests\UpdateClientes;
 class ClienteNuevoController extends Controller
 {
 
-    public function store(Request $request)
+    public function store(StoreClientes $request)
     {
-            
-        Clientes::create($request->all());
-        alert()->success('Cliente','Cliente registrado');
-        return Redirect()->route('ventas.create');
+        if (isset($request)) {
+            Clientes::create($request->all());
+            alert()->success('Cliente','Cliente registrado');
+            return Redirect()->route('ventas.create');
+
+        }else {
+            alert()->success('Cliente Nuevo','No se pudo crear el cliente.');
+               
+        }
     }
 
 }

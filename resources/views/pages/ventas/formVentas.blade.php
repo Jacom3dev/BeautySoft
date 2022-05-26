@@ -83,7 +83,7 @@
                                                                     Productos
                                                                 </option>
                                                                 @foreach($productos as $value)
-                                                                <option precioP="{{ $value->price }}"
+                                                                <option precioP="{{ $value->price_sale }}"
                                                                     cant="{{ $value->amount }}" value="{{ $value->id }}">
                                                                     {{ $value->name }}
                                                                 </option>

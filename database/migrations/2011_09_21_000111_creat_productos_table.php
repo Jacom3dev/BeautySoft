@@ -18,8 +18,8 @@ class CreatProductosTable extends Migration
             $table->string('name',50);
             $table->string('img',500)->nullable();
             $table->Integer('amount');
-            $table->float('price_buys',8,2);
-            $table->float('price_sale',10,2);
+            $table->float('price_buys',11,2);
+            $table->float('price_sale',11,2);
             $table->boolean('state');
         });
     }
