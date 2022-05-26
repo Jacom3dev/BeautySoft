@@ -19,7 +19,10 @@
               <h5 class="card-title">Nombre del Producto: </h5><p class="card-text">{{$productos->name}}</p>
             </div>
             <div class="col-12">
-              <h5 class="card-title ">Precio: </h5><p class="card-text">{{$productos->price}}</p>
+              <h5 class="card-title ">Precio al que se compro : </h5><p class="card-text">{{$productos->price_buy}}</p>
+            </div>
+            <div class="col-12">
+              <h5 class="card-title ">Precio al que se vendera : </h5><p class="card-text">{{$productos->price_sale}}</p>
             </div>
             <div class="col-12">
               <h5 class="card-title ">Cantidad: </h5><p class="card-text">{{$productos->amount}}</p>

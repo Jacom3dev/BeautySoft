@@ -50,7 +50,7 @@
                                         <option value="" disabled selected>Productos </option>
                                         @foreach ($producto as $value)
                                             @if ($value->state != 0)
-                                                <option cantidadP="{{ $value->amount }}" precioP="{{ $value->price }}"
+                                                <option cantidadP="{{ $value->amount }}" precioP="{{ $value->price_sale }}"
                                                     value="{{ $value->id }}">
                                                     {{ $value->name }}</option>
                                             @endif
