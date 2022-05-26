@@ -52,7 +52,7 @@
                                             <select class="form-control" name="productos" id="productos" onchange="Agg_Attr()">
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
-                                                        <option price="{{ $product->price_buy }}" amount="{{ $product->amount }}"
+                                                        <option price="{{ $product->price_buys }}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -63,7 +63,7 @@
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <input name="price" type="text" class="form-control" id="price" placeholder="Precio*" readonly>
+                                            <input name="price" type="text" class="form-control" id="price" placeholder="Precio*">
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end ">
@@ -94,7 +94,7 @@
 
 
                                         <div class="col-6 form-group">
-                                            <input type="number" placeholder="Precio*" class="form-control @error('price') is-invalid @enderror" name="price" id="precio"> @error('price')
+                                            <input type="number" placeholder="Precio" class="form-control @error('price') is-invalid @enderror" name="price" id="precio"> @error('price')
                                             <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
                                         </div>
