@@ -218,7 +218,7 @@ input:valid+span:after {
     </div>
 
     {{-- MODAL OPCIONES --}}
-    <div class="modal" id="Opciones" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal" id="Opciones"  id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                
@@ -232,22 +232,22 @@ input:valid+span:after {
                     </select>
                     
                 </div>
-                <div class="col-6 col-md-4 col-lg-6 center" style="margin-left:120px;">
-                    <a href="" class="btn principal-color text-white w-100" id="cambio"> cambio estado</a>
+                <div class="col-6 col-md-4 col-lg-6 center"  id="cambio-btn"style="margin-left:120px;">
+                    <a href="" class="btn principal-color text-white w-100" id="cambio" data-bs-toggle="tooltip" data-bs-placement="left" title="Cambiar Estado"> cambio estado</a>
                 </div>
-                <div class="row py-4 px-3 justify-content-end " >
+                <div class="row py-4 px-3 justify-content-around " >
                         
                         <div class="col-6 col-md-4 col-lg-2" id="edit">   
-                                <a class="btn  btn-warning btn-ms" id="opcionesEditar" href=""><i
+                                <a class="btn  btn-warning btn-ms btn-block" id="opcionesEditar" href="" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar Cita"><i
                                     class="glyphicon glyphicon-edit"></i>Editar</a>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-2" >
-                            <a class="btn  btn-primary btn-ms" id="opcionesDetalle" href=""><i
+                        <div class="col-3 col-md-4 col-lg-2" >
+                            <a class="btn  btn-primary btn-ms btn-block" id="opcionesDetalle" href="" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver Detalle"><i
                                     class="glyphicon glyphicon-edit"></i>Detalle</a>
                         </div>
-                        <div class="col-6 col-md-4 col-lg-2">
-                            <button type="button" onclick="limpiar()" class="btn btn-secondary"
-                            data-bs-dismiss="modal">salir</button>
+                        <div class="col-3 col-md-4 col-lg-2">
+                            <button type="button" onclick="limpiar()" class="btn btn-outline-dark btn-block"
+                            data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</button>
                         </div>
                 </div>
             </div>
@@ -272,6 +272,19 @@ input:valid+span:after {
             $("#cambio").prop('href','/agenda/'+id+'/'+estado);
 
         }   
+        // window.onload = autoState;
+        // //ESTADO AUTOMATICO
+        // function autoState() {
+        //     let date = new Date();
+        //     let output =date.toISOString().split('T')[0];
+            
+        //     @foreach($cita as $value)
+        //     dateServer = String.valueOf();
+            
+        //     console.log({{$value->date}});
+        //     @endforeach
+            
+        // }
         // SERVICIO FORM
         function precio_total() {
 
@@ -282,7 +295,7 @@ input:valid+span:after {
         }
 
         function agregar_Servicio() {
-
+            
             let servicio = $("#servicio option:selected").text();
             
             let precio = $("#servicio option:selected").attr("precio");
@@ -291,7 +304,7 @@ input:valid+span:after {
            
             if (precio > 0) {
                 $('#tbalaServicio').append(`
-                    <tr id="tr-${id}" >
+                    <tr id="tr-${id}"  class="sr">
                         <td>
                         <input type="hidden" name="servicios_id[]" value="${id}"/>
                         ${servicio}</td>
@@ -327,14 +340,7 @@ input:valid+span:after {
             let precioTotal = $("#preciototal").val() || 0;
             $("#preciototal").val(parseInt(precioTotal) - parseInt($precio));
         }
-        // PRODUCTO FORM
-        function precio_totalp() {
-
-            let precioP = $("#producto option:selected").attr("preciop");
-            // console.log(precioP);
-            $("#precioP").val(precioP);
-
-        }
+       
 
        
      

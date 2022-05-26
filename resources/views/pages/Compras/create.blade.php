@@ -52,7 +52,7 @@
                                             <select class="form-control" name="productos" id="productos" onchange="Agg_Attr()">
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
-                                                        <option price="{{ $product->price }}" amount="{{ $product->amount }}"
+                                                        <option price="{{ $product->price_buy }}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
                                                     @endforeach
                                                 </select>

@@ -48,13 +48,12 @@ class ProductosController extends Controller
         $input=$request->all();
       
       
-        
         try{
         
        
    
             
-            if (count($input) != 4) {
+            if (count($input) != 5) {
                 $img = $request->file('img')->store('public/img');
                 $url = Storage::url($img);
             }else {
@@ -66,7 +65,8 @@ class ProductosController extends Controller
                 "name"=>$input["name"],
                 "img"=>$url,
                 "amount"=>$input["amount"],
-                "price"=>$input["price"],
+                "price_buy"=>$input["price_buy"],
+                "price_sale"=>$input["price_sale"],
                 "state"=>1,
                 
                 
@@ -161,7 +161,8 @@ class ProductosController extends Controller
                 $producto->update([
                     "name"=>$input["name"],
                     "img"=>$url,
-                    "price"=>$input["price"],
+                    "price_buy"=>$input["price"],
+                    "price_sale"=>$input["price"],
                     
                 ]);
                 

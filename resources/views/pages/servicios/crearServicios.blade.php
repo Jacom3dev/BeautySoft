@@ -15,46 +15,11 @@
                     @csrf
                     <div class="row py-3 px-4 ">
                         <div class="col">
-                            {{-- <div class="row">
-                            <div class="col-12 col-sm-8 col-md-6">
-                                    <div class="row">
-                                        <div class="col-12 form-group">
-                                        
-                                            <input type="text"  placeHolder="Nombre*"class="form-control  @error('name') is-invalid @enderror" name="name">
-                                            @error('name')
-                                            <div class="invalid-feedback">{{$message}}</div>                         
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 form-group">
-                                            <input type="number"  placeholder="Precio*" class="form-control @error('price') is-invalid @enderror" name="price">
-                                            @error('price')
-                                            <div class="invalid-feedback">{{$message}}</div>                         
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 form-group">
-                                            <textarea name="description" placeholder="descripcion"  id="descri" class="form-control @error('descriptcion') is-invalid @enderror "></textarea>
-                                            @error('descriptcion')
-                                            <div class="invalid-feedback">{{$message}}</div>                         
-                                            @enderror
-                                        </div>
-                                        
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" placeholder="Precio Total*" id="preciototalP" class="form-control @error('precioP') is-invalid @enderror" name="precioP"
-                                            readonly>
-                                                
-                                            @error('precioP')
-                                            <div class="invalid-feedback">{{$message}}</div>                         
-                                            @enderror
-                                        </div>
-                                </div>
-                            </div>
-                        </div> --}}
+                            
                             <div class="row">
                                 <div class="col-12 col-md-6 form-group">
 
-                                    <input type="text" placeHolder="Nombre*"
+                                    <input type="text" placeHolder="Nombre*" value="{{old('name')}}"
                                         class="form-control  @error('name') is-invalid @enderror" name="name">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -62,7 +27,7 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 form-group">
-                                    <input type="number" placeholder="precio mano de obra*"
+                                    <input type="number" placeholder="precio mano de obra*" value="{{old('price')}}"
                                         class="form-control @error('price') is-invalid @enderror" name="price">
                                     @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -71,8 +36,8 @@
 
                                 <div class="col-12  form-group">
 
-                                    <textarea name="description" placeholder="Descripción" id="descri"
-                                        class="form-control @error('descriptcion') is-invalid @enderror "></textarea>
+                                    <textarea name="description" placeholder="Descripción" id="descri" 
+                                        class="form-control @error('descriptcion') is-invalid @enderror ">{{old('description')}}</textarea>
                                     @error('descriptcion')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -85,7 +50,7 @@
                                         <option value="" disabled selected>Productos </option>
                                         @foreach ($producto as $value)
                                             @if ($value->state != 0)
-                                                <option cantidadP="{{ $value->amount }}" precioP="{{ $value->price }}"
+                                                <option cantidadP="{{ $value->amount }}" precioP="{{ $value->price_sale }}"
                                                     value="{{ $value->id }}">
                                                     {{ $value->name }}</option>
                                             @endif
@@ -101,7 +66,7 @@
 
                                     <input  type="number" placeholder="Cantidad*" id="Cantidad"
                                         class="form-control @error('precioP') is-invalid @enderror" name="Cantidad"
-                                        value="">
+                                        value="1">
 
                                     @error('Cantidad')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -161,7 +126,7 @@
 
                     <div class="row pb-3 px-4 justify-content-end">
                         <div class="col-6 col-lg-2">
-                            <button type="submit" class="btn btn-block principal-color text-white">
+                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white">
                                 Crear
                             </button>
                         </div>
@@ -170,17 +135,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="row justify-content-between" >
-                   
-                    <div class="col-1">
-                        <button type="submit"  class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear Servicio">Crear</button>
-                        
-                    </div>
-                    <div class="col-2">
-                    <a href="{{route('servicios.index')}}"  class="btn btn-outline-dark" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Retroceder">Salir</a>
-                
-                    </div>
-                </div> --}}
+                    
                 </form>
             </div>
         </div>
@@ -199,14 +154,7 @@
         }
 
 
-        // function validarCantidadExistencia() {
-        //     let Cantidad = $("#Cantidad").val();
-        //     let Existencia = $("#producto option:selected").attr("cantidadP");
-        //     if (parseInt(Cantidad) > parseInt(Existencia)) {
-        //         alert("La cantidad ha superado la existencia");
-        //         $("#Cantidad").val(1);
-        //     }
-        // }
+
 
 
 
@@ -274,14 +222,7 @@
                     if ($(this).find("input.id_producto").val() == $("#producto option:selected").val()) {
                         validation = true;
 
-                        // let cantidadSumada = parseInt($("#Cantidad").val()) + parseInt($(this).find("td.cantidad_p")
-                        //     .text());
-                        // let cantidadExistencia = $("#producto option:selected").attr("cantidadP");
-                        // if (parseInt(cantidadSumada) > parseInt(cantidadExistencia)) {
-                        //     alert("Abre el ojo pelao, no tienes la cantidad suficiente");
-                        //     $("#Cantidad").val(1);
-
-                        // } else {
+                      
                             $(this)
                                 .find("input.cantidad_producto")
                                 .val(
@@ -319,7 +260,7 @@
 
                             $("#Cantidad").val("1");
 
-                        // }
+                        
 
 
 
@@ -341,48 +282,51 @@
 
         //alerta 
 
+       function crear() {
         $('.formulario-Crear').submit(function(e) {
 
-            e.preventDefault();
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: true
-            })
+        e.preventDefault();
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: true
+        })
 
-            swalWithBootstrapButtons.fire({
-                title: '¿Estas seguro?',
-                text: "El servico se Agregara",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si, seguro',
-                cancelButtonText: 'No, cancele',
-                reverseButtons: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'El servico se ha Agregado',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                    this.submit();
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'error',
-                        title: 'Revice que desea cambiar e intente de nuevo ',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                }
-            })
+        swalWithBootstrapButtons.fire({
+            title: '¿Estas seguro?',
+            text: "El servico se Agregara",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si, seguro',
+            cancelButtonText: 'No, cancele',
+            reverseButtons: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'El servico se ha Agregado',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                this.submit();
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Reviza que deseas cambiar e intente de nuevo ',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        })
 
         });
+           
+       }
     </script>
 @endsection

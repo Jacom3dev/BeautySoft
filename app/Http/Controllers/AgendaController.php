@@ -30,39 +30,23 @@ class AgendaController extends Controller
     public function index(){
 
         $cita=Cita::all();
+        $servicios=Servicios::all(); 
+        $clientes=Clientes::all();    
+        $estado = Estado_cita::all(); 
+        $fecha = "";
+        $horaI = "";
+        $horaF = "";
+        foreach ($cita as $key => $value) {
+            $fecha= $value->date;
+            $horaI = \Carbon\Carbon::parse($value->hourI)->format('h:i A');
+            $horaF = \Carbon\Carbon::parse($value->hourF)->format('h:i A');
+            $fecha = strftime("  %d %b %Y", strtotime( date('Y-m-d') ));
+        }
 
-        // $hoy = new DateTime("now");
-        // $hoy= strftime("%Y-%m-%d", strtotime(date('Y-m-d')));
-        // $fecha= "";
-        // $hora=  new DateTime("now", new DateTimeZone('America/Bogota'));
-        // $ci="";
-        // $hora = $hora->format('H:i:s');
-
-        // foreach ($cita as $key => $value) {
-        //     $ci = Cita::find($value->id);
-        //     $fecha= $ci->date;
-        //     $horaI= $ci->hourI;
-           
-        //     dd($hora,$horaI);
-        //     if ($fecha == $hoy) {
-        //         if ($hora >= $ci->hourI) {
-                  
-                   
-        //         } 
-
-               
-        //     }else{
-        //         $servicios=Servicios::all(); 
-        //         $clientes=Clientes::all();    
-        //         $estado = Estado_cita::all(); 
-        //         return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado"));
-        //     }
-        // }
+   
         
-                $servicios=Servicios::all(); 
-                $clientes=Clientes::all();    
-                $estado = Estado_cita::all(); 
-                return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado"));
+                
+            return view('pages.agenda.indexAgenda',compact("cita","servicios","clientes","estado","horaF","horaI","fecha"));
                
     }
     public function list(){
@@ -92,7 +76,8 @@ class AgendaController extends Controller
                                 "estado"=>$value->state_id,
                                 "descripcion"=>$value->description,
                                 "date"=>$value->date,
-                                "hourI"=>$value->hourI
+                                "hourI"=>$value->hourI, 
+                                "hourI"=>$value->hourF
                             ]
                     ];
                 }
@@ -281,7 +266,7 @@ class AgendaController extends Controller
        
         $input=$request->all();
         $cita= Cita::find($id);  
-        // dd($input); 
+      
         
         try{
             DB::beginTransaction();
@@ -329,7 +314,7 @@ class AgendaController extends Controller
             
         }catch(\Exception $e){
             DB::rollBack();
-            dd($e);
+            
 
             alert()->error('Agenda','La cita no se pudo editar');
             return redirect("/Agenda/".$id."/edit");

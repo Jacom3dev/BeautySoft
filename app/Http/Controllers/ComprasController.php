@@ -41,11 +41,7 @@ class ComprasController extends Controller
      
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function create()
     {
         //
@@ -58,12 +54,7 @@ class ComprasController extends Controller
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function store(request $request)
     {
         $input = $request->all();
@@ -109,7 +100,8 @@ class ComprasController extends Controller
                             "name"=>$input["namePN"][$key],
                             "img"=>null,
                             "amount"=>$input["amountsPN"][$key],
-                            "price"=>$input["pricesPN"][$key],
+                            "price_buy"=>$input["pricesPN"][$key],
+                            "price_sale"=>$input["pricesPN"][$key],
                             "state"=>1, 
                         ]);
                         
@@ -139,7 +131,8 @@ class ComprasController extends Controller
                             "name"=>$input["namePN"][$key],
                             "img"=>null,
                             "amount"=>$input["amountsPN"][$key],
-                            "price"=>$input["pricesPN"][$key],
+                            "price_buy"=>$input["pricesPN"][$key],
+                            "price_sale"=>$input["pricesPN"][$key],
                             "state"=>1, 
                         ]);
                         
@@ -185,12 +178,7 @@ class ComprasController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $Compra = Compra::find($id);
@@ -205,48 +193,17 @@ class ComprasController extends Controller
          return view("pages.compras.Detail",compact("Compra","productos"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function cambioestado($id,$state)
-    {
-            $Compra=Compra::find($id);
-        if ($Compra==null) {
-            
-            alert()->error('Compra','Compra no encontrada');
-            return redirect("/compra/index");
-        }
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+  
     public function changeState($id,$state)
     {
         
         $Comp = Compra::find($id);
+        if ($Comp == null) {
+            
+            alert()->error('Compra','Compra no encontrada');
+            return redirect("/compra/index");
+        }
         
             $Comp->update([
                 'state' => !$state
