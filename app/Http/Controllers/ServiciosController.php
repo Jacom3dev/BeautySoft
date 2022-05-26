@@ -59,12 +59,7 @@ class ServiciosController extends Controller
         return view('pages.servicios.crearServicios', compact('producto'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(StoreServicios $request)
     {
         $input=$request->all();
@@ -93,7 +88,7 @@ class ServiciosController extends Controller
                    
                     
                     if ($productos->amount>=$cantidad[$key]) {
-                        $precioP=$productos->price;
+                        $precioP=$productos->price_sale;
                         
                         $detalle=detalle_productos_servicios::create([
                             "servis_id"=>$servicio->id,
@@ -147,7 +142,7 @@ class ServiciosController extends Controller
         foreach ($productos as $key=> $item) {
             $producto=Productos::find($item);
 
-            $precio += $producto->price*intval($cantidad[$key]);
+            $precio += $producto->price_sale*intval($cantidad[$key]);
             
         }
         
@@ -155,12 +150,7 @@ class ServiciosController extends Controller
         
         return $precio;
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $servicios=Servicios::find($id);
@@ -174,12 +164,7 @@ class ServiciosController extends Controller
         return view("pages.servicios.detalleServicios",compact("servicios","detalle","producto"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($id)
     {
         $servicios=servicios::find($id);
@@ -194,7 +179,7 @@ class ServiciosController extends Controller
                 if($servicios->id == $value->servis_id){
                     if ($value->product_id == $key->id) {
                         
-                        $precio = ($value->amount * $key->price)+$precio;
+                        $precio = ($value->amount * $key->price_sale)+$precio;
                         
                        
                         
@@ -211,13 +196,7 @@ class ServiciosController extends Controller
         return view("pages.servicios.editarServicios",compact("servicios","producto","detalle","precio","prec"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+  
     public function update(UpdateServicios $request, $id)
     {
         $input=$request->all();
@@ -233,9 +212,8 @@ class ServiciosController extends Controller
                 
                 $cantidad=$input["Cantidad_id"];
                 $precioSe=$this->precio($input["productos_id"],$input["Cantidad_id"],$input["price"]);
-                $prec=$this->eliminar($id,$servicios->price);
-                // $precioSe = $precioSe-$prec;
-                // dd($prec);
+                $prec=$this->eliminar($id,$servicios->price_sale);
+                
                 if ($servicios==null) {
                     alert()->error('Servicios','El servicio no existe');
                     return redirect("servicios/create");
@@ -248,7 +226,7 @@ class ServiciosController extends Controller
                 ]);
                $pe = [];
                $r=0;
-            //    dd($producto_id);
+           
                 foreach ($producto_id as $key => $value) {
                 
                     $productos=Productos::find($value);
@@ -256,7 +234,7 @@ class ServiciosController extends Controller
                     $detalle=detalle_productos_servicios::all();
                     
                     if ($productos->amount>=$cantidad[$key]) {
-                        $precioP=$productos->price;
+                        $precioP=$productos->price_sale;
                       
                         
                         $detall=detalle_productos_servicios::create([
@@ -274,7 +252,7 @@ class ServiciosController extends Controller
                         DB::rollBack();
                         
                         alert()->error('Servicios','Servicio no  creado');
-                        return redirect("/servicios/".$id."/edit");
+                        return redirect("/servicios/ceate");
                    
                     }
                 }
@@ -301,10 +279,8 @@ class ServiciosController extends Controller
             
         }catch(\Exception $e){
             DB::rollBack();
-            dd($e);
-
             alert()->error('Servicios','Servicio no editado con exito');
-            return redirect("/servicios/create/");
+            return redirect("/servicios/".$id."/edit");
         }
     }
 

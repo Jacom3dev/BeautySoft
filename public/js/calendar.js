@@ -50,12 +50,40 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       // --------------------------------
       eventClick: function(info) {
-        let id =info.event.extendedProps.idC;
+        let id =info.event.id;
+        let state = info.event.extendedProps.estado;
         
         
         $("#Opciones").modal("show");
-        $("#opcionesDetalle").prop('href','/agenda/detalle/'+id);
-        $("#opcionesEditar").prop('href','http://127.0.0.1:8000/Cita/Editar/'+id);
+        $("#op").show();
+        $("#estado").append(
+          `
+          <option cita_id="${id}"  value="2">Pendiente</option>
+          <option cita_id="${id}"  value="3">En ejecucion</option>
+          <option cita_id="${id}"  value="1">Cancelado</option>
+       `);
+        if (state == 2) {
+          
+          $("#edit").show();
+          $("#opcionesEditar").prop('href','/agenda/'+id+'/edit');
+          $("#opcionesDetalle").prop('href','/agenda/'+id);
+          
+          
+        }else if(state == 3){
+          $("#edit").hide();
+          $("#opcionesDetalle").prop('href','/agenda/'+id);
+          
+        }else if(state == 1){
+          $("#edit").hide();
+          $("#select").hide();
+          $("#cambio-btn").hide();
+          $("#opcionesDetalle").prop('href','/agenda/'+id);
+        
+        }
+          
+      
+
+      
         
         
 
@@ -76,9 +104,10 @@ document.addEventListener('DOMContentLoaded', function() {
           },
 
     
-        // any other sources...
+       
       },
-      // eventBackgroundColor:'#008000',
+     
+      
      
      
       
@@ -87,27 +116,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
   });
 
-        // CLIENTE CREAT
-      // -------------------------
+
+// CLIENTE CREAT
+// -------------------------
 function limpiar() {
   $("#Opciones").modal('hide');
   $("#Crear").modal('hide');
   $(".form-control").val("");
   $("#Cantidad").val(1);
   $(".sr").remove();
-  $(".pr").remove();
+  
+  $("#estado").remove();
+  $("#select").show();
+  $("#cambio-btn").show();
+  $("#edit").hide();
+  
 }
 
 function CrearCita() {
+  
   var form =  new FormData(document.getElementById("formulario-Crear"));
-  let nombre = $("#nombre").val();
   let fecha = $("#fechaC").val();
   let hora = $("#horaC").val();
-  let direccion = $("#direc").val();
-  let descrip = $("#descri").val();
-  let servicio = $("#servicio").val();
-  let producto = $("#producto").val();
-
   let tiempo = $("#tiempo").val();
   let hora_final = moment( moment(fecha+" "+hora).add(tiempo,'m')).format('HH:mm:ss');
 
@@ -117,7 +147,7 @@ function CrearCita() {
    
   form.append("hourF",hora_final); 
    $.ajax({
-    url:"/agenda/guardar",
+    url:"/agenda/",
     type: 'post',
     data: form,
     processData: false,
@@ -144,7 +174,7 @@ function CrearCita() {
           showConfirmButton: false,
           timer: 1500
         })
-       
+        limpiar();
         
       }
    })

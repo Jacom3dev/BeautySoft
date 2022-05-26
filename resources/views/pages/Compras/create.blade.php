@@ -50,8 +50,7 @@
                                             <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()" required="required" required>
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
-                                                        @if($product->state == 1)
-                                                        <option price="{{ $product->price }}" amount="{{ $product->amount }}"
+                                                        <option price="{{ $product->price_buy }}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
                                                             @endif
                                                         
@@ -143,7 +142,7 @@
                         </button>
                 </div>
                 <div class="col-3 col-lg-1">
-                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-placement="left" title="Ir atrás">Volver</a>
+                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
                 </div>
             </div>
         </div>
