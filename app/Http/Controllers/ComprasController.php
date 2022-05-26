@@ -166,15 +166,11 @@ class ComprasController extends Controller
                         ]);
                      }
                 }
-                    
-         
-                
-           
-                DB::commit();
-                 alert()->success('Compra','Compra realizada con exito.');
 
-             
-              return redirect("compras/");
+                DB::commit();
+                
+                alert()->success('Compra','Compra realizada con exito.');
+                return redirect("compras/");
                
         } catch (\Exception $e) {
         DB::rollBack(); 

@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col mt-4">
-           <a href="{{route('usuarios.create')}}" class="btn principal-color text-white"><i class="fas fa-user-plus"></i> Crear Usuario</a>
+           <a href="{{route('usuarios.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar usuario"><i class="fas fa-user-plus" ></i> Crear Usuario</a>
         </div>
     </div>
     <div class="row mt-2">
@@ -34,7 +34,7 @@
                             <td class="text-center"><span class="badge badge-danger">Deshabilitado</span></td>
                           @endif 
                            <td class="text-center">
-                              <div class="d-flex justify-content-between flex-wrap">
+                              <div class="d-flex justify-content-between flex-wrap" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle">
                                 @if ($user->rol_id != 1 && $user->rol_state == 1)
                                     @if ($user->state)    
                                         <a href="{{route("usuarios.edit",$user->id)}}"><i class="far fa-edit text-warning"></i></a>

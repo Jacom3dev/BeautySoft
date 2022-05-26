@@ -2,6 +2,7 @@
 
 @section('title', 'Existencias')
 
+
 @section('content')
 
 <div class="container">

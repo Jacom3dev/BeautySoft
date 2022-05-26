@@ -161,12 +161,12 @@
 
                     <div class="row pb-3 px-4 justify-content-end">
                         <div class="col-6 col-lg-2">
-                            <button type="submit" class="btn btn-block principal-color text-white">
+                            <button type="submit" class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar servicio">
                                 Crear
                             </button>
                         </div>
                         <div class="col-3 col-lg-1">
-                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block">Volver</a>
+                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
 

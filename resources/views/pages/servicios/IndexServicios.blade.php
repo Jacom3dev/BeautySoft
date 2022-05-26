@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row pt-2">
         <a href="{{route('servicios.create')}}">
-            <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear servicio" >
+            <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar servicio" >
                 <i class="fas fa-concierge-bell"></i>
                 Crear servicio
             </button>
@@ -44,13 +44,13 @@
                                 </td>
                                 <td class=" d-flex justify-content-around">
                                     @if($value->state == 1)
-                                    <a href="{{route("servicios.changeState",["id"=>$value->id,"state"=>0])}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Desactivar"  > <span class=""><i class="fas fa-ban text-danger"></i></span></a>
+                                    <a href="{{route("servicios.changeState",["id"=>$value->id,"state"=>0])}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Inhabilitar"  > <span class=""><i class="fas fa-ban text-danger"></i></span></a>
 
                                     @else 
-                                    <a href="{{route("servicios.changeState",["id"=>$value->id,"state"=>1])}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Activar"  ><span class=""><i class="far fa-check-circle text-primary"></i></span></a>
+                                    <a href="{{route("servicios.changeState",["id"=>$value->id,"state"=>1])}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"  ><span class=""><i class="far fa-check-circle text-primary"></i></span></a>
                                     @endif   
                                     <a href="{{route('servicios.edit',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar" ><i class="far fa-edit text-warning"></i></a>
-                                    <a href="{{route('servicios.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle" ><i class="fas fa-info-circle text-primary"></i></a>
+                                    <a href="{{route('servicios.show',$value->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle" ><i class="fas fa-info-circle text-primary"></i></a>
                                 
                                 </td>
                             </tr>

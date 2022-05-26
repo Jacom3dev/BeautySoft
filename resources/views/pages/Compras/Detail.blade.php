@@ -1,4 +1,6 @@
-@extends('layouts.app') @section('tittle') Compras @endsection @section('content')
+@extends('layouts.app') 
+@section('tittle') Compras
+@section('content')
 <div class="container">
     <div class="row pt-4">
         <div class="col-4">
@@ -18,8 +20,8 @@
                     <h5 class="card-title ">Estado: </h5>
                     <p class="card-text">
                         @if ($Compra->state)
-                        <span class="badge badge-success">Realizada</span> @elseif(!$Compra->state)
-                        <span class="badge badge-danger">Anulada</span> @endif
+                        <i><p class="alert alert-info">Realizada</p></i> @else
+                        <i><p class="alert alert-danger">Cancelada</p></i> @endif
                     </p>
                 </div>
             </div>
@@ -34,7 +36,7 @@
                             <th scope="col">Nombre Producto</th>
                             <th scope="col">Imagen</th>
                             <th scope="col">Cantidad</th>
-                            <th scope="col">Precios</th>
+                            <th scope="col">Precio</th>
                             <th scope="col">Estado</th>
 
                         </tr>
@@ -44,7 +46,9 @@
                         <tr class="text-center">
                             <td>{{ $value->name }}</td>
                             <td>
-                                <img src="{{ $value->img }}" style="width: 2rem; height: 2rem;" alt="">
+                                @if($value->img != '')
+                                <img src="{{ $value->img }}" style="width: 2rem; height: 2rem;" alt=""> @else
+                                <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="sin imagen"></i> @endif
                             </td>
                             <td>{{ $value->amount }}</td>
                             <td>{{ $value->price }}</td>
@@ -74,7 +78,7 @@
     <div class="col-12">
         <div class="row mt-3">
             <div class="col d-flex justify-content-center">
-                <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
             </div>
         </div>
     </div>
@@ -89,4 +93,4 @@
     document.getElementById('text').innerText = cortar
 </script>
 
-@endsection @endsection
+@endsection
