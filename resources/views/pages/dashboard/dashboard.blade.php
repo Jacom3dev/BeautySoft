@@ -156,11 +156,11 @@ const chart3 = Highcharts.chart('container', {
     title: {
       text: ''
     },
-    /* exporting: {
+    exporting: {
       buttons: {
         contextButton: null
       }
-    }, */
+    },
     xAxis: {
       categories: ['Ene','Feb', 'Mar','Abr','May','Jun','Jul','Agt','Sep','Oct','Nov','Dic'],
     },
