@@ -125,7 +125,7 @@ function limpiar() {
   $(".form-control").val("");
   $("#Cantidad").val(1);
   $(".sr").remove();
-  $(".pr").remove();
+  
   $("#estado").remove();
   $("#select").show();
   $("#cambio-btn").show();
@@ -134,6 +134,7 @@ function limpiar() {
 }
 
 function CrearCita() {
+  
   var form =  new FormData(document.getElementById("formulario-Crear"));
   let fecha = $("#fechaC").val();
   let hora = $("#horaC").val();
@@ -173,7 +174,7 @@ function CrearCita() {
           showConfirmButton: false,
           timer: 1500
         })
-       
+        limpiar();
         
       }
    })

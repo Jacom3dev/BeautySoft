@@ -88,7 +88,7 @@ class ServiciosController extends Controller
                    
                     
                     if ($productos->amount>=$cantidad[$key]) {
-                        $precioP=$productos->price;
+                        $precioP=$productos->price_sale;
                         
                         $detalle=detalle_productos_servicios::create([
                             "servis_id"=>$servicio->id,

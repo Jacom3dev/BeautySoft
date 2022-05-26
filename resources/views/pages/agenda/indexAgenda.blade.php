@@ -304,7 +304,7 @@ input:valid+span:after {
            
             if (precio > 0) {
                 $('#tbalaServicio').append(`
-                    <tr id="tr-${id}" >
+                    <tr id="tr-${id}"  class="sr">
                         <td>
                         <input type="hidden" name="servicios_id[]" value="${id}"/>
                         ${servicio}</td>
