@@ -69,7 +69,7 @@
                                         value="1">
 
                                     @error('Cantidad')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                        <small class="">{{ $message }}</small>
                                     @enderror
                                 </div>
 

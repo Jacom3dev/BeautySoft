@@ -196,14 +196,14 @@ input:valid+span:after {
                 </div>
                 <div class="row py-4 px-3 justify-content-end">
                     <div class="col-6 col-md-4 col-lg-3">
-                        {{-- <button type="submit"  class="btn btn-success">crear</button> --}}
+                      
 
                         <button type="button" onclick="CrearCita()" class="btn principal-color text-white w-100"
-                            id="btnCrear">Agendar</button>
+                            id="btnCrear" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear Cita">Agendar</button>
                     </div>
                     <div class="col-6 col-md-4 col-lg-2">
                         <a  onclick="limpiar()" class="btn btn-outline-dark btn-block"
-                            data-bs-dismiss="modal">Volver
+                            data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver
                         </a>
                     </div>
 

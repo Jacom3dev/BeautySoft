@@ -104,12 +104,12 @@ class AgendaController extends Controller
         ->whereBetween('hourF', [$horaI,$horaF])
         
         ->first();
-
+  
         if ($cita == null) {
             return true ;
         }else{
             
-            if ($cita->estado == 1) {
+            if ($cita->state_id == 1) {
                 return true ;
             }else{
                 return false;
