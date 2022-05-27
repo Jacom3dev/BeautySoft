@@ -13,17 +13,13 @@
                     <div class="col-12 col-sm-6 mt-2">
                         <input  type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" value="{{old('name')}}" placeholder="Nombre*">
                         @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <small>{{ $message }}</small>
-                            </span>
+                         <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
                         <input type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" value="{{old('cell')}}" placeholder="Celular">
                         @error('cell')
-                            <span class="invalid-feedback" role="alert">
-                                <small>{{ $message }}</small>
-                            </span>
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
@@ -32,20 +28,16 @@
                     <div class="col mt-2">
                         <input  type="email"class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" value="{{old('email')}}" placeholder="Correo*">
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <small>{{ $message }}</small>
-                            </span>
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input  type="text" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
+                        <input  type="password" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
                         @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <small>{{ $message }}</small>
-                            </span>
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     
@@ -56,6 +48,9 @@
                                 <option value="{{$rol->id}}">{{$rol->name}}</option>
                             @endforeach
                         </select>
+                        @error('rol_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
 
@@ -63,9 +58,7 @@
                     <div class="col mt-2">
                         <input id="direction" type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" value="{{old('direction')}}" placeholder="Dirrección" >
                         @error('direction')
-                            <span class="invalid-feedback" role="alert">
-                                <small>{{ $message }}</small>
-                            </span>
+                            <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                 </div>

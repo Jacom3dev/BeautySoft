@@ -60,16 +60,13 @@ class ProductosController extends Controller
                 $url=null;
             }
             
-          
             productos::create([
                 "name"=>$input["name"],
                 "img"=>$url,
                 "amount"=>$input["amount"],
-                "price_buy"=>$input["price_buy"],
+                "price_buys"=>$input["price_buy"],
                 "price_sale"=>$input["price_sale"],
-                "state"=>1,
-                
-                
+                "state"=>1,  
             ]);
            
            
@@ -135,7 +132,6 @@ class ProductosController extends Controller
 
         
         
-        
             try{
                 $producto=productos::find($input["id"]);
                 if (count($input) != 5){
@@ -161,8 +157,8 @@ class ProductosController extends Controller
                 $producto->update([
                     "name"=>$input["name"],
                     "img"=>$url,
-                    "price_buy"=>$input["price"],
-                    "price_sale"=>$input["price"],
+                    "price_buy"=>$input["price_buy"],
+                    "price_sale"=>$input["price_sale"],
                     
                 ]);
                 

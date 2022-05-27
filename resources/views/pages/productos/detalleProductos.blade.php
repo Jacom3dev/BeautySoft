@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-10 col-md-8 col-lg-7 mt-4 p-2 px-4 bg-white rounded">
+    <div class="col-10 col-md-8 col-lg-7 mt-4 p-2 px-4 bg-white rounded" style="position: relative; top:40px;">
         <h3 class="text-center"> <strong style="color: rgba(2, 93, 113, 1);">Detalle de producto.</strong></h3>
           @if($productos->img != "")
             <img src="{{$productos->img}}" class="card-img-top"  height="200">
@@ -19,7 +19,7 @@
               <h5 class="card-title">Nombre del Producto: </h5><p class="card-text">{{$productos->name}}</p>
             </div>
             <div class="col-12">
-              <h5 class="card-title ">Precio al que se compro : </h5><p class="card-text">{{$productos->price_buy}}</p>
+              <h5 class="card-title ">Precio al que se compro : </h5><p class="card-text">{{$productos->price_buys}}</p>
             </div>
             <div class="col-12">
               <h5 class="card-title ">Precio al que se vendera : </h5><p class="card-text">{{$productos->price_sale}}</p>

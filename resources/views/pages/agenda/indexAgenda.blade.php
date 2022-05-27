@@ -90,7 +90,7 @@ input:valid+span:after {
                                         @enderror
                                     </div>
     
-                                    <div class="col-12 col-lg-4  form-group">
+                                    <div class="col-md-6 form-group">
                                         <input type="time" id="horaC"  min="09:00" max="19:30"class="form-control @error('hora') is-invalid @enderror"
                                             name="hourI">
                                             <span class="validity"></span>
@@ -98,18 +98,10 @@ input:valid+span:after {
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-12 col-lg-4  form-group">
+                                    <div class="col-md-6 form-group">
                                         <input type="number" id="tiempo" class="form-control " placeholder="Duración*">
-    
                                     </div>
-                                    <div class="col-12 col-lg-4 form-group">
-                                        <input type="text" id="direc"
-                                            class="form-control @error('direccion') is-invalid @enderror" name="direction"
-                                            placeholder="Dirección">
-                                        @error('direccion')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                  
                                     <div class="col-md-12 form-group mb-5">
                                         <textarea name="description" id="descri" class="form-control @error('descripcion') is-invalid @enderror "
                                             placeholder="Descripción"></textarea>

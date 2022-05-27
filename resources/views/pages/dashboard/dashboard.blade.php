@@ -95,11 +95,13 @@
                       @csrf
                       <div class="row py-4">
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="date1" required>
+                        <label class="form-label"> Fecha inicial del reporte</label>
+                          <input class="form-control" type="date"  max="{{$date}}" placeholder="Fecha Inicio*"  name="date1" required>
                         </div>
 
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="date2" required>
+                        <label class="form-label"> Fecha final del reporte</label>
+                          <input class="form-control" type="date"   max="{{$date}}"  placeholder="Fecha Fin*" name="date2" required>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -176,15 +178,13 @@ const chart3 = Highcharts.chart('container', {
         type: 'column',
         name: 'Compras',
         color: '#6c757d',
-        /* data: <?php echo json_encode($arrayVentas);?> */
-        data: [14,20,7,12,5,10,30,8,9,20,20,12]
+        data: <?php echo json_encode($arrayCompras);?>
       } ,
       {
         type: 'column',
         name : 'Ventas',
         color: '#17A2B8',
-        /* data: <?php echo json_encode($arrayVentas);?> */
-        data: [10,5,7,12,5,2,7,8,9,10,11,5]
+        data: <?php echo json_encode($arrayVentas);?>
       }
     ],
     legend: {

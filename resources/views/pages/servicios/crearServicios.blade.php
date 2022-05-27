@@ -22,7 +22,9 @@
                                     <input type="text" placeHolder="Nombre*" value="{{old('name')}}"
                                         class="form-control  @error('name') is-invalid @enderror" name="name">
                                     @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                         <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span> 
                                     @enderror
                                 </div>
 
@@ -30,7 +32,9 @@
                                     <input type="number" placeholder="precio mano de obra*" value="{{old('price')}}"
                                         class="form-control @error('price') is-invalid @enderror" name="price">
                                     @error('price')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                         <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span> 
                                     @enderror
                                 </div>
 
@@ -39,7 +43,9 @@
                                     <textarea name="description" placeholder="Descripción" id="descri" 
                                         class="form-control @error('descriptcion') is-invalid @enderror ">{{old('description')}}</textarea>
                                     @error('descriptcion')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                         <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span> 
                                     @enderror
                                 </div>
 
@@ -58,7 +64,9 @@
                                     </select>
 
                                     @error('producto')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                         <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span> 
                                     @enderror
                                 </div>
 
@@ -78,7 +86,9 @@
                                         class="form-control @error('precioP') is-invalid @enderror" name="precioP" readonly>
 
                                     @error('precioP')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                         <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span> 
                                     @enderror
                                 </div>
 
@@ -102,7 +112,9 @@
                                         class="form-control @error('precioP') is-invalid @enderror" name="precioP" readonly>
 
                                     @error('precioP')
-                                        <div class="invalid-feedback">{{ $message }}</div>
+                                         <span class="invalid-feedback" role="alert">
+                                            <small>{{ $message }}</small>
+                                        </span> 
                                     @enderror
                                 </div>
                                 <div class="col-12 form-group table-responsive tbl_scroll">
@@ -126,12 +138,12 @@
 
                     <div class="row pb-3 px-4 justify-content-end">
                         <div class="col-6 col-lg-2">
-                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white">
+                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear ">
                                 Crear
                             </button>
                         </div>
                         <div class="col-3 col-lg-1">
-                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block">Volver</a>
+                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
                         </div>
                     </div>
 
@@ -152,11 +164,6 @@
             $("#precioP").val(precioP);
 
         }
-
-
-
-
-
 
         function agregar_Producto() {
             let producto = $("#producto option:selected").text();
@@ -304,13 +311,7 @@
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'El servico se ha Agregado',
-                    showConfirmButton: false,
-                    timer: 2000
-                })
+               
                 this.submit();
             } else if (
                 result.dismiss === Swal.DismissReason.cancel

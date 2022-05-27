@@ -71,5 +71,17 @@
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
+    {{-- Sweetalert2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('error'))
+    <script>
+       Swal.fire(
+            'Error de login',
+            "{{Session::get("error")}}",
+            'success'
+        )
+    </script>
+    @endif
 </body>
 </html>
