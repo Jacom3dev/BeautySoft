@@ -47,10 +47,10 @@
                                 <div class="chart tab-pane active" id="Exis" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
-                                            <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()" required="required" required>
+                                            <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()">
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
-                                                        <option price="{{ $product->price_buys }}" amount="{{ $product->amount }}"
+                                                        <option price_buys="{{ $product->price_buys }}" price_sale="{{$product->price_sale}}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
                                                         
                                                     @endforeach
@@ -58,11 +58,20 @@
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <input name="amount" type="number" class="form-control " id="amount" placeholder="Cantidad" required="required" required>
+                                            <input name="amount" type="number" class="form-control " id="amount" placeholder="Cantidad">
+                                        </div>
+                                        <div class="col-6 form-group">
+                                            <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_sale">
+                                            @error('price_sale')
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            @enderror
                                         </div>
 
                                         <div class="col-6 form-group">
-                                            <input name="price" type="text" class="form-control" id="price" placeholder="Precio*">
+                                            <input type="number"  placeholder="Precio compra"   value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buys">
+                                            @error('price_buys')
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            @enderror
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end ">
@@ -79,7 +88,7 @@
                                 <div class="chart tab-pane" id="New" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
-                                            <input type="text" placeholder="Nombre*" class="form-control  @error('name') is-invalid @enderror" name="name" id="nombre"> @error('name')
+                                            <input type="text" placeholder="Nombre*" class="form-control  @error('name') is-invalid @enderror" name="name" id="nombre" > @error('name')
                                             <div class="invalid-feedback">{{$message}}</div>
                                             @enderror
                                         </div>
@@ -93,8 +102,16 @@
 
 
                                         <div class="col-6 form-group">
-                                            <input type="number" placeholder="Precio" class="form-control @error('price') is-invalid @enderror" name="price" id="precio"> @error('price')
-                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
+                                            <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_saleNew">
+                                            @error('price_sale')
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-6 form-group">
+                                            <input type="number"  placeholder="Precio compra"   value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buysNew">
+                                            @error('price_buys')
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                                             @enderror
                                         </div>
 
@@ -119,8 +136,8 @@
                                             <tr>
                                                 <th scope="col">Producto</th>
                                                 <th scope="col">Cantidad</th>
-                                                <th scope="col">Precio</th>
-                                                <th scope="col">Precio total</th>
+                                                <th scope="col">Precio Compra</th>
+                                                <th scope="col">Subtotal</th>
                                                 <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
@@ -152,72 +169,166 @@
 
 @section('JS')
 <script>
-    function Agg_Attr() {
-        let price = $("#productos option:selected").attr("price");
-        $("#price").val(price);
-    }
+   
     let p = 0;
+  
     //NUEVOS PRODUCTOS 
+
+    function validar_Np() {
+        let validation = false;
+
+
+
+        if ($("table tbody#tblProductos tr").length > 0) {
+            $("table tbody#tblProductos tr").each(function() {
+                let identity = $("#Id").val();//aki voy yoo
+                if ($(this).find("input.id").val() == $("id").val(identity)) {
+                    validation = true;
+
+                    $(this)
+                        .find("input.cantidad")
+                        .val(
+                            parseInt(
+                                $(this).find("input.cantidad").val()
+                            ) + parseInt($("#cantidad").val())
+                        );
+
+                    let subtotal = parseInt(
+                        $("#cantidad").val() *
+                        parseInt($("#price_buysNew").val())
+                    );
+                    let precio_total = $("#total").val() || 0;
+
+                    $("#total").val(
+                        parseInt(precio_total) + parseInt(subtotal)
+                    );
+
+                    $(this)
+                        .find("td.subt")
+                        .text(
+                            parseInt($(this).find("td.subt").text()) +
+                            parseInt(
+                                parseInt($("#cantidad").val()) *
+                                parseInt($("#price_buysNew").val())
+                            )
+                        );
+                    $(this)
+                        .find("td.cantidad")
+                        .text(
+                            parseInt($(this).find("td.cantidad").text()) +
+                            parseInt($("#cantidad").val())
+                        );
+
+
+                }
+            });
+        }
+
+        return validation;
+    }
+    // creaate new product
     function AgNuevoP() {
         let name = $("#nombre").val();
         let amount = $("#cantidad").val();
-        let price = $("#precio").val();
+        let price_saleNew = $("#price_saleNew").val();
+        let price_buysNew = $("#price_buysNew").val();
+        console.log(price_buysNew);
         let total = $("#total");
-        if (total != '') {
-             
-
-              
-                
-                p++;
-                let idp = p;
-
-                $("#tblProductos").append(`
-                    <tr id="tr-0${idp}">
-                            <input type="hidden" name="idPN[]" value="${idp}" />
-                            <input type="hidden" name="amountsPN[]" value="${amount}"/>
-                            <input type="hidden" name="pricesPN[]" value="${price}" />
-                            <input type="hidden" name="namePN[]" value="${name}" />
-                        <td>
-                        ${name}
-                        </td>
-
-                        <td> 
-                            ${amount}
-                        </td>
-                        <td >
-                            ${price}
-                        </td>
-                        
-
-                        <td>
-                            ${parseInt(price) * parseInt(amount) }
-                        </td>
-
-                        <td>
-                            <button type="button" class="btn btn-danger btn-sm" onclick="DeleteNP(${idp},${parseInt(price) * parseInt(amount)})" data-bs-toggle="tooltip" data-bs-placement="left" title="Eliminar de la lista"><i class="fas fa-trash-alt"></i></button>
-                        
-                        </td>
-                    </tr>                         
-                `);
-
-                let price_t = $("#total").val() || 0;
-                $("#total").val(parseInt(price_t) + parseInt(price) * parseInt(amount));
+        let nameProduct = "";
+        @foreach( $productos as  $value)
             
+            nameProduct ="{{$value->name}}";
+            if (nameProduct == name) {
+               
+               return Swal.fire({
+                               icon: 'warning',
+                               title: '¡Atención!',
+                               text: `El producto ya existe por favor revice o elijalo con la otra opcion.`,
+                           });
+                
+            }else{
+                
+                nameProduct = "";
+            }
+            
+        @endforeach
+      
+        
+        if (price_buysNew != '') {
+            if (amount != '') {
+                          let validation = validar_Np();
+                          if (!validation) {
+                              
+                           p++;
+                           let idp = p;
+           
+                           $("#tblProductos").append(`
+                               <tr id="tr-0${idp}">
+                                       <input type="hidden" name="idPN[]" value="${idp}" class="id"  id="Id"/>
+                                       <input type="hidden" name="amountsPN[]" value="${amount}" class="cantidad"/>
+                                       <input type="hidden" name="price_salePN[]" value="${price_saleNew}" />
+                                       <input type="hidden" name="price_buysPN[]" value="${price_buysNew}" />
+                                       <input type="hidden" name="namePN[]" value="${name}" />
+                                   <td>
+                                   ${name}
+                                   </td>
+           
+                                   <td class="cantidad"> 
+                                       ${amount}
+                                   </td>
+                                   <td> 
+                                       ${price_buysNew}
+                                   </td>
+                                   
+                                   <td class="subt">
+                                       ${parseInt(price_buysNew) * parseInt(amount) }
+                                   </td>
+           
+                                   <td>
+                                       <button type="button" class="btn btn-danger btn-sm" onclick="DeleteNP(${idp},${parseInt(price_buysNew) * parseInt(amount)})" data-bs-toggle="tooltip" data-bs-placement="left" title="Eliminar de la lista"><i class="fas fa-trash-alt"></i></button>
+                                   
+                                   </td>
+                               </tr>                         
+                           `);
+           
+                           let price_t = $("#total").val() || 0;
+                           $("#total").val(parseInt(price_t) + parseInt(price_buysNew) * parseInt(amount));
+                          }else{
+                              console.log();
+                          }
+                       
+                       
+                   }else{
+                       Swal.fire({
+                               icon: 'warning',
+                               title: '¡Atención!',
+                               text: `Debe agregar almenos un producto a la compra`,
+                           });
+           
+                   }
+                   
             
         }else{
             Swal.fire({
-                    icon: 'warning',
-                    title: '¡Atención!',
-                    text: `Debe agregar almenos un producto a la compra`,
-                });
-
+                               icon: 'warning',
+                               title: '¡Atención!',
+                               text: `Debe agregar el precio del producto a la compra`,
+                           });
         }
-        
            
 
     }
 
     //PRODUCTOS YA EXISTENTES
+    function Agg_Attr() {
+        let price_sale = $("#productos option:selected").attr("price_sale");
+        $("#price_sale").val(price_sale);
+
+        let price_buys = $("#productos option:selected").attr("price_buys");
+        $("#price_buys").val(price_buys);
+        
+    }
+
     function Agg() {
 
 
@@ -226,7 +337,9 @@
         let name = $("#productos option:selected").text();
         // let name = $("#name").val();
         let amount = $("#amount").val();
-        let price = $("#price").val();
+        let price_sale = $("#price_sale").val();
+        let price_buys = $("#price_buys").val();
+        console.log(price_buys);
 
         if (id > 0) {
 
@@ -241,7 +354,8 @@
                                                     <input type="hidden" name="ids[]" value="${id}" class="id" />
                                                     
                                                     <input type="hidden" name="amounts[]" value="${amount}"class ="amount"/>
-                                                    <input type="hidden" name="prices[]" value="${price}" /> 
+                                                    <input type="hidden" name="prices_sale[]" value="${price_sale}" />
+                                                    <input type="hidden" name="prices_buy[]" value="${price_buys}" /> 
                                                 <td>
                                                 ${name}
                                                 </td>
@@ -249,13 +363,13 @@
                                                 <td class="cantidad_p">
                                                     ${amount}
                                                 </td>
-                                                <td >
-                                                    ${price}
-                                                </td>
                                                 
+                                                <td>
+                                                ${price_buys}
+                                                </td>
 
                                                 <td class="sub_p">
-                                                    ${parseInt(price) * parseInt(amount) }
+                                                    ${parseInt(price_buys) * parseInt(amount) }
                                                 </td>
 
                                                 <td>
@@ -268,7 +382,7 @@
 
 
                         let total = $("#total").val() || 0;
-                        $("#total").val(parseInt(total) + parseInt(price) * parseInt(amount));
+                        $("#total").val(parseInt(total) + parseInt(price_buys) * parseInt(amount));
 
                     }
 
@@ -300,7 +414,7 @@
 
                     let subtotal = parseInt(
                         $("#amount").val() *
-                        parseInt($("#price").val())
+                        parseInt($("#price_buys").val())
                     );
                     let precio_total = $("#total").val() || 0;
 
@@ -314,7 +428,7 @@
                             parseInt($(this).find("td.sub_p").text()) +
                             parseInt(
                                 parseInt($("#amount").val()) *
-                                parseInt($("#price").val())
+                                parseInt($("#price_buys").val())
                             )
                         );
                     $(this)

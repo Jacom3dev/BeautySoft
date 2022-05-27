@@ -34,14 +34,14 @@
                     </div>
 
                     <div class="col-md-6 form-group">
-                        <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price') is-invalid @enderror" name="price_sale">
-                        @error('price')
+                        <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale">
+                        @error('price_sale')
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror
                     </div>
                     <div class="col-md-6 form-group">
-                        <input type="number"  placeholder="Precio compra"   value="{{old('price_buy')}}" class="form-control @error('price') is-invalid @enderror" name="price_buy">
-                        @error('price')
+                        <input type="number"  placeholder="Precio compra"   value="{{old('price_buy')}}" class="form-control @error('price_buy') is-invalid @enderror" name="price_buy">
+                        @error('price_buy')
                         <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
                         @enderror
                     </div>

@@ -100,7 +100,7 @@ class ComprasController extends Controller
                             "name"=>$input["namePN"][$key],
                             "img"=>null,
                             "amount"=>$input["amountsPN"][$key],
-                            "price_buy"=>$input["pricesPN"][$key],
+                            "price_buys"=>$input["pricesPN"][$key],
                             "price_sale"=>$input["pricesPN"][$key],
                             "state"=>1, 
                         ]);
