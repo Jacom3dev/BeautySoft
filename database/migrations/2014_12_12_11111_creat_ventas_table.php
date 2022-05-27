@@ -19,8 +19,8 @@ class CreatVentasTable extends Migration
             $table->foreign('client_id')->references('id')->on('clientes');
             $table->unsignedBigInteger('user_id');  
             $table->foreign('user_id')->references('id')->on('users');
-            $table->decimal('price',10,2);
-            $table->float('state',8,2);
+            $table->float('price',10,2);
+            $table->boolean('state');
             $table->timestamps();
         });
     }

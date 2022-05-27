@@ -109,7 +109,7 @@ class AgendaController extends Controller
             return true ;
         }else{
             
-            if ($cita->estado_id == 1) {
+            if ($cita->state_id == 1) {
                 return true ;
             }else{
                 return false;
