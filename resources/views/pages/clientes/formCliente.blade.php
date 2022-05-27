@@ -9,24 +9,24 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="{{isset($cliente)?$cliente->name:old('name')}}"> @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <small>{{ $message }}</small>
-                        </span> @enderror
+                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="{{isset($cliente)?$cliente->name:old('name')}}"> 
+                        @error('name')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" placeholder="Correo" value="{{isset($cliente)?$cliente->email:old('email')}}"> @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <small>{{ $message }}</small>
-                        </span> @enderror
+                        <input type="text" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" placeholder="Correo" value="{{isset($cliente)?$cliente->email:old('email')}}">
+                        @error('email')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="{{isset($cliente)?$cliente->cell:old('cell')}}"> @error('cell')
-                        <span class="invalid-feedback" role="alert">
-                            <small>{{ $message }}</small>
-                        </span> @enderror
+                        <input type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
+                        @error('cell')
+                            <small class="text-danger">{{ $message }}</small> 
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
@@ -36,24 +36,24 @@
                             @foreach ($documentos as $documento)
                             <option value="{{$documento->id}}">{{$documento->name}}</option>
                             @endforeach
-                        </select> @error('document_id')
-                        <span class="invalid-feedback" role="alert">
-                            <small>{{ $message }}</small>
-                        </span> @enderror
+                        </select>
+                        @error('document_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="number" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="{{isset($cliente)?$cliente->document:old('document')}}"> @error('document')
-                        <span class="invalid-feedback" role="alert">
-                            <small>{{ $message }}</small>
-                        </span> @enderror
+                        <input type="number" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="{{isset($cliente)?$cliente->document:old('document')}}">
+                        @error('document')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="text" class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="{{isset($cliente)?$cliente->direction:old('direction')}}"> @error('direction')
-                        <span class="invalid-feedback" role="alert">
-                            <small>{{ $message }}</small>
-                        </span> @enderror
+                        <input type="text" class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
+                        @error('direction')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
                 </div>
                 <div class="row py-4 justify-content-end">

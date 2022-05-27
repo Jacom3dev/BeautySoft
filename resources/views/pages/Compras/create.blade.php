@@ -52,8 +52,8 @@
                                                     @foreach ($productos as $Key => $product)
                                                         <option price="{{ $product->price_buys }}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
-                                                            @endif
-                                                        
+                                                            
+                                            
                                                     @endforeach
                                                 </select>
                                         </div>
