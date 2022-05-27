@@ -238,7 +238,7 @@
                                                 @endforeach
                                             </select>
                                             @error('document_id')
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="text-danger" role="alert">
                                                 <small>{{ $message }}</small>
                                             </span>
                                             @enderror
@@ -258,8 +258,8 @@
 
                                     <div class="row py-4 justify-content-end">
                                         <div class="col-6 col-sm-6 col-lg-4">
-                                            <button type="submit" class="btn principal-color btn-block text-white">
-                                                {{isset($cliente)?'Editar':'Registrar'}}
+                                            <button type="button" class="btn principal-color btn-block text-white" id="clienteNuevo">
+                                                Registrar
                                             </button>
                                         </div>
                                         <div class="col-6 col-sm-4 col-lg-2">
@@ -305,6 +305,31 @@
 
             $("#canti").val(cant);
         }
+
+            $("#form-cliente").validate({
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    document_id: {
+                        required: true,
+                    },
+                    document: {
+                        required: true,
+                    }
+                }
+
+            });
+        $("#clienteNuevo").click(() =>{
+            if ($("#form-cliente").valid() == false) {
+                return;
+            }else{
+                $("#form-cliente").submit();
+            }
+
+        }
+        )
+
 
         function agregar_producto() {
             let producto_id = $("#producto option:selected").val();

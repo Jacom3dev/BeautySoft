@@ -37,7 +37,7 @@
                               <div class="d-flex justify-content-around flex-wrap">
                                 @if ($rol->id !== 1)
                                     @if ($rol->state)
-                                        <a href="{{route("roles.edit",$rol->id)}}"><i class="fas fa-pencil-ruler text-warning"></i></a>
+                                        <a href="{{route("roles.edit",$rol->id)}}"><i class="far fa-edit text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"></i></a>
                                     @endif
                                     <a href="{{route("roles.changeState",['id'=>$rol->id,'state'=>$rol->state])}}">
                                         @if ($rol->state)

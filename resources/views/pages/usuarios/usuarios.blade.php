@@ -37,7 +37,7 @@
                               <div class="d-flex justify-content-between flex-wrap" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle">
                                 @if ($user->rol_id != 1 && $user->rol_state == 1)
                                     @if ($user->state)    
-                                        <a href="{{route("usuarios.edit",$user->id)}}"><i class="far fa-edit text-warning"></i></a>
+                                        <a href="{{route("usuarios.edit",$user->id)}}"><i class="far fa-edit text-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"></i></a>
                                     @endif
                                     <a href="{{route("usuarios.changeState",['id'=>$user->id,'state'=>$user->state])}}">
                                         @if ($user->state)

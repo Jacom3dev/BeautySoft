@@ -62,7 +62,13 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        $cliente = Clientes::find($id);
+        // $cliente = Clientes::find($id);
+        $cliente = Clientes::select('clientes.*','tipo_documentos.name as document_type')
+        ->join('tipo_documentos','clientes.document_id','=','tipo_documentos.id')
+        ->where('clientes.id', $id)
+        ->first();
+
+
         if ($cliente == null) {
             alert()->error('Cliente','Cliente no encontrado');
             return  Redirect()->route('clientes.index');

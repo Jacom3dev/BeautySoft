@@ -15,17 +15,43 @@
             <a href="{{route('productos.edit',$productos->id)}}" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar imagen" class="nav-link btn"><h5 class="alert alert-secondary"><small>FALTA AGREGAR UNA IMAGEN. </small></h5></a>
           @endif
           <div class="row">
-            <div class="col-12">
-              <h5 class="card-title">Nombre del Producto: </h5><p class="card-text">{{$productos->name}}</p>
+            <div class="col-12 col-md-6">
+              <h5 class="card-title"> <b>Nombre del Producto:</b>  </h5>
+              <p class="card-text">
+                {{$productos->name}}
+              </p>
             </div>
-            <div class="col-12">
-              <h5 class="card-title ">Precio al que se compro : </h5><p class="card-text">{{$productos->price_buy}}</p>
+            <div class="col-12 col-md-6">
+              <h5 class="card-title "> <b>Precio al que se compro:</b>  </h5>
+              <p class="card-text">
+                @if ($productos->price_buys != 0)
+                  {{$productos->price_buys}}
+                @else
+                    sin Precio Compra
+                @endif
+              </p>
             </div>
-            <div class="col-12">
-              <h5 class="card-title ">Precio al que se vendera : </h5><p class="card-text">{{$productos->price_sale}}</p>
+            <div class="col-12 col-md-6">
+              <h5 class="card-title "> <b>Precio al que se vendera:</b>  </h5>
+              <p class="card-text">
+                {{$productos->price_sale}}
+              </p>
             </div>
-            <div class="col-12">
-              <h5 class="card-title ">Cantidad: </h5><p class="card-text">{{$productos->amount}}</p>
+            <div class="col-12 col-md-6">
+              <h5 class="card-title "> <b>Cantidad:</b>  </h5>
+              <p class="card-text">
+                {{$productos->amount}}
+              </p>
+            </div>
+            <div class="col-12 pt-3">
+                <h5 class="card-title"> <b>Estado:</b> </h5>
+                <p class="card-text"> 
+                    @if ($productos->state) 
+                        <i><p class="alert alert-info">Activo</p></i> 
+                    @else
+                        <i><p class="alert alert-danger">Deshabilitado</p></i> 
+                    @endif 
+                </p>
             </div>
           </div>
           <div class="row justify-content-end mb-3">
