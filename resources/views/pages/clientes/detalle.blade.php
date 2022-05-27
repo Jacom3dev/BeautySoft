@@ -4,51 +4,89 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center pt-4">
-            <div class="col-4">
-                <div class="card" style="width: 20rem;">
-                    <div class="card-header">Detalle de Cliente</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Nombre: </h5><p class="card-text">{{$cliente->name}}</p>
-                        <h5 class="card-title ">EMail: </h5><p class="card-text">
+            <div class="col-10 col-md-8 col-lg-7 p-2 px-4 bg-white rounded">
+                <div class="card-header">
+                    <h3 class="text-center"> 
+                        <strong style="color: rgba(2, 93, 113, 1);">
+                            Detalle de Cliente
+                        </strong>
+                    </h3>
+                </div>
+                
+                <div class="card-body row py-3">
+
+                    <div class="col-12 col-md-6 py-3">
+                        <h5 class="card-title"> <b>Nombre:</b> </h5>
+                        <p class="card-text">{{$cliente->name}}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6 py-3">
+                        <h5 class="card-title "> <b>EMail:</b> </h5>
+                        <p class="card-text">
                             @if (isset($cliente->email))
                             {{$cliente->email}}
                             @else
                             Sin Correo.
-                            @endif</p>
-                        <h5 class="card-title ">Tipo De Documento: </h5><p class="card-text">
+                            @endif
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 py-3">
+                        <h5 class="card-title "> <b>Tipo De Documento:</b> </h5>
+                        <p class="card-text">
                             @if ($cliente->document_id ==1)
                             C.C
-                        @else
-                            T.I
-                        @endif</p>
-                        <h5 class="card-title ">Numero Documento: </h5><p class="card-text">{{$cliente->document}}</p>
-                        <h5 class="card-title ">Celuala: </h5><p class="card-text">
+                            @else
+                                T.I
+                            @endif
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 py-3">
+                        <h5 class="card-title "> <b>Numero Documento:</b> </h5>
+                        <p class="card-text">
+                            {{$cliente->document}}
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 py-3">
+                        <h5 class="card-title "> <b>Celuala:</b> </h5>
+                        <p class="card-text">
                             @if (isset($cliente->cell))
                             {{$cliente->cell}}
                             @else
                                 Sin celular
                             @endif
-                            </p>
-                        <h5 class="card-title ">Dirección: </h5><p class="card-text">
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6 py-3">
+                        <h5 class="card-title "> <b>Dirección:</b> </h5>
+                        <p class="card-text">
                             @if (isset($cliente->direction))
                             {{$cliente->direction}}
                             @else
                                 Sin dirección.    
                             @endif
-                            </p>
-                        <h5 class="card-title">Estado:</h5>
-                        <p class="card-text"> 
-                            @if ($cliente->state)
-                                <td><span class="badge badge-primary">Activo</span></td>  
-                            @else
-                                <td><span class="badge badge-danger">Deshabilitado</span></td>
-                            @endif </p>
+                        </p>
                     </div>
-                    <div class="card-foother">
-                        <div class="row my-3 justify-content-end">
-                            <div class="col d-flex justify-content-center">
-                                <a href="{{route('clientes.index')}}" class="btn btn-outline-dark" ">Volver</a>
-                            </div>
+
+                    <div class="col-12 pt-3">
+                        <h5 class="card-title"> <b>Estado:</b> </h5>
+                        <p class="card-text"> 
+                            @if ($cliente->state) 
+                                <i><p class="alert alert-info">Activo</p></i> 
+                            @else
+                                <i><p class="alert alert-danger">Deshabilitado</p></i> 
+                            @endif 
+                        </p>
+                    </div>
+
+                </div>
+                <div class="card-foother">
+                    <div class="row my-2 justify-content-end">
+                        <div class="col d-flex justify-content-center">
+                            <a href="{{route('clientes.index')}}" class="btn btn-outline-dark" ">Volver</a>
                         </div>
                     </div>
                 </div>

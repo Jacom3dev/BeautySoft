@@ -59,9 +59,15 @@
 
                 </div>
 
+<<<<<<< HEAD
                 <div class="row py-4 justify-content-end">
                     <div class="col-6 col-sm-6 col-lg-4">
                         <button type="submit" onclick="crear()" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear">
+=======
+
+                <div class="col-6 col-sm-6 col-lg-4">
+                        <button type="submit" class="btn principal-color btn-block text-white">
+>>>>>>> edabc99e92c1bae875ccf383895a6d3611eff2cb
                             Crear   
                         </button>
                     </div>
