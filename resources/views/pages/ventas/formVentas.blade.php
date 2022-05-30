@@ -523,7 +523,7 @@
     }
 
     function eliminar_servicio(id, price) {
-        $("#tr-s-" + id).remove();
+        $("#tr-s    -" + id).remove();
         let price_t = $("#precio_total").val() || 0;
         $("#precio_total").val(parseInt(price_t) - price);
         $("#precio_total_dos b r").text( $("#precio_total").val());
