@@ -2,11 +2,12 @@
 @extends('layouts.app')
 
 @section('title', 'Compras')
+
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col mt-3">
-           <a href="{{route('compras.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar compra">
+           <a href="{{route('compras.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar Compra">
                 <i class="fas fa-cart-plus"></i>
                 Crear Compra
             </a>
@@ -18,7 +19,7 @@
                 <table class="table table-striped table-bordered nowrap" style="width:100%" id="tabla">
                     <thead class="text-center">
                         <tr>
-                            <th>usuario</th>
+                            <th>Usuario</th>
                             <th>Proveedor</th>
                             <th>Precio</th>
                             <th>Fecha de registro</th>
@@ -63,7 +64,7 @@
                 <table class="table table-striped table-bordered nowrap" style="width:100%" id="tabla">
                     <thead>
                         <tr>
-                            <th>usuario</th>
+                            <th>Usuario</th>
                             <th>Proveedor</th>
                             <th>Precio</th>
                             <th>Fecha de registro</th>
@@ -93,10 +94,11 @@
                             </td>
                             <td class="d-flex justify-content-around">
                             @if($value->state)
-                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"><i class="fas fa-times-circle text-danger"></i></a>
-                                
+                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Cancelar"><i class="fas fa-times-circle text-danger"></i></a>
+                                @elseif(!$value->state)
+
                                 @endif
-                                    <a href="{{route('compras.show', $value->id)}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle"><i class="fas fa-info-circle text-primary"></i></a>
+                                    <a href="{{route('compras.show', $value->id)}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle"><i class="fas fa-info-circle text-primary"></i></a>
 
                             </td>
                         </tr>

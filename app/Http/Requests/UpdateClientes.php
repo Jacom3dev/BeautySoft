@@ -29,7 +29,7 @@ class UpdateClientes extends FormRequest
             'cell'=>['nullable','min:9','max:13'],
             'direction'=>['nullable','max:30'],
             'document_id' => ['required'],
-            'document' => ['required','min:9','max:13','unique:clientes'],
+            'document' => ['required','min:9','max:13'],
         ];
     }
 

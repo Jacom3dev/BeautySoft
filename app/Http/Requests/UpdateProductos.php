@@ -26,7 +26,8 @@ class UpdateProductos extends FormRequest
         return [
             'name' => ['required', 'string','min:2' ,'max:100'],
             'img' => ['nullable', 'image'],
-            'price'=>['required','min:3','numeric'],
+            'price_sale'=>['required','min:3','numeric'],
+            'price_buy'=>['nullable','min:3','numeric'],
            
             
         ];
@@ -36,7 +37,8 @@ class UpdateProductos extends FormRequest
         return [
             'name' => 'nombre',
             'img' => 'img',
-            'price' => 'precio',
+            'price_sale' => 'precio venta',
+            'price_buy' => 'precio compra',
             
             
         ];

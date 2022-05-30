@@ -2,6 +2,7 @@
 
 @section('title', 'Existencias')
 
+
 @section('content')
 
 <div class="container">
@@ -46,7 +47,8 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item bg-dark"> <b> Cantidad:</b> {{$value->amount}}</li>
-                                <li class="list-group-item"> <b> Precio: </b>{{$value->price}}</li>
+                                <li class="list-group-item"> <b> Precio Compra: </b>{{$value->price_buys}}</li>
+                                <li class="list-group-item"> <b> Precio Venta: </b>{{$value->price_sale}}</li>
                             </ul>
                             <div class="card-body text-center">
                                 <!-- <a href="{{route('compras.create')}}" class="btn principal-color text-white">Comprar Producto</a> -->
@@ -73,7 +75,8 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><b> Cantidad:</b> {{$value->amount}}</li>
-                                <li class="list-group-item"><b> Precio: </b> {{$value->price}}</li>
+                                <li class="list-group-item"> <b> Precio Compra: </b>{{$value->price_buys}}</li>
+                                <li class="list-group-item"> <b> Precio Venta: </b>{{$value->price_sale}}</li>
                             </ul>
                             <div class="card-body text-center">
                                 <a href="{{route('compras.create')}}" class="btn principal-color text-white">Comprar Producto</a>

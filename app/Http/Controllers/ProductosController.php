@@ -48,32 +48,25 @@ class ProductosController extends Controller
         $input=$request->all();
       
       
-        
         try{
         
        
-        $request->validate([        
-        'name'=>'required|unique:productos,name|min:3|string',
-        'price'=>'required|min:0',
-        ]);
-        // try{
+   
             
-            if (count($input) != 4) {
+            if (count($input) != 5) {
                 $img = $request->file('img')->store('public/img');
                 $url = Storage::url($img);
             }else {
                 $url=null;
             }
             
-          
             productos::create([
                 "name"=>$input["name"],
                 "img"=>$url,
                 "amount"=>$input["amount"],
-                "price"=>$input["price"],
-                "state"=>1,
-                
-                
+                "price_buys"=>$input["price_buy"],
+                "price_sale"=>$input["price_sale"],
+                "state"=>1,  
             ]);
            
            
@@ -139,7 +132,6 @@ class ProductosController extends Controller
 
         
         
-        
             try{
                 $producto=productos::find($input["id"]);
                 if (count($input) != 5){
@@ -165,7 +157,8 @@ class ProductosController extends Controller
                 $producto->update([
                     "name"=>$input["name"],
                     "img"=>$url,
-                    "price"=>$input["price"],
+                    "price_buy"=>$input["price_buy"],
+                    "price_sale"=>$input["price_sale"],
                     
                 ]);
                 

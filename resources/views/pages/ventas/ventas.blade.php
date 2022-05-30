@@ -47,7 +47,7 @@
                                                 @endif
                                                 @endforeach
                                     </td> -->
-                                    <td>{{ $value->price }}</td>
+                                    <td>&#36;{{number_format( $value->price) }}</td>
                                     <td>{{ $value->created_at }}</td>
                                     <td class="text-center">
                                         @if ($value->state)
@@ -60,7 +60,7 @@
                                         @if (Auth::user()->rol_id == 1)
                                             @if ($value->state)
                                                 <a href="/ventas/{{ $value->id }}/{{ $value->state }}"
-                                                    class=""><i class="fas fa-times-circle text-danger"></i></a>
+                                                    class=""><i class="fas fa-times-circle text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Anular"></i></a>
                                             @elseif(!$value->state)
                                             
                                             @endif
@@ -68,7 +68,7 @@
 
                                        
                                         <a href="{{ route('ventas.show', $value->id) }}" class=""><i
-                                                class="fas fa-info-circle text-primary"></i></a>
+                                                class="fas fa-info-circle text-primary" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver detalle"></i></a>
 
                                     </td>
                                 </tr>
