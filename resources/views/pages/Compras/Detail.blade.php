@@ -1,22 +1,22 @@
 @extends('layouts.app') 
-@section('tittle') Compras
+@section('title', 'Compras') 
 @section('content')
 <div class="container">
     <div class="row pt-4">
+            <div class="col-12 text-center py-2">
+                <h3> <strong style="color: rgba(2, 93, 113, 1);">Detalle de la Compra.</strong></h3>
+            </div>
         <div class="col-4">
             <div class="card" style="width: 16rem;">
-                <div class="card-header">
-                    <h3 class="card-title text-secondary">Detalle de compra</h3>
-                </div>
                 <div class="card-body">
                     <h5 class="card-title">Creado por: </h5>
                     <p class="card-text">{{$Compra->usuario->name }}</p>
                     <h5 class="card-title ">Nombre Proveedor: </h5>
                     <p class="card-text">{{ $Compra->prov->supplier }}</p>
                     <h5 class="card-title ">Precio: </h5>
-                    <p class="card-text">{{ $Compra->price }}</p>
+                    <p class="card-text">&#36;{{ number_format($Compra->price) }}</p>
                     <h5 class="card-title ">Fecha: </h5>
-                    <p class="card-text">{{ $Compra->created_at }}</p>
+                    <p class="card-text">{{ $Compra->created_at->format('D d M Y h:i A') }}</p>
                     <h5 class="card-title ">Estado: </h5>
                     <p class="card-text">
                         @if ($Compra->state)
@@ -51,7 +51,7 @@
                                 <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="sin imagen"></i> @endif
                             </td>
                             <td>{{ $value->amount }}</td>
-                            <td>{{ $value->price }}</td>
+                            <td>&#36;{{number_format( $value->price) }}</td>
                             <td class="text-center">
 
                                 @if ($value->state == 1)

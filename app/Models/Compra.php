@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\DatesTraslator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Compra extends Model
 {
+    use DatesTraslator;
+
     public $table = 'compras';
 
     protected $primaryKey = 'id';

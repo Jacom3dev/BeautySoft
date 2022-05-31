@@ -21,25 +21,24 @@
                 {{$productos->name}}
               </p>
             </div>
-<<<<<<< HEAD
-            <div class="col-12">
-              <h5 class="card-title ">Precio al que se compro : </h5><p class="card-text">{{$productos->price_buys}}</p>
-=======
             <div class="col-12 col-md-6">
               <h5 class="card-title "> <b>Precio al que se compro:</b>  </h5>
               <p class="card-text">
                 @if ($productos->price_buys != 0)
-                  {{$productos->price_buys}}
+                &#36;{{number_format($productos->price_buys)}}
                 @else
                     sin Precio Compra
                 @endif
               </p>
->>>>>>> edabc99e92c1bae875ccf383895a6d3611eff2cb
             </div>
             <div class="col-12 col-md-6">
               <h5 class="card-title "> <b>Precio al que se vendera:</b>  </h5>
               <p class="card-text">
-                {{$productos->price_sale}}
+                @if ($productos->price_sale != 0)
+                &#36;{{number_format($productos->price_sale)}}
+                @else
+                    sin Precio Venta
+                @endif
               </p>
             </div>
             <div class="col-12 col-md-6">
@@ -59,8 +58,8 @@
                 </p>
             </div>
           </div>
-          <div class="row justify-content-end mb-3">
-            <div class="col-md-3" >
+          <div class="row justify-content-center mb-3">
+            <div class="col-md-2" >
               <a class="btn btn-outline-dark btn-block" href="/productos"  data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
             </div>
           </div> 

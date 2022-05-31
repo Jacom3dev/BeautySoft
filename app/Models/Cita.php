@@ -2,11 +2,15 @@
 
 namespace App\models;
 
+use App\DatesTraslator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
+    
+    use DatesTraslator;
+
     public $tabla="citas";
     
     protected $primaryKey = 'id';

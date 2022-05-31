@@ -82,6 +82,7 @@ input:valid+span:after {
                                         @enderror
     
                                     </div>
+
                                     <div class="col-md-6 form-group">
                                         <input type="date" id="fechaC" class="form-control @error('fecha') is-invalid @enderror"
                                             name="date" readonly>
@@ -91,15 +92,16 @@ input:valid+span:after {
                                     </div>
     
                                     <div class="col-md-6 form-group">
-                                        <input type="time" id="horaC"  min="09:00" max="19:30"class="form-control @error('hora') is-invalid @enderror"
+                                        <input type="time" id="horaC"  min="08:00" max="19:30"class="form-control @error('hora') is-invalid @enderror"
                                             name="hourI">
                                             <span class="validity"></span>
                                         @error('hora')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+
                                     <div class="col-md-6 form-group">
-                                        <input type="number" id="tiempo" class="form-control " placeholder="Duración*">
+                                        <input type="number" name="" id="tiempo" style="width: 100%;" class="form-control " placeholder="Duración*">
                                     </div>
                                   
                                     <div class="col-md-12 form-group mb-5">
