@@ -22,7 +22,7 @@ class CitaEstadoSeeder extends Seeder
         'name' => 'pendiente',
         ]);
         DB::table('estado_cita')->insert([
-            'name' => 'en ejecucion',
+            'name' => 'en ejecucion',   
             ]);
     }
 }
