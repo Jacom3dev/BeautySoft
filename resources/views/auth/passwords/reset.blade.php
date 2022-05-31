@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"  crossorigin="anonymous">
     <link rel="stylesheet" href="{{url('/')}}/css/login.css">
-    <title>Login</title>
+    <title>Cambiar contraseña</title>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="container">

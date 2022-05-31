@@ -69,7 +69,12 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user  = User::select("users.*","roles.name as rol_name","roles.state as rol_state")
+        ->join('roles','users.rol_id',"=","roles.id")
+        ->where('users.id', $id)
+        ->first();
+
+
         if ($user == null) {
             alert()->error('Usuario','Usuario no encontrado');
             return  Redirect()->route('usuarios.index');

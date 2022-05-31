@@ -68,13 +68,13 @@ class ServiciosController extends Controller
         try{
             DB::beginTransaction();
             
-            
-            if (count($input) == 8) {
+           
+            if (count($input) >= 8) {
                
                 $producto_id= $input["productos_id"];
                 
-                $cantidad=$input["Cantidad_id"];
-                $precioSe=$this->precio($input["productos_id"],$input["Cantidad_id"],$input["price"]);
+                $cantidad=$input["cantidades"];
+                $precioSe=$this->precio($input["productos_id"],$input["cantidades"],$input["price"]);
                 
                 $servicio= Servicios::create([
                     "name"=>$input["name"],
@@ -86,10 +86,10 @@ class ServiciosController extends Controller
                 
                     $productos=Productos::find($value);
                    
-                    
-                    if ($productos->amount>=$cantidad[$key]) {
+                    // dd($productos->amount,$cantidad[$key]);
+                    if ($productos->amount>= intval($cantidad[$key])) {
                         $precioP=$productos->price_sale;
-                        
+                   
                         $detalle=detalle_productos_servicios::create([
                             "servis_id"=>$servicio->id,
                             "product_id"=>$value,
@@ -104,11 +104,13 @@ class ServiciosController extends Controller
                 
                     }else {
                         DB::rollBack();
+                      
                         alert()->error('Servicios','Servicio no  creado');
                         return redirect("/servicios/create/");
                     }
                 }
                 DB::commit();
+
                 alert()->success('Servicios','Servicio   creado con exito');
                 return redirect("/servicios");
             }else {
@@ -129,7 +131,7 @@ class ServiciosController extends Controller
             
         }catch(\Exception $e){
             DB::rollBack();
-           
+            dd($e);
             alert()->error('Servicios','Servicio no  creado');
             return redirect("/servicios/create/");
         }
@@ -193,6 +195,7 @@ class ServiciosController extends Controller
             alert()->error('servicios','servicio no encontrado');
             return redirect("/servicios/index");
         }
+       
         return view("pages.servicios.editarServicios",compact("servicios","producto","detalle","precio","prec"));
     }
 
@@ -210,8 +213,8 @@ class ServiciosController extends Controller
                
                 $producto_id= $input["productos_id"];
                 
-                $cantidad=$input["Cantidad_id"];
-                $precioSe=$this->precio($input["productos_id"],$input["Cantidad_id"],$input["price"]);
+                $cantidad=$input["cantidades"];
+                $precioSe=$this->precio($input["productos_id"],$input["cantidades"],$input["price"]);
                 $prec=$this->eliminar($id,$servicios->price_sale);
                 
                 if ($servicios==null) {
@@ -279,6 +282,7 @@ class ServiciosController extends Controller
             
         }catch(\Exception $e){
             DB::rollBack();
+            dd($e);
             alert()->error('Servicios','Servicio no editado con exito');
             return redirect("/servicios/".$id."/edit");
         }
@@ -333,18 +337,24 @@ class ServiciosController extends Controller
         foreach ($cita as $key ) {
             
             foreach ($citaD as  $value) {
-                if ($value->servis_id == $servicios->id) {
-                    if ($key->state == 0) {
-                        $servicios->update(["state"=>$state]);
-                        alert()->success('Servicios','Cambio de estado hecho');
-                        return redirect("/servicios");
+                if ($value->schedule_id == $key->id) {
+                    if ($value->servis_id == $servicios->id) {
+                        if ($key->state_id == 1 || $key->state_id == 3) {
+                            
+                            $servicios->update(["state"=>$state]);
+                            alert()->success('Servicios','Cambio de estado hecho');
+                            
+                            return redirect("/servicios");
+                        }else {
+                            alert()->error('Servicios','no se puede cambiar el estado');
+                            return redirect("/servicios");
+                        }
                     }else {
-                        alert()->error('Servicios','no se puede cambiar el estado');
-                        return redirect("/servicios");
+                        alert()->error('servicios','servicios no encontrado');
+                        return redirect("/servicios/index");
                     }
-                }else {
-                    
                 }
+               
             }
         }
         $servicios->update(["state"=>$state]);

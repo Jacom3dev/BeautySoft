@@ -86,7 +86,7 @@ input:valid + span::after {
                                         @error('date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div>                                  
     
                                     <div class="col-4 form-group">
                                         <input type="time"  id="appt-time" value="{{$cita->hourI}}"min="09:00" max="19:30"  class="form-control @error('hora') is-invalid @enderror"
@@ -97,18 +97,11 @@ input:valid + span::after {
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-4 form-group">
+                                    <div class="col-6 form-group">
                                         <input type="number" id="tiempo" class="form-control "  value="{{$i}}"placeholder="Duración Min*">
                                         <input type="hidden" name="hourF" id="hora_final">
                                     </div>
-                                    <div class="col-4 form-group">
-                                        <input type="text" id="direc"
-                                            class="form-control @error('direccion')  is-invalid @enderror" value="{{$cita->direction}}"name="direction"
-                                            placeholder="Dirección">
-                                        @error('direction')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                  
                                     <div class="col-md-12 form-group mb-5">
                                         <textarea name="description" id="descri" class="form-control @error('descripcion') is-invalid @enderror "
                                             placeholder="Descripción">{{$cita->description}}</textarea>

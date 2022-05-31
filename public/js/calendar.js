@@ -40,9 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
           Swal.fire({
             position: 'top',
             icon: 'error',
-            title: 'Porfavor seleccione una fecha futura o actual ',
-            showConfirmButton: false,
-            timer: 1500
+            title: 'Por favor seleccione una fecha futura o actual para poder generar la cita. ',
+            showConfirmButton: true,
           })
         }
          
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#estado").append(
           `
           <option cita_id="${id}"  value="2">Pendiente</option>
-          <option cita_id="${id}"  value="3">En ejecucion</option>
+          <option cita_id="${id}"  value="3">En ejecución</option>
           <option cita_id="${id}"  value="1">Cancelado</option>
        `);
         if (state == 2) {
@@ -97,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
             Swal.fire({
               position: 'top',
               icon: 'error',
-              title: 'Tenemos un pequeño problema porfavor intente ingresar más tarde.',
+              title: 'Tenemos un pequeño problema por favor intente ingresar más tarde.',
               showConfirmButton: false,
-              timer: 3500
+              timer: 5000
             })
           },
 
@@ -161,7 +160,7 @@ function CrearCita() {
           icon: 'success',
           title: 'La fue cita asignada con exito.',
           showConfirmButton: false,
-          timer: 1500
+          timer: 3000
         })
         limpiar();
         
@@ -170,9 +169,9 @@ function CrearCita() {
         Swal.fire({
           position: 'top',
           icon: 'error',
-          title: 'La cita no se asignó, porfavor rectifique los datos.',
+          title: 'La cita no se asignó, por favor rectifique los datos.',
           showConfirmButton: false,
-          timer: 1500
+          timer: 4000
         })
         limpiar();
         

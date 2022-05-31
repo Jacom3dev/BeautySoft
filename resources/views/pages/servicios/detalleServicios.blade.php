@@ -44,7 +44,7 @@
                                     <td>{{ $value->name }}</td>
                                     
                                     <td>{{ $value->amount }}</td>
-                                    <td>{{ $value->price }}</td>
+                                    <td>{{ $value->price_sale }}</td>
                                     <td class="text-center">
                                         @if ($value->state == 1)
                                             <!-- <a  class="btn  btn-primary btn-ms " >Activo</a> -->

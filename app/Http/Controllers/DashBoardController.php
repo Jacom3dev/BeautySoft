@@ -10,6 +10,8 @@ use App\Models\Compra;
 use App\Models\Cita;
 use App\Exports\ComprasExport;
 use App\Exports\VentasExport;
+use DateTime;
+use DateTimeZone;
 
 class DashBoardController extends Controller
 {
@@ -25,19 +27,22 @@ class DashBoardController extends Controller
     public function exportCompras(Request $request) 
     {
         $input = $request->all();
+        
        return (new ComprasExport($input['date1'],$input['date2']))->download('compras.xlsx');
     }
     public function exportVentas(Request $request) 
     {
         $input = $request->all();
+        
        return (new VentasExport($input['date1'],$input['date2']))->download('ventas.xlsx');
     }
     
     private function filter($table){
-        $Chart = DB::table("$table")->select(DB::raw('COUNT(*) as count'))
+        $Chart = DB::table("$table")->select(DB::raw('SUM(price) as price'))
         ->whereYear('created_at', date('Y'))
+        ->where('state','1')
         ->groupBy(DB::raw('Month(created_at)'))
-        ->pluck('count');
+        ->pluck('price');
         
         $Months = DB::table("$table")->select(DB::raw('Month(created_at) as month'))
         ->whereYear('created_at', date('Y'))
@@ -57,12 +62,13 @@ class DashBoardController extends Controller
     {
         $arrayCompras = $this->filter("compras");
         $arrayVentas = $this->filter("ventas");
-
         $clientes = Clientes::all()->count();
         $ventas = Ventas::all()->count();
         $compras = Compra::all()->count();
         $citas = Cita::all()->count();
-        return view('pages.dashboard.dashboard',compact('clientes','ventas','compras','citas','arrayVentas','arrayCompras'));
+        $date = date('Y-m-d');  
+        
+        return view('pages.dashboard.dashboard',compact('date','clientes','ventas','compras','citas','arrayVentas','arrayCompras'));
     }
 
     /**

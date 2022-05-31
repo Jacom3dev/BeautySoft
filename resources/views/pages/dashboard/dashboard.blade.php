@@ -95,11 +95,13 @@
                       @csrf
                       <div class="row py-4">
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local" placeholder="Fecha Inicio*"  name="date1" required>
+                        <label class="form-label"> Fecha inicial del reporte</label>
+                          <input class="form-control" type="date"  max="{{$date}}" placeholder="Fecha Inicio*"  name="date1" required>
                         </div>
 
                         <div class="col-6">
-                          <input class="form-control" type="datetime-local"  placeholder="Fecha Fin*" name="date2" required>
+                        <label class="form-label"> Fecha final del reporte</label>
+                          <input class="form-control" type="date"   max="{{$date}}"  placeholder="Fecha Fin*" name="date2" required>
                         </div>
                       </div>
                       <div class="modal-footer">

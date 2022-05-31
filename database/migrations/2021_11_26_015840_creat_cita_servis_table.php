@@ -22,7 +22,6 @@ class CreatCitaServisTable extends Migration
             $table->date('date');
             $table->time('hourI');
             $table->time('hourF');
-            $table->string('direction',350)->nullable();
             $table->string('description',350)->nullable();
             $table->float('price',10,2);
             $table->unsignedBigInteger('state_id');  
