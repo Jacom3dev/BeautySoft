@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
+use App\DatesTraslator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Jenssegers\Date\Date;
 
 class Ventas extends Model
 {
+    use Notifiable, DatesTraslator;
+
     public $table = 'ventas';
 
     protected $primaryKey = 'id';
@@ -33,5 +38,6 @@ class Ventas extends Model
     public function servicio(){
         return $this->hasOne('App\Models\Detalle_ventas_servicios', 'id', 'servis_id');
     }
+
     use HasFactory;
 }

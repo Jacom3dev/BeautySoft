@@ -88,7 +88,7 @@
 
         swalWithBootstrapButtons.fire({
             title: '¿Estas seguro?',
-            text: "El producto se Editara",
+            text: "El producto se creara",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si, seguro',

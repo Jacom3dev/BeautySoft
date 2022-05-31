@@ -124,7 +124,7 @@ class AgendaController extends Controller
 
         $input=$request->all();
         
-        
+    
       if ($this->validFecha($input["date"],$input["hourI"],$input["hourF"])) {
         try{
             DB::beginTransaction();
@@ -164,6 +164,7 @@ class AgendaController extends Controller
            }catch(\Exception $e){
                 dd($e);
                DB::rollBack();
+               dd($e);
                     
                return response()->json(["ok"=>false]);
            }
@@ -287,7 +288,7 @@ class AgendaController extends Controller
                    "date"=>$input["date"],
                    "hourI"=>$input["hourI"],
                    "hourF"=>$input["hourF"],
-                   "direction"=>$input["direction"],
+                   
                    "description"=>$input["description"],
                    "price"=>$precio
                 ]);

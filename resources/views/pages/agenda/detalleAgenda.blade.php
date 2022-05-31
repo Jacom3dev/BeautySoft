@@ -56,7 +56,7 @@
                         @foreach ($servicios as $value)
                                 <tr class="text-center">
                                     <td>{{ $value->name }}</td>
-                                    <td>{{ $value->price }}</td>
+                                    <td>&#36;{{number_format( $value->price) }}</td>
                                     
                                 </tr>
                         @endforeach

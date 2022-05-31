@@ -2,10 +2,13 @@
 
 namespace App\models;
 
+use App\DatesTraslator;
 use Illuminate\Database\Eloquent\Model;
 
 class Servicios extends Model
 {
+    use DatesTraslator;
+    
     public $tabla="servicios";
   
     public $fillable=[

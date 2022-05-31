@@ -48,7 +48,7 @@
                                                 @endforeach
                                     </td> -->
                                     <td>&#36;{{number_format( $value->price) }}</td>
-                                    <td>{{ $value->created_at }}</td>
+                                    <td>{{ $value->created_at->format('D d M Y \ h:i a') }}</td>
                                     <td class="text-center">
                                         @if ($value->state)
                                             <span class="badge badge-primary">Realizada</span>

@@ -22,7 +22,6 @@
                     @else
                         <i><p class="alert alert-danger">El servicio se canceló.</p></i>  
                     @endif
-                    <a href="{{route('servicios.index')}}"  class="btn btn-outline-dark" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Salir</a>
                 </div>
             </div>
         </div>
@@ -63,5 +62,16 @@
             </div>
         </div>
     </div>
+    
+    <div class="row justify-content-center">
+            <hr>
+            <div class="col-12">
+                <div class="row ">
+                    <div class="col d-flex justify-content-center">
+                    <a href="{{route('servicios.index')}}"  class="btn btn-outline-dark" data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 @endsection

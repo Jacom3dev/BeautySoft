@@ -11,7 +11,6 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <a href="{{route("usuarios.perfil")}}">
-            <img src="{{url('/')}}/adminLTE/img/user.png" class="img-circle elevation-2" alt="User Image" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver mi perfil">
           </a>
         </div>
         <div class="info">
