@@ -32,7 +32,7 @@
                             <tr>
                                 
                                 <td>{{$value->name}}</td>
-                                <td>{{$value->price}}</td>
+                                <td>&#36;{{number_format($value->price)}}</td>
                                 <td>{{$value->description}}</td>
                                 <td class="text-center">
                                 @if($value->state == 1)

@@ -29,7 +29,7 @@ class StoreAgenda extends FormRequest
             'hourI'=>['required'],
             'hourF' => ['required'],
             'description' => ['nullable','max:100'],
-            'direction'=>['nullable','max:100'],
+            
             'servicios_id'=>['required'],
             'price' => ['required']
            
@@ -43,7 +43,7 @@ class StoreAgenda extends FormRequest
             'date' => 'date',
             'hourI'=>'hourI',
             'hourF' => 'hourF',
-            'direction'=>'direction',
+            
             'description' => 'description',
             'price' => 'price',
         ];

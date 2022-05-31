@@ -82,9 +82,9 @@
                                 {{$value->prov->supplier}}
                             </td>
                             <td>
-                                {{$value->price}}
+                            &#36;{{ number_format( $value->price)}}
                             </td>
-                            <td> {{$value->created_at}}</td>
+                            <td> {{$value->created_at->format('D d M Y h:i A')}}</td>
                             <td class="text-center">
                                 @if ($value->state)
                                 <span class="badge badge-primary">Realizada</span>

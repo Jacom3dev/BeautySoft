@@ -4,8 +4,11 @@ namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\DatesTraslator;
 class detalle_productos_servicios extends Model
 {
+    use DatesTraslator;
+    
     public $tabla="detalle_productos_servicios";
   
     public $fillable=[
