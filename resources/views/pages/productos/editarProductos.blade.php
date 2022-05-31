@@ -62,13 +62,13 @@
                    
                 </form>
                     @if($productos->img != null)
-                     <div class="col-3  col-lg-2">
+                     <div class="col-3  col-lg-4">
                         <form action="{{route('productos.destroy',$productos->id)}}" method="POST">
                             @csrf
                             @method("DELETE")
-                            <div class="col-md-6 form-group">
+                            <div class="col form-group">
                                 <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="Eliminar imagen">
-                                    eliminar
+                                    eliminar imagen
                                 </button>
                             </div>
                         </form>

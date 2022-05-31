@@ -21,10 +21,6 @@
                 {{$productos->name}}
               </p>
             </div>
-<<<<<<< HEAD
-            <div class="col-12">
-              <h5 class="card-title ">Precio al que se compro : </h5><p class="card-text">{{$productos->price_buys}}</p>
-=======
             <div class="col-12 col-md-6">
               <h5 class="card-title "> <b>Precio al que se compro:</b>  </h5>
               <p class="card-text">
@@ -34,7 +30,6 @@
                     sin Precio Compra
                 @endif
               </p>
->>>>>>> edabc99e92c1bae875ccf383895a6d3611eff2cb
             </div>
             <div class="col-12 col-md-6">
               <h5 class="card-title "> <b>Precio al que se vendera:</b>  </h5>
