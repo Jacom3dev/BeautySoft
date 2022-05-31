@@ -86,7 +86,7 @@ input:valid + span::after {
                                         @error('date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div>                                  
     
                                     <div class="col-4 form-group">
                                         <input type="time"  id="appt-time" value="{{$cita->hourI}}"min="09:00" max="19:30"  class="form-control @error('hora') is-invalid @enderror"

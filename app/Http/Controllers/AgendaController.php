@@ -116,7 +116,7 @@ class AgendaController extends Controller
             }
             
         }
-        
+     
      
     }
 
@@ -136,7 +136,6 @@ class AgendaController extends Controller
                    "date"=>$input["date"],
                    "hourI"=>$input["hourI"],
                    "hourF"=>$input["hourF"],
-                  
                    "description"=>$input["description"],
                    "price"=>$precio,
                    "state_id"=>2,
@@ -163,14 +162,14 @@ class AgendaController extends Controller
                   
             return response()->json(["ok"=>true]);
            }catch(\Exception $e){
-           
+                dd($e);
                DB::rollBack();
                dd($e);
                     
                return response()->json(["ok"=>false]);
            }
       }else{
-        
+        dd($input);
         return response()->json(["ok"=>false]);
       }
     }
@@ -201,7 +200,7 @@ class AgendaController extends Controller
         $horaI =null;
         $horaF = null;
        
-        if ($citas==null) {
+        if ($cita==null) {
             
             alert()->error('Agenda','La cita no se  encontro');
             return  Redirect()->route('agenda.index');
@@ -367,11 +366,13 @@ class AgendaController extends Controller
 
     
         $citas =Cita::find($id);
+        
         if ($citas==null) {
             
             alert()->error('Agenda','Cita no encontrada');
             return redirect("/agenda/index");
         }
+        
          
             $citas->update(["state_id"=>$state]);
             alert()->success('Agenda','Cambio de estado hecho');

@@ -73,8 +73,7 @@
                                 <div class="col-12 col-md-6 form-group">
 
                                     <input  type="number" placeholder="Cantidad*" id="Cantidad"
-                                        class="form-control @error('precioP') is-invalid @enderror" name="Cantidad"
-                                        value="1">
+                                        class="form-control @error('precioP') is-invalid @enderror" name="Cantidad">
 
                                     @error('Cantidad')
                                         <small class="">{{ $message }}</small>
