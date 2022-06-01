@@ -136,7 +136,7 @@
                                                 <div class="col-6">
                                                     <div class="row">
                                                         <div class="col-12 form-group mt-4">
-                                                            <select class="js-example-basic-single form-control w-100"
+                                                            <select class="js-example-basic-single form-control w-100" style="width: 100%;"
                                                                 name="servicio" id="servicio"
                                                                 onchange="cargar_precio_servicio()">
                                                                 <option value="" disabled selected>

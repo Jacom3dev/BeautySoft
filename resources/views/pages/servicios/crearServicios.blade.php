@@ -74,7 +74,7 @@
 
                                     <input  type="number" placeholder="Cantidad*" id="Cantidad"
                                         class="form-control @error('precioP') is-invalid @enderror" name="Cantidad"
-                                        value="1">
+                                        value="">
 
                                     @error('Cantidad')
                                         <small class="">{{ $message }}</small>
