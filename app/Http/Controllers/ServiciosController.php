@@ -339,10 +339,11 @@ class ServiciosController extends Controller
             foreach ($citaD as  $value) {
                 if ($value->schedule_id == $key->id) {
                     if ($value->servis_id == $servicios->id) {
-                        if ($key->state_id == 1) {
+                        if ($key->state_id == 1 || $key->state_id == 3) {
                             
                             $servicios->update(["state"=>$state]);
                             alert()->success('Servicios','Cambio de estado hecho');
+                            
                             return redirect("/servicios");
                         }else {
                             alert()->error('Servicios','no se puede cambiar el estado');

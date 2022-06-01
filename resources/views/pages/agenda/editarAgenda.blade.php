@@ -50,17 +50,17 @@ input:valid + span::after {
 
     <!-- Modal Crear -->
     <div class="container-fluid">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl">
-            <div class="modal-content ">
+        <div class="row justify-content-center">
+            <div class="col-11 mt-3 p-3 bg-white rounded">
                 {{-- <div class="modal-header"> --}}
                 <div class="row">
                     <div class="col-12 pt-3 text-center">
-                        <h4 class="modal-title  text-secondary" id="CrearLabel">Crear Agenda</h4>
+                        <h3> <strong style="color: rgba(2, 93, 113, 1);">Editar Agenda.</strong></h3>
                     </div>
                 </div>
                 {{-- </div> --}}
-                <div class="modal-body ">
-                    <form class="formulario-Editar row justify-content-around" method="POST" action="{{route('agenda.update',$cita->id)}}" id="formulario-Editar">
+                <div class=" ">
+                    <form class="formulario-Editar justify-content-around" method="POST" action="{{route('agenda.update',$cita->id)}}" id="formulario-Editar">
                         @csrf
                         @method("PUT")
                         <div class="row"> 
@@ -86,7 +86,7 @@ input:valid + span::after {
                                         @error('date')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
-                                    </div>
+                                    </div>                                  
     
                                     <div class="col-4 form-group">
                                         <input type="time"  id="appt-time" value="{{$cita->hourI}}"min="09:00" max="19:30"  class="form-control @error('hora') is-invalid @enderror"
@@ -220,7 +220,6 @@ input:valid + span::after {
                 </div>
                 </form>
             </div>
-
         </div>
     </div>
 @endsection

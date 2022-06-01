@@ -65,7 +65,7 @@ class ComprasController extends Controller
         DB::beginTransaction();
        
 
-                if (count($input) == 10) {
+                if (count($input) == 12) {
                     $compra = Compra::create([
                         "id_supplier" => $input["id_supplier"],
                         "user_id"=>  auth()->user()->id, 
@@ -77,7 +77,7 @@ class ComprasController extends Controller
                         DetalleCompra::create([ 
                             "buys_id" => $compra->id,
                             "product_id" => $value,
-                            "price"=>$input["prices"][$key],
+                            "price"=>$input["prices_buy"][$key],
                             "amount" => $input["amounts"][$key] 
                         ]);
     
@@ -86,7 +86,7 @@ class ComprasController extends Controller
                     ]);
                 }
                     
-                }elseif (count($input)==11) {
+                }elseif (count($input)==13) {
                    
                     $compra = Compra::create([
                         "id_supplier" => $input["id_supplier"],
@@ -100,15 +100,15 @@ class ComprasController extends Controller
                             "name"=>$input["namePN"][$key],
                             "img"=>null,
                             "amount"=>$input["amountsPN"][$key],
-                            "price_buy"=>$input["pricesPN"][$key],
-                            "price_sale"=>$input["pricesPN"][$key],
+                            "price_buys"=>$input["price_buysPN"][$key],
+                            "price_sale"=>$input["price_salePN"][$key],
                             "state"=>1, 
                         ]);
                         
                         DetalleCompra::create([ 
                             "buys_id" => $compra->id,
                             "product_id" => $productos->id,
-                            "price"=>$input["pricesPN"][$key],
+                            "price"=>$input["price_buysPN"][$key],
                             "amount" => $input["amountsPN"][$key] 
                             
                         ]);
@@ -117,7 +117,7 @@ class ComprasController extends Controller
                     
                 }
                     
-                elseif(count($input)==14) {
+                elseif(count($input)>=14) {
 
                     $compra = Compra::create([
                         "id_supplier" => $input["id_supplier"],
@@ -131,15 +131,15 @@ class ComprasController extends Controller
                             "name"=>$input["namePN"][$key],
                             "img"=>null,
                             "amount"=>$input["amountsPN"][$key],
-                            "price_buy"=>$input["pricesPN"][$key],
-                            "price_sale"=>$input["pricesPN"][$key],
+                            "price_buys"=>$input["price_buysPN"][$key],
+                            "price_sale"=>$input["price_salePN"][$key],
                             "state"=>1, 
                         ]);
                         
                         $detalle=DetalleCompra::create([ 
                             "buys_id" => $compra->id,
                             "product_id" => $productos->id,
-                            "price"=>$input["pricesPN"][$key],
+                            "price"=>$input["price_buysPN"][$key],
                             "amount" => $input["amountsPN"][$key] 
                           
                             
@@ -151,7 +151,7 @@ class ComprasController extends Controller
                             "buys_id" => $compra->id,
                             "product_id" => $value,
                             "amount" => $input["amounts"][$key],
-                            "price"=>$input["prices"][$key]
+                            "price"=>$input["prices_buy"][$key]
                         ]);
                        
                             $producto = Productos::find($value);

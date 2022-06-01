@@ -220,26 +220,30 @@ input:valid+span:after {
 
                 
                 <div class="modal-body" id="select" >
-                    <select name="estado"id="estado" onchange="cambio()"class="js-example-basic-single form-control @error('cliente_id') is-invalid @enderror " style="width: 100%">
-                        <option value="" selected>Estados de la cita</option>
+                    <div class="row">
+                        <div class="col-12">
+                            <select name="estado"id="estado" onchange="cambio()"class="js-example-basic-single form-control @error('cliente_id') is-invalid @enderror " style="width: 100%">
+                                <option value="" selected>Estados de la cita</option>
+                                
+                            </select>
+                        </div>
                         
-                    </select>
-                    
-                </div>
-                <div class="col-6 col-md-4 col-lg-6 center"  id="cambio-btn"style="margin-left:120px;">
-                    <a href="" class="btn principal-color text-white w-100" id="cambio" data-bs-toggle="tooltip" data-bs-placement="left" title="Cambiar Estado"> cambio estado</a>
+                        <div class="col-6 col-md-4 col-lg-6 "  id="cambio-btn"style="margin-left:120px;">
+                            <a href="" class="btn principal-color text-white w-100" id="cambio" data-bs-toggle="tooltip" data-bs-placement="left" title="Cambiar Estado"> cambio estado</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="row py-4 px-3 justify-content-around " >
                         
-                        <div class="col-6 col-md-4 col-lg-2" id="edit">   
+                        <div class="col-12 col-md-4 col-lg-3" id="edit">   
                                 <a class="btn  btn-warning btn-ms btn-block" id="opcionesEditar" href="" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar Cita"><i
                                     class="glyphicon glyphicon-edit"></i>Editar</a>
                         </div>
-                        <div class="col-3 col-md-4 col-lg-2" >
+                        <div class="col-12 col-md-4 col-lg-3" >
                             <a class="btn  btn-primary btn-ms btn-block" id="opcionesDetalle" href="" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver Detalle"><i
                                     class="glyphicon glyphicon-edit"></i>Detalle</a>
                         </div>
-                        <div class="col-3 col-md-4 col-lg-2">
+                        <div class="col-12 col-md-4 col-lg-3">
                             <button type="button" onclick="limpiar()" class="btn btn-outline-dark btn-block"
                             data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</button>
                         </div>
