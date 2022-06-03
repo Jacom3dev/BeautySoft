@@ -11,13 +11,15 @@
                 @csrf
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input  type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" value="{{old('name')}}" placeholder="Nombre*">
+                        <label for="name">Nombre*</label>
+                        <input  type="text" id="name" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" value="{{old('name')}}" placeholder="Nombre*">
                         @error('name')
                          <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" value="{{old('cell')}}" placeholder="Celular">
+                        <label for="cell">Celular</label>
+                        <input type="text" id="cell" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" value="{{old('cell')}}" placeholder="Celular">
                         @error('cell')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -26,7 +28,8 @@
 
                 <div class="row">
                     <div class="col mt-2">
-                        <input  type="email"class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" value="{{old('email')}}" placeholder="Correo*">
+                        <label for="email">Correo*</label>
+                        <input  type="email" id="email" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" value="{{old('email')}}" placeholder="Correo*">
                         @error('email')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -35,14 +38,16 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input  type="password" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
+                        <label for="pass">Contraseña*</label>
+                        <input  type="password" id="pass" class="form-control @error('password') is-invalid border border-warning  @enderror" name="password" placeholder="Contraseña*">
                         @error('password')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     
                     <div class="col-12 col-sm-6 mt-2">
-                        <select name="rol_id" class="form-control">
+                        <label for="select_rol">Rol*</label>
+                        <select name="rol_id" id="select_rol" class="form-control">
                             <option value="" disabled selected>Rol</option>
                             @foreach ($roles as $rol)
                                 <option value="{{$rol->id}}">{{$rol->name}}</option>
@@ -56,7 +61,8 @@
 
                 <div class="row">
                     <div class="col mt-2">
-                        <input id="direction" type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" value="{{old('direction')}}" placeholder="Dirrección" >
+                        <label for="direction">Dirección</label>
+                        <input id="direction" type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" value="{{old('direction')}}" placeholder="Dirección" >
                         @error('direction')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -66,11 +72,11 @@
                 <input type="hidden" name="state" value="1">
 
                 <div class="row pt-4 pb-1 justify-content-end">
-                    <div class="col-6 col-sm-6 col-lg-4 ">
+                    <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
                         <button type="submit" class="btn principal-color btn-block text-white" id="btn-user">Registrar</button>
                     </div>
                     
-                    <div class="col-6 col-sm-4 col-lg-2 ">
+                    <div class="col-12 col-sm-4 col-lg-2 ">
                         <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark btn-block">Volver</a>
                     </div>
                 </div>

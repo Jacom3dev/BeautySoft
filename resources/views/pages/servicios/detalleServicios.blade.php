@@ -5,12 +5,12 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row" >
+    <div class="row justify-content-center" >
         <div class="col-12 text-center py-2">
             <h3> <strong style="color: rgba(2, 93, 113, 1);">Productos usados en el servicio</strong></h3>
         </div>
-        <div class="col-4">
-            <div class="card" style="width: 16rem; margin-left:100px;">
+        <div class="col-6 col-lg-4">
+            <div class="card  card-detalle">
                 <div class="card-body">
                     <h5 class="text-center">Detalle Servicios</h5>
                     <p class="card-title">Nombre del Servicio: </p><p class="card-text">{{$servicios->name}}</p>
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-7" > 
+        <div class="col-12 col-lg-7" > 
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" cellpadding="0">
                     <thead>

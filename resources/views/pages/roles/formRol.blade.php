@@ -14,7 +14,8 @@
                 <input type="hidden" name="state" value="{{isset($rol)?$rol->state:'1'}}">
                 <div class="row mt-3">
                     <div class="col">
-                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Rol*" value="{{isset($rol)?$rol->name:old('name')}}">
+                        <label for="rol">Rol*</label>
+                        <input type="text" id="rol" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Rol*" value="{{isset($rol)?$rol->name:old('name')}}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
