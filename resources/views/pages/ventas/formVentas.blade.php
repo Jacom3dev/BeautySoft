@@ -29,7 +29,7 @@
                                     <div class="col-10 col-md-5 form-group">
                                         <select class="js-example-basic-single form-control
                                             @error('cliente') is-invalid border border-warning  @enderror" name="cliente"
-                                            id="cliente" style="width: 100%;">
+                                            id="cliente" style="width: 100%;" required>
                                             <option value="" disabled selected >
                                                 Clientes
                                             </option>

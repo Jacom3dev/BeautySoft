@@ -99,15 +99,25 @@
 <script>
 // ALERT OF CREATE
 
-    function imagen () {
+    function imagen() {
         let imagen1 = $('#img').val();
         console.log(imagen1);
-        if (imagen != "") {
-            $('#label_img i').removeClass();
-            $('#label_img c').text(`: `);
-            $('#label_img t').text(``);
-            $('#label_img').append( ` <small> ${imagen1}</small>`);
-        };
+        
+        @if(!isset($productos->img))
+            if (imagen1 != "") {
+                $('#label_img i').removeClass();
+                $('#label_img c').text(`: `);
+                $('#label_img t').text(``);
+                $('#label_img').append( ` <small> ${imagen1}</small>`);
+            }
+        @else 
+            if (imagen1 != "") {
+                $('#label_img i').removeClass();
+                $('#label_img c').text(`: `);
+                $('#label_img t').text(``);
+                $('#label_img small').text( ` ${imagen1}`);
+            };
+        @endif
 
     }
     function eliminar_imagen() {
@@ -129,6 +139,8 @@
             showCancelButton: true,
             confirmButtonText: 'Si, seguro',
             cancelButtonText: 'No, cancele',
+            confirmButtonColor: 'rgba(2, 93, 113, 1)',
+            cancelButtonColor: 'red',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {
@@ -171,6 +183,8 @@
             showCancelButton: true,
             confirmButtonText: 'Si, seguro',
             cancelButtonText: 'No, cancele',
+            confirmButtonColor: 'rgba(2, 93, 113, 1)',
+            cancelButtonColor: 'red',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {

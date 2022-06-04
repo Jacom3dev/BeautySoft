@@ -51,7 +51,7 @@
                     </div>
                     
                     <div class="col-md-12 form-group overflow-auto">
-                        <label for="img" id="label_img"  class="btn principal-color btn-block text-white mt-3"><i class="fas fa-image"></i> <t>Seleccionar</t> Imagen<c></c></label>
+                        <label for="img" id="label_img"  class="btn principal-color btn-block text-white mt-3"><i class="fas fa-image"></i> <t>Seleccionar</t> Imagen<c></c> <small></small></label>
                         <input type="file" id="img" placeholder="Imagen" onchange="imagen()"  value="{{old('img')}}"class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*" value="null" 
                         style="display: none; width: 100%;">
                         @error('img')
@@ -83,12 +83,12 @@
 <script>
     function imagen () {
         let imagen1 = $('#img').val();
-        console.log(imagen1);
-        if (imagen != "") {
+        console.log( imagen1);
+        if (imagen1 != "") {
             $('#label_img i').removeClass();
             $('#label_img c').text(`: `);
             $('#label_img t').text(``);
-            $('#label_img').append( ` <small> ${imagen1}</small>`);
+            $('#label_img small').text( ` ${imagen1}`);
         };
 
     }
@@ -112,6 +112,8 @@
             showCancelButton: true,
             confirmButtonText: 'Si, seguro',
             cancelButtonText: 'No, cancele',
+            confirmButtonColor: 'rgba(2, 93, 113, 1)',
+            cancelButtonColor: 'red',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {

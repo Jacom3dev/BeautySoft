@@ -69,7 +69,7 @@ input:valid+span:after {
                                         <label for="cliente">Cliente*</label>
                                         <select name="cliente_id" id="cliente"
                                             class="js-example-basic-single form-control @error('cliente_id') is-invalid @enderror "
-                                            style="width: 100%">
+                                            style="width: 100%" required>
                                             <option value="" selected>Cliente</option>
                                             @foreach ($clientes as $value)
                                                 @if($value->state != 0)
@@ -77,9 +77,8 @@ input:valid+span:after {
                                                 @endif
                                             @endforeach
                                         </select>
-    
                                         @error('cliente_id')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            <small class="text-danger">{{ $message }}</small>
                                         @enderror
     
                                     </div>
@@ -123,7 +122,7 @@ input:valid+span:after {
     
                                         <select name="servicio_id" id="servicio"
                                             class="js-example-basic-single @error('servicio') is-invalid @enderror"
-                                            onchange="precio_total()" style="width: 100%;">
+                                            onchange="precio_total()"  required style="width: 100%;">
                                             <option value="">Servicios</option>
                                             @foreach ($servicios as $value)
                                                 @if($value->state != 0)
@@ -200,7 +199,7 @@ input:valid+span:after {
                     <div class="col-6 col-md-4 col-lg-3">
                       
 
-                        <button type="button" onclick="CrearCita()" class="btn principal-color text-white w-100"
+                        <button type="submit" onclick="CrearCita()" class="btn principal-color text-white w-100"
                             id="btnCrear" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear Cita">Agendar</button>
                     </div>
                     <div class="col-6 col-md-4 col-lg-2">
@@ -208,9 +207,6 @@ input:valid+span:after {
                             data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver
                         </a>
                     </div>
-
-
-
                 </div>
                 </form>
             </div>
