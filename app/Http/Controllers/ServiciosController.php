@@ -74,10 +74,11 @@ class ServiciosController extends Controller
                 $producto_id= $input["productos_id"];
                 
                 $cantidad=$input["cantidades"];
-                $precioSe=$this->precio($input["productos_id"],$input["cantidades"],$input["price"]);
+                $precioSe=$this->precio($input["productos_id"],$input["cantidades"],$input["price_work"]);
                 
                 $servicio= Servicios::create([
                     "name"=>$input["name"],
+                    "price_work"=>$input["price_work"],
                     "description"=>$input["description"],
                     "price"=>$precioSe,
                     "state"=>1,
@@ -118,6 +119,7 @@ class ServiciosController extends Controller
 
                 $servicio= Servicios::create([
                     "name"=>$input["name"],
+                    "price_work"=>$input["price_work"],
                     "description"=>$input["description"],
                     "price"=>$input["price"],
                     "state"=>1,
@@ -157,7 +159,10 @@ class ServiciosController extends Controller
     {
         $servicios=Servicios::find($id);
         $detalle= detalle_productos_servicios::all() ;
-        $producto=productos::all();
+        // $producto=productos::all();
+        $producto = Productos::select("productos.*", "detalle_productos_servicios.*")->join("detalle_productos_servicios", "productos.id", "=", "detalle_productos_servicios.product_id")
+        ->where("detalle_productos_servicios.servis_id", $id)
+        ->get();
         
         if ($servicios==null) {
             alert()->error('servicios','servicio no encontrado');
@@ -224,6 +229,7 @@ class ServiciosController extends Controller
               
                 $servicios->update([
                     "name"=>$input["name"],
+                    "price_work"=>$input["price_work"],
                     "description"=>$input["description"],
                     "price"=>$precioSe,
                 ]);
@@ -270,6 +276,7 @@ class ServiciosController extends Controller
                $prec=$this->eliminar($id,$servicios->price);
                 $servicios->update([
                     "name"=>$input["name"],
+                    "price_work"=>$input["price_work"],
                     "description"=>$input["description"],
                     "price"=>$prec,
                 ]);

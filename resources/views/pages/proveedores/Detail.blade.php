@@ -57,9 +57,9 @@
                     </div>
                 </div>
                 <div class="card-foother">
-                    <div class="row mt-3">
-                        <div class="col d-flex justify-content-center">
-                            <a href="{{route('proveedores.index')}}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                    <div class="row mt-3 justify-content-center">
+                        <div class="col-12 col-md-3 ">
+                            <a href="{{route('proveedores.index')}}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
                         </div>
                     </div>
                 </div>

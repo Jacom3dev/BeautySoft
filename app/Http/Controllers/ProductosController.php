@@ -133,17 +133,18 @@ class ProductosController extends Controller
         
         
             try{
+             
                 $producto=productos::find($input["id"]);
-                if (count($input) != 5){
+                if (count($input) == 7){
 
                     $destroy = str_replace('storage','public',$producto->img);
                     
                     Storage::delete($destroy);
                     $img = $request->file('img')->store('public/img');
                     $url = Storage::url($img);
-                }else {
-                    
-                    $url=$producto->img;
+                }elseif (count($input) == 6) {
+                     
+                    $url= $producto->img;
                     
                 }
                

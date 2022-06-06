@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         
-        <div class="row" >
+        <div class="row justify-content-center" >
             <div class="col-12 text-center py-2">
                 <h3> <strong style="color: rgba(2, 93, 113, 1);">Detalle de la Venta.</strong></h3>
             </div>
-            <div class="col-4">
-                <div class="card" style="width: 16rem; margin-left:100px;">
+            <div class="col-6 col-md-4">
+                <div class="card card-detalle">
                     <div class="card-body">
                         <p class="card-title">Registrado por: </p><p class="card-text">{{ $Ventas->usuario->name }}</p>
                         <p class="card-title ">Nombre Cliente: </p><p class="card-text">{{ $Ventas->cliente->name }}</p>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7" > 
+            <div class="col-12 col-md-7" > 
                 
                 <div class="card-header ">
                     <ul class="nav nav-pills justify-content-center">

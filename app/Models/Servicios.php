@@ -13,6 +13,7 @@ class Servicios extends Model
   
     public $fillable=[
         "name",
+        "price_work",
         "description",
         "price",
         "state"

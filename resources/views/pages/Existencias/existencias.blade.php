@@ -31,9 +31,9 @@
             @foreach ( $productos as $value  )
 
                 @if($value->amount < 5)
-                    <div class="col-3">
+                    <div class="col-md-6 col-lg-3 col-7">
                         
-                        <div class="card "  style="width: 15rem;">
+                        <div class="card  card-detalle">
                             {{-- <img src="{{$value->img}}" class="card-img-top" style=" height: 13rem;" alt="{{$value->img}}"> --}}
                             <div class="card-header p-3 ">
                                 @if($value->img != "")
@@ -61,8 +61,8 @@
                         
                     </div>
                 @else
-                    <div class="col-3 flex-wrap-row">
-                        <div class="card w-1" style="width: 15rem;">
+                    <div class="col-md-6 col-lg-3 col-7 flex-wrap-row">
+                        <div class="card w-1 card-detalle" >
                             <div class="card-header p-3">
                                 @if($value->img != "")
                                 <img src="{{$value->img}}" class="card-img-top" style="height: 13rem;">

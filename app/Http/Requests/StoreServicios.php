@@ -25,7 +25,7 @@ class StoreServicios extends FormRequest
     {
         return [
             'name' => ['required', 'string','min:2' ,'max:100','unique:servicios'],
-            'price'=>['required','min:3','numeric'],
+            'price_work'=>['required','min:3','numeric'],
             'descrition'=>['nullable','max:200','string'],
             
         ];
@@ -34,7 +34,7 @@ class StoreServicios extends FormRequest
     {
         return [
             'name' => 'nombre',
-            'price' => 'precio',
+            'price_work' => 'precio mano de obra',
             'description'=>'descripcion',
             
         ];

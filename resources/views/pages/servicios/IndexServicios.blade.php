@@ -16,7 +16,7 @@
   
     <div class="row mt-2">
             <div class="col">
-                <div class="dt-responsive">
+                <div class="table-responsive">
                     <table class="table table-striped table-bordered nowrap" cellpadding="0" id="tabla">
                         <thead class="text-center">
                             <tr>

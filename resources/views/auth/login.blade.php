@@ -49,7 +49,7 @@
                                 <div class="col d-flex justify-content-end">
                                     @if (Route::has('password.request'))
                                     <a class="recuperar" href="{{ route('password.request') }}" target="_blank">
-                                        {{ __('Recuperar Contraseña') }}
+                                        {{ __('Restablecer Contraseña') }}
                                     </a>
                                     @endif
                                 </div>

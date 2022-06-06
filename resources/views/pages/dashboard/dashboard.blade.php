@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
    <div class="row mt-4">
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-3 col-md-6 col-12">
          <div class="small-box bg-danger">
            <div class="inner">
              <h3>{{$clientes}}</h3>
@@ -17,7 +17,7 @@
            <a href="{{route('clientes.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-3 col-md-6 col-12">
          <div class="small-box bg-info">
            <div class="inner">
              <h3>{{$ventas}}</h3>
@@ -30,7 +30,7 @@
            <a href="{{route('ventas.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-3 col-md-6 col-12">
          <div class="small-box bg-secondary">
            <div class="inner">
              <h3>{{$compras}}</h3>
@@ -43,7 +43,7 @@
            <a href="{{route('compras.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
-      <div class="col-lg-3 col-6">
+      <div class="col-lg-3 col-md-6 col-12">
          <div class="small-box bg-warning">
            <div class="inner">
              <h3>{{$citas}}</h3>
@@ -58,7 +58,7 @@
       </div>
    </div>
    <div class="row justify-content-end">
-     <div class="col-2">
+     <div class="col-6 col-md-3">
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary btn-block principal-color" data-toggle="modal" data-target="#exampleModal">
         Generar informe
@@ -141,7 +141,7 @@
    </div>
    <div class="row">
       <div class="col-12  my-2">
-        <div id="container"></div>
+        <div id="container" class="w-100"></div>
       </div>
    </div>
 </div>
