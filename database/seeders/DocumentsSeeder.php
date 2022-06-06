@@ -21,5 +21,8 @@ class DocumentsSeeder extends Seeder
         DB::table('tipo_documentos')->insert([
         'name' => 'T.I',
         ]);
+        DB::table('tipo_documentos')->insert([
+        'name' => 'C.E',
+        ]);
     }
 }

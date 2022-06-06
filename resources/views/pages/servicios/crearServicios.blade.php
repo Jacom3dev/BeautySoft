@@ -31,7 +31,7 @@
                                 <div class="col-12 col-md-6 form-group">
                                     <label for="price-obra">Precio mano de obra*</label>
                                     <input type="number" id="price-obra" placeholder="Precio mano de obra*" value="{{old('price')}}"
-                                        class="form-control @error('price') is-invalid @enderror" name="price">
+                                        class="form-control @error('price') is-invalid @enderror" name="price_work">
                                     @error('price')
                                          <span class="invalid-feedback" role="alert">
                                             <small>{{ $message }}</small>

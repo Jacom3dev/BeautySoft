@@ -74,7 +74,7 @@ class ServiciosController extends Controller
                 $producto_id= $input["productos_id"];
                 
                 $cantidad=$input["cantidades"];
-                $precioSe=$this->precio($input["productos_id"],$input["cantidades"],$input["price"]);
+                $precioSe=$this->precio($input["productos_id"],$input["cantidades"],$input["price_work"]);
                 
                 $servicio= Servicios::create([
                     "name"=>$input["name"],
