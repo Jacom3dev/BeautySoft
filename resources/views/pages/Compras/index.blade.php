@@ -43,7 +43,7 @@
                             @if($value->state)
                                     <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"><i class="fas fa-times-circle text-danger"></i></a>
                                 @elseif(!$value->state)
-                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Deshabilitar"><i class="fas fa-check-circle text-success"></i></a>
+                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Anular"><i class="fas fa-check-circle text-success"></i></a>
                                 @endif
                                     <a href="{{route('compras.show', $value->id)}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Detalle"><i class="fas fa-info-circle text-success"></i></a>
 
@@ -89,12 +89,12 @@
                                 @if ($value->state)
                                 <span class="badge badge-primary">Realizada</span>
                             @elseif(!$value->state)
-                                <span class="badge badge-danger">Cancelada</span>
+                                <span class="badge badge-danger">Anulada</span>
                             @endif
                             </td>
                             <td class="d-flex justify-content-around">
                             @if($value->state)
-                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Cancelar"><i class="fas fa-times-circle text-danger"></i></a>
+                                    <a href="/compras/{{$value->id}}/{{$value->state}}" class="" data-bs-toggle="tooltip" data-bs-placement="left" title="Anular"><i class="fas fa-times-circle text-danger"></i></a>
                                 @elseif(!$value->state)
 
                                 @endif
