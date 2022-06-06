@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-7 mt-4 p-2 bg-white rounded">
+        <div class="col-10 col-md-8 col-lg-7mt-4 p-2 bg-white rounded">
             <h3 class="text-center"> <strong style="color: rgba(2, 93, 113, 1);">Registrar Proveedor.</strong></h3>
             <form action="{{route('proveedores.store')}}" method="POST"">
                 @csrf
