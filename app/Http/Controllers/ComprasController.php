@@ -151,7 +151,8 @@ class ComprasController extends Controller
                             "buys_id" => $compra->id,
                             "product_id" => $value,
                             "amount" => $input["amounts"][$key],
-                            "price"=>$input["prices_buy"][$key]
+                            "price_buys"=>$input["price_buysPN"][$key],
+                            "price_sale"=>$input["price_salePN"][$key],
                         ]);
                        
                             $producto = Productos::find($value);
@@ -167,9 +168,8 @@ class ComprasController extends Controller
                
         } catch (\Exception $e) {
         DB::rollBack(); 
-            dd($e);
-            alert()->error('Compra', 'No se pudo crear la compra');
-            return redirect("compras/create");
+            // alert()->error('Compra', 'No se pudo crear la compra');
+            // return redirect("compras/create");
         }
 
     }

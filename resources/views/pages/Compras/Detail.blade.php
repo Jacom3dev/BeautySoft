@@ -7,7 +7,7 @@
                 <h3> <strong style="color: rgba(2, 93, 113, 1);">Detalle de la Compra.</strong></h3>
             </div>
         <div class="col-4">
-            <div class="card" style="width: 16rem;">
+            <div class="card" style="width: 16rem;"> 
                 <div class="card-body">
                     <h5 class="card-title">Creado por: </h5>
                     <p class="card-text">{{$Compra->usuario->name }}</p>
@@ -36,7 +36,8 @@
                             <th scope="col">Nombre Producto</th>
                             <th scope="col">Imagen</th>
                             <th scope="col">Cantidad</th>
-                            <th scope="col">Precio</th>
+                            <th scope="col">Precio Compra</th>
+                            <th scope="col">Precio Venta</th>
                             <th scope="col">Estado</th>
 
                         </tr>
@@ -51,7 +52,8 @@
                                 <i class="fas fa-eye-slash text-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="sin imagen"></i> @endif
                             </td>
                             <td>{{ $value->amount }}</td>
-                            <td>&#36;{{number_format( $value->price) }}</td>
+                            <td>&#36;{{number_format( $value->price_buys) }}</td>
+                            <td>&#36;{{number_format( $value->price_sale) }}</td>
                             <td class="text-center">
 
                                 @if ($value->state == 1)

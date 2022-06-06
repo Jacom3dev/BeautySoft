@@ -56,7 +56,7 @@
 
                 <div class="row">
                     <div class="col mt-2">
-                        <input id="direction" type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" value="{{old('direction')}}" placeholder="Dirrección" >
+                        <input id="direction" type="text"class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" value="{{old('direction')}}" placeholder="Dirección" >
                         @error('direction')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

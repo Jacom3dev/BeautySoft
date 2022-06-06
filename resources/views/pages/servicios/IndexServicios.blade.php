@@ -33,8 +33,13 @@
                                 
                                 <td>{{$value->name}}</td>
                                 <td>&#36;{{number_format($value->price)}}</td>
-                                <td>{{$value->description}}</td>
-                                <td class="text-center">
+                                @if($value->description == null)
+                                    
+                                    <td>Este servicio no tiene descripciòn aun.</td>
+                                @else
+                                    <td>{{$value->description}}</td>
+                                @endif
+                                    <td class="text-center">
                                 @if($value->state == 1)
                                 <span class="badge badge-primary">Activo</span>
 

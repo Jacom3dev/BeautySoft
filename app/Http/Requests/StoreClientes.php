@@ -26,7 +26,7 @@ class StoreClientes extends FormRequest
         return [
             'name' => ['required', 'regex:/^[\pL\s\-]+$/u','min:3','max:50'],
             'email' => ['nullable', 'string','min:8','max:50', 'email', 'unique:clientes'],
-            'cell'=>['nullable','min:9','max:13'],
+            'cell'=>['nullable', 'regex:/(3)[0-9]{9}/'],
             'direction'=>['nullable','max:30'],
             'document_id' => ['required'],
             'document' => ['required','min:9','max:13','unique:clientes'],

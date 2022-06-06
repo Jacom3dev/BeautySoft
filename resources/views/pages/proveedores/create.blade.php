@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="form-group col">
-                        <input name="cell" type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" id="cell" placeholder="Teléfono Celular" value="{{isset($proveedores)?$proveedores->name:old('cell')}}">
+                        <input name="cell" type="number" class=" txt_phone form-control @error('cell') is-invalid border border-warning  @enderror" id="cell" placeholder="Teléfono Celular" value="{{isset($proveedores)?$proveedores->name:old('cell')}}" onclick="validate()">
                         @error('cell')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -71,13 +71,6 @@
         </div>
     </div>
 </div>
-
-
-
-        
-    
-
-
 
 
 

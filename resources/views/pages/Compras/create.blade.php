@@ -28,9 +28,14 @@
                                 <div class="col-6  ">
                                     <select class="js-example-basic-single form-control w-100" name="id_supplier" id="id_supplier" required="required" required>
                                             <option value="">Proveedor</option>
+                                        
                                             @foreach ($proveedor as $Key => $provider)
-                                                <option value="{{ $provider->NIT }}">{{ $provider->supplier }}</option>
-                                            @endforeach
+                                            @if($provider->state == 1)
+                                            <option value="{{ $provider->NIT }}">{{ $provider->supplier }}</option>
+                                            @endif
+                                           @endforeach
+                                           
+                                           
                                             </option>
                                         </select>
                                 </div>
@@ -50,8 +55,10 @@
                                             <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()">
                                                     <option value="">Producto</option>
                                                     @foreach ($productos as $Key => $product)
+                                                    @if($product->state == 1 )
                                                         <option price_buys="{{ $product->price_buys }}" price_sale="{{$product->price_sale}}" amount="{{ $product->amount }}"
                                                             value="{{ $product->id }}">{{ $product->name }}</option>
+                                                     @endif
                                                         
                                                     @endforeach
                                                 </select>
@@ -176,13 +183,10 @@
 
     function validar_Np() {
         let validation = false;
-
-
-
         if ($("table tbody#tblProductos tr").length > 0) {
             $("table tbody#tblProductos tr").each(function() {
-                let identity = $("#Id").val();//aki voy yoo
-                if ($(this).find("input.id").val() == $("id").val(identity)) {
+
+                if ($(this).find("input.namePN").val() == $("#productos option:selected").val()) {
                     validation = true;
 
                     $(this)
@@ -195,7 +199,7 @@
 
                     let subtotal = parseInt(
                         $("#cantidad").val() *
-                        parseInt($("#price_buysNew").val())
+                        parseInt($("#price_saleNew").val())
                     );
                     let precio_total = $("#total").val() || 0;
 
@@ -208,14 +212,14 @@
                         .text(
                             parseInt($(this).find("td.subt").text()) +
                             parseInt(
-                                parseInt($("#cantidad").val()) *
-                                parseInt($("#price_buysNew").val())
+                                parseInt($("#amount").val()) *
+                                parseInt($("#price_saleNew").val())
                             )
                         );
                     $(this)
-                        .find("td.cantidad")
+                        .find("td.cantidad_pN")
                         .text(
-                            parseInt($(this).find("td.cantidad").text()) +
+                            parseInt($(this).find("td.cantidad_pN").text()) +
                             parseInt($("#cantidad").val())
                         );
 
@@ -225,6 +229,8 @@
         }
 
         return validation;
+
+
     }
     // creaate new product
     function AgNuevoP() {
@@ -242,8 +248,8 @@
                
                return Swal.fire({
                                icon: 'warning',
-                               title: '¡Atención!',
-                               text: `El producto ya existe por favor revice o elijalo con la otra opcion.`,
+                               title: '¡Lo sentimos!',
+                               text: `El producto que decea crear ya existe, por favor digite uno nuevo.`,
                            });
                 
             }else{
@@ -264,16 +270,16 @@
            
                            $("#tblProductos").append(`
                                <tr id="tr-0${idp}">
-                                       <input type="hidden" name="idPN[]" value="${idp}" class="id"  id="Id"/>
-                                       <input type="hidden" name="amountsPN[]" value="${amount}" class="cantidad"/>
+                                       <input type="hidden" name="idPN[]" value="${idp}" class="id"  id="id"/>
+                                       <input type="hidden" name="amountsPN[]" value="${amount}" class="cantidad" id="cantidad"/>
                                        <input type="hidden" name="price_salePN[]" value="${price_saleNew}" />
                                        <input type="hidden" name="price_buysPN[]" value="${price_buysNew}" />
-                                       <input type="hidden" name="namePN[]" value="${name}" />
+                                       <input type="hidden" name="namePN[]" value="${name}"  class="namePN"/>
                                    <td>
                                    ${name}
                                    </td>
            
-                                   <td class="cantidad"> 
+                                   <td class="cantidad_pN"> 
                                        ${amount}
                                    </td>
                                    <td> 
@@ -281,7 +287,7 @@
                                    </td>
                                    
                                    <td class="subt">
-                                       ${parseInt(price_buysNew) * parseInt(amount) }
+                                       ${parseInt(price_saleNew) * parseInt(amount) }
                                    </td>
            
                                    <td>
@@ -292,7 +298,7 @@
                            `);
            
                            let price_t = $("#total").val() || 0;
-                           $("#total").val(parseInt(price_t) + parseInt(price_buysNew) * parseInt(amount));
+                           $("#total").val(parseInt(price_t) + parseInt(price_saleNew) * parseInt(amount));
                           }else{
                               console.log();
                           }
@@ -302,7 +308,7 @@
                        Swal.fire({
                                icon: 'warning',
                                title: '¡Atención!',
-                               text: `Debe agregar almenos un producto a la compra`,
+                               text: `Debe agregar almenos un producto a la compra.`,
                            });
            
                    }
@@ -312,7 +318,7 @@
             Swal.fire({
                                icon: 'warning',
                                title: '¡Atención!',
-                               text: `Debe agregar el precio del producto a la compra`,
+                               text: `Debe agregar el precio del producto a la compra.`,
                            });
         }
            
@@ -344,8 +350,8 @@
         if (id > 0) {
 
            if(amount > 0){
-            let validate = validar_producto();
-            console.log(validate);
+                let validate = validar_producto();
+                console.log(validate);
 
                     if (!validate) {
                         $("#tblProductos").append(`
@@ -389,6 +395,21 @@
 
 
                 }
+                else{
+                    Swal.fire({
+                               icon: 'warning',
+                               title: '¡Atención!',
+                               text: `Debe agregar almenos un producto a la compra.`,
+                           });
+
+                }
+           }else{
+
+            Swal.fire({
+                               icon: 'warning',
+                               title: '¡Atención!',
+                               text: ` Registre el producto que decea comprar.`,
+                           });
            }
 
     }

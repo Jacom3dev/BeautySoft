@@ -27,8 +27,8 @@ class StoreProveedores extends FormRequest
             
             'enterprise' => ['required','min:3','max:15'],
             'supplier' =>['required','regex:/^[\pL\s\-]+$/u','min:3','max:15'],
-            'cell'=>['required','max:10'],
-            'email' => [ 'nullable','string', 'max:50'],
+            'cell'=>['required','regex:/(3)[0-9]{9}/'],
+            'email' => [ 'required','string', 'max:50'],
             'direction	' => [ 'string','min:4', 'max:50'],
         ];
     }
