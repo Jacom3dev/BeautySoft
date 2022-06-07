@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('title', 'Crear Compras')
 @section('content')
 <div class="row justify-content-center">
@@ -6,9 +6,9 @@
         <div class="card  shadow-lg border-0 rounded-lg mt-3 booking">
             <div class="col-12 py-3">
                 <ul class="nav nav-pills d-flex justify-content-around">
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="Comprar productos existentes">
+                    <li class="nav-item mb-3 mb-md-0" data-bs-toggle="tooltip" data-bs-placement="left" title="Comprar productos existentes">
                         <a class=" btn btn-outline-dark active" aria-current="page" data-toggle="tab" href="#Exis">Generar compra de
-                                productos existentes</a>
+                            productos existentes</a>
                     </li>
                     <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="left" title="Comprar productos nuevos">
                         <a class=" btn btn-outline-dark" href="#New" data-toggle="tab">Generar compra de
@@ -23,70 +23,69 @@
 
                     <div class="row justify-content-around">
                         {{-- Proveedor form --}}
-                        <div class="col-12 text-dark form-group mb-4">
+                        <div class="col-12 text-dark form-group mb-0 mb-md-4">
                             <div class=" row">
-                                <div class="col-6  ">
-                                    <select class="js-example-basic-single form-control w-100" name="id_supplier" id="id_supplier" required="required" required>
-                                            <option value="">Proveedor</option>
-                                        
-                                            @foreach ($proveedor as $Key => $provider)
-                                            @if($provider->state == 1)
-                                            <option value="{{ $provider->NIT }}">{{ $provider->supplier }}</option>
-                                            @endif
-                                           @endforeach
-                                           
-                                           
-                                            </option>
-                                        </select>
+                                <div class="col-12 col-md-6  form-group ">
+                                    <select class="js-example-basic-single form-control w-100" name="id_supplier" id="id_supplier" required="required" required style="width: 100%;">
+                                        <option value="">Proveedor</option>
+
+                                        @foreach ($proveedor as $Key => $provider)
+                                        @if($provider->state == 1)
+                                        <option value="{{ $provider->NIT }}">{{ $provider->supplier }}</option>
+                                        @endif
+                                        @endforeach
+
+
+                                        </option>
+                                    </select>
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 form-group">
                                     <input name="price_total" type="text" class="form-control " id="total" placeholder="Precio" required="required" required readonly>
                                 </div>
                             </div>
                         </div>
 
                         {{-- productos FORM --}}
-                        <div class="col-6 text-dark form-group">
+                        <div class="col-12 col-md-6 text-dark form-group">
                             <div class="tab-content">
                                 <div class="chart tab-pane active" id="Exis" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
-                                            <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()">
-                                                    <option value="">Producto</option>
-                                                    @foreach ($productos as $Key => $product)
-                                                    @if($product->state == 1 )
-                                                        <option price_buys="{{ $product->price_buys }}" price_sale="{{$product->price_sale}}" amount="{{ $product->amount }}"
-                                                            value="{{ $product->id }}">{{ $product->name }}</option>
-                                                     @endif
-                                                        
-                                                    @endforeach
-                                                </select>
+                                            <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()" style="width: 100%;">
+                                                <option value="">Producto</option>
+                                                @foreach ($productos as $Key => $product)
+                                                @if($product->state == 1 )
+                                                <option price_buys="{{ $product->price_buys }}" price_sale="{{$product->price_sale}}" amount="{{ $product->amount }}" value="{{ $product->id }}">{{ $product->name }}</option>
+                                                @endif
+
+                                                @endforeach
+                                            </select>
                                         </div>
 
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 col-md-6 form-group">
                                             <input name="amount" type="number" class="form-control " id="amount" placeholder="Cantidad">
                                         </div>
-                                        <div class="col-6 form-group">
-                                            <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_sale">
+                                        <div class="col-12 col-md-6 form-group">
+                                            <input type="number" placeholder="Precio venta*" value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_sale">
                                             @error('price_sale')
-                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
                                         </div>
 
-                                        <div class="col-6 form-group">
-                                            <input type="number"  placeholder="Precio compra"   value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buys">
+                                        <div class="col-12 col-md-6 form-group">
+                                            <input type="number" placeholder="Precio compra" value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buys">
                                             @error('price_buys')
-                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end ">
 
                                             <button class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto existente a la compra" onclick="Agg()" type="button">
-                                                        <i class="fas fa-plus"></i>
-                                                        <span> Agregar Producto</span>
-                                                    </button>
+                                                <i class="fas fa-plus"></i>
+                                                <span> Agregar Producto</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -95,12 +94,12 @@
                                 <div class="chart tab-pane" id="New" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
-                                            <input type="text" placeholder="Nombre*" class="form-control  @error('name') is-invalid @enderror" name="name" id="nombre" > @error('name')
+                                            <input type="text" placeholder="Nombre*" class="form-control  @error('name') is-invalid @enderror" name="name" id="nombre"> @error('name')
                                             <div class="invalid-feedback">{{$message}}</div>
                                             @enderror
                                         </div>
 
-                                        <div class="col-6 form-group">
+                                        <div class="col-12 col-md-6 form-group">
                                             <input type="number" placeholder="Cantidad*" class="form-control @error('amount') is-invalid @enderror" name="amount" value="amount" id="cantidad"> @error('amount')
                                             <div class="invalid-feedback">El campo debe tener como minimo 1 de cantidad.</div>
                                             @enderror
@@ -108,25 +107,25 @@
 
 
 
-                                        <div class="col-6 form-group">
-                                            <input type="number"  placeholder="Precio venta*"   value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_saleNew">
+                                        <div class="col-12 col-md-6 form-group">
+                                            <input type="number" placeholder="Precio venta*" value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_saleNew">
                                             @error('price_sale')
-                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
                                         </div>
 
-                                        <div class="col-6 form-group">
-                                            <input type="number"  placeholder="Precio compra"   value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buysNew">
+                                        <div class="col-12 col-md-6 form-group">
+                                            <input type="number" placeholder="Precio compra" value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buysNew">
                                             @error('price_buys')
-                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>                         
+                                            <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
                                         </div>
 
                                         <div class="col-12 d-flex justify-content-end ">
                                             <button class="btn principal-color text-white" onclick="AgNuevoP()" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto nuevo a la compra" type="button">
-                                                        <i class="fas fa-plus"></i>
-                                                        <span> Agregar Producto</span>
-                                                    </button>
+                                                <i class="fas fa-plus"></i>
+                                                <span> Agregar Producto</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -135,10 +134,10 @@
 
                         </div>
 
-                        <div class="col-6 ">
+                        <div class="col-12 col-md-6 ">
                             <div class="row">
-                                <div class="col tbl_scroll tabla-responsive">
-                                    <table class="table  table-bordered">
+                                <div class="col-12 table-responsive  tbl_scroll">
+                                    <table class="table  table-bordered w-100" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th scope="col">Producto</th>
@@ -158,27 +157,26 @@
                     </div>
             </div>
 
-            <div class="row justify-content-end pb-3">
-                <div class="col-6 col-lg-2">
+            <div class="row justify-content-end pb-3 mr-3">
+                <div class="col-12 col-md-6 col-lg-3">
                     <button type="submit" class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar Compra">
-                            Crear
-                        </button>
+                        Crear
+                    </button>
                 </div>
-                <div class="col-3 col-lg-1">
-                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                <div class="col-12 col-md-3 col-lg-2">
+                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
                 </div>
             </div>
         </div>
         </form>
     </div>
 </div>
-@endsection 
+@endsection
 
 @section('JS')
 <script>
-   
     let p = 0;
-  
+
     //NUEVOS PRODUCTOS 
 
     function validar_Np() {
@@ -241,34 +239,34 @@
         console.log(price_buysNew);
         let total = $("#total");
         let nameProduct = "";
-        @foreach( $productos as  $value)
-            
-            nameProduct ="{{$value->name}}";
-            if (nameProduct == name) {
-               
-               return Swal.fire({
-                               icon: 'warning',
-                               title: '¡Lo sentimos!',
-                               text: `El producto que decea crear ya existe, por favor digite uno nuevo.`,
-                           });
-                
-            }else{
-                
-                nameProduct = "";
-            }
-            
+        @foreach($productos as $value)
+
+        nameProduct = "{{$value->name}}";
+        if (nameProduct == name) {
+
+            return Swal.fire({
+                icon: 'warning',
+                title: '¡Lo sentimos!',
+                text: `El producto que decea crear ya existe, por favor digite uno nuevo.`,
+            });
+
+        } else {
+
+            nameProduct = "";
+        }
+
         @endforeach
-      
-        
+
+
         if (price_buysNew != '') {
             if (amount != '') {
-                          let validation = validar_Np();
-                          if (!validation) {
-                              
-                           p++;
-                           let idp = p;
-           
-                           $("#tblProductos").append(`
+                let validation = validar_Np();
+                if (!validation) {
+
+                    p++;
+                    let idp = p;
+
+                    $("#tblProductos").append(`
                                <tr id="tr-0${idp}">
                                        <input type="hidden" name="idPN[]" value="${idp}" class="id"  id="id"/>
                                        <input type="hidden" name="amountsPN[]" value="${amount}" class="cantidad" id="cantidad"/>
@@ -296,32 +294,32 @@
                                    </td>
                                </tr>                         
                            `);
-           
-                           let price_t = $("#total").val() || 0;
-                           $("#total").val(parseInt(price_t) + parseInt(price_saleNew) * parseInt(amount));
-                          }else{
-                              console.log();
-                          }
-                       
-                       
-                   }else{
-                       Swal.fire({
-                               icon: 'warning',
-                               title: '¡Atención!',
-                               text: `Debe agregar almenos un producto a la compra.`,
-                           });
-           
-                   }
-                   
-            
-        }else{
+
+                    let price_t = $("#total").val() || 0;
+                    $("#total").val(parseInt(price_t) + parseInt(price_saleNew) * parseInt(amount));
+                } else {
+                    console.log();
+                }
+
+
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Atención!',
+                    text: `Debe agregar almenos un producto a la compra.`,
+                });
+
+            }
+
+
+        } else {
             Swal.fire({
-                               icon: 'warning',
-                               title: '¡Atención!',
-                               text: `Debe agregar el precio del producto a la compra.`,
-                           });
+                icon: 'warning',
+                title: '¡Atención!',
+                text: `Debe agregar el precio del producto a la compra.`,
+            });
         }
-           
+
 
     }
 
@@ -332,7 +330,7 @@
 
         let price_buys = $("#productos option:selected").attr("price_buys");
         $("#price_buys").val(price_buys);
-        
+
     }
 
     function Agg() {
@@ -349,12 +347,12 @@
 
         if (id > 0) {
 
-           if(amount > 0){
+            if (amount > 0) {
                 let validate = validar_producto();
                 console.log(validate);
 
-                    if (!validate) {
-                        $("#tblProductos").append(`
+                if (!validate) {
+                    $("#tblProductos").append(`
                                             <tr id="tr-${id}">
                                             
                                                     <input type="hidden" name="ids[]" value="${id}" class="id" />
@@ -387,30 +385,29 @@
 
 
 
-                        let total = $("#total").val() || 0;
-                        $("#total").val(parseInt(total) + parseInt(price_buys) * parseInt(amount));
-
-                    }
-
-
+                    let total = $("#total").val() || 0;
+                    $("#total").val(parseInt(total) + parseInt(price_buys) * parseInt(amount));
 
                 }
-                else{
-                    Swal.fire({
-                               icon: 'warning',
-                               title: '¡Atención!',
-                               text: `Debe agregar almenos un producto a la compra.`,
-                           });
 
-                }
-           }else{
+
+
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Atención!',
+                    text: `Debe agregar almenos un producto a la compra.`,
+                });
+
+            }
+        } else {
 
             Swal.fire({
-                               icon: 'warning',
-                               title: '¡Atención!',
-                               text: ` Registre el producto que decea comprar.`,
-                           });
-           }
+                icon: 'warning',
+                title: '¡Atención!',
+                text: ` Registre el producto que decea comprar.`,
+            });
+        }
 
     }
 
