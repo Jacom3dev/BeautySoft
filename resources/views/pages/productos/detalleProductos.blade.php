@@ -60,7 +60,7 @@
           </div>
           <div class="row justify-content-center mb-3">
             <div class="col-md-2" >
-              <a class="btn btn-outline-dark btn-block" href="/productos"  data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+              <a class="btn btn-outline-dark btn-block" href="/productos"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
             </div>
           </div> 
     </div>

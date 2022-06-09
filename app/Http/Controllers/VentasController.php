@@ -142,7 +142,7 @@ class VentasController extends Controller
             }
             
             DB::commit();
-            alert()->success('Venta','Venta realizada con éxito.');
+            alert()->success('Venta','Venta realizada exitosamente.');
             return redirect()->route('ventas.index');
         // } catch (\Exception $e) {
         //    DB::rollback();
@@ -258,7 +258,7 @@ class VentasController extends Controller
                 }
             // }
             
-            alert()->success('Venta','Cambio de estado exitoso.');
+            alert()->success('Venta','Cambio de estado con exito.');
             
            
         }else {
@@ -298,7 +298,7 @@ class VentasController extends Controller
         }
 
            
-        alert()->success('Venta','cambio de estado exitoso.');
+        alert()->success('Venta','cambio de estado con exito.');
         return Redirect()->route('ventas.index');
     }
 }

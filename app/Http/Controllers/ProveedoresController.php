@@ -61,7 +61,7 @@ class ProveedoresController extends Controller
             alert()->success('Proveedor','Proveedor registrado exitosamente.');
             return redirect('proveedores/');
         } catch (\Exception $e) { 
-            alert()->error('Proveedor', 'No se pudo registrar el proveedor, por favor diligencie los campos correctamente');
+            alert()->error('Proveedor', 'No se pudo registrar el proveedor, por favor diligencie el numero de celular correctamente.');
             return redirect('proveedores/create');
         }
     }
@@ -76,7 +76,7 @@ class ProveedoresController extends Controller
     {
         $proveedor = Proveedor::find($id);
         if ($proveedor==null) {
-            alert()->error('Proveedores','proveedor no encontrado');
+            alert()->error('Proveedores','Proveedor no encontrado.');
             return redirect("/proveedores/index");
         }
          return view("pages.proveedores.Detail",compact("proveedor"));
@@ -97,7 +97,7 @@ class ProveedoresController extends Controller
         $proveedor = Proveedor::find($id);
         // dd($proveedor);
         if ($proveedor==null) {
-            alert()->error('Proveedores','proveedor no encontrado');
+            alert()->error('Proveedores','Proveedor no encontrado.');
             return redirect("/proveedores/index");
         }
         
@@ -130,7 +130,7 @@ class ProveedoresController extends Controller
                 "direction" => $proveedor["direction"],
                 "state" => 1
              ]);
-             alert()->success('','Proveedor  editado con exito');
+             alert()->success('','Proveedor  editado exitosamente.');
              return redirect("proveedores/");
         } catch (\Exception $e) {
             return redirect("proveedores/");
@@ -143,7 +143,7 @@ class ProveedoresController extends Controller
     public function changeState($NIT,$state){
         $proveedor = Proveedor::find($NIT);
         if ($proveedor==null) {
-            alert()->error('Proveedores','proveedor no encontrado');
+            alert()->error('Proveedores','Proveedor no encontrado.');
             return redirect("/proveedores/index");
         }
         $proveedor->update([

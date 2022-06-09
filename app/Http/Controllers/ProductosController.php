@@ -72,11 +72,11 @@ class ProductosController extends Controller
            
 
            
-            alert()->success('Productos','Producto  creado con exito');
+            alert()->success('Productos','Producto  creado exitosamente.');
             return redirect()->route('productos.index');
         }catch(\Exception $e){
             
-            alert()->error('Productos','Producto no  creado ');
+            alert()->error('Productos','Producto no registrado.');
             
             return redirect("productos/create");
         }
@@ -94,7 +94,7 @@ class ProductosController extends Controller
         $productos=productos::find($id);
         
         if ($productos==null) {
-            alert()->error('Productos','producto no encontrado');
+            alert()->error('Productos','Producto no encontrado.');
             return redirect("/productos/index");
         }
         return view("pages.productos.detalleProductos",compact("productos"));
@@ -112,7 +112,7 @@ class ProductosController extends Controller
         $productos=productos::find($id);
         
         if ($productos==null) {
-            alert()->error('Productos','producto no encontrado');
+            alert()->error('Productos','Producto no encontrado.');
             return redirect("/productos/index");
         }
         return view("pages.productos.editarProductos",compact("productos"));
@@ -149,7 +149,7 @@ class ProductosController extends Controller
                 }
                
                 if ($producto==null) {
-                    alert()->error('Productos','El producto no existe');
+                    alert()->error('Productos','El producto no existe.');
                     return redirect("productos/create");
                 }
                 
@@ -163,10 +163,10 @@ class ProductosController extends Controller
                     
                 ]);
                 
-                alert()->success('Productos','Producto  editado con exito');
+                alert()->success('Productos','Producto  editado exitosamente.');
                 return redirect("/productos");
             }catch(\Exception$e){
-                alert()->error('Productos','Producto no  editado ');
+                alert()->error('Productos','Producto no  editado. ');
                 return redirect("/productos/Edit");
             }   
          
@@ -180,18 +180,18 @@ class ProductosController extends Controller
                     
         Storage::delete($destroy);
         $producto->update(["img"=>null]);
-        alert()->success('Productos','La imagen se a eliminado con exito');
+        alert()->success('Productos','La imagen se a eliminado exitosamente.');
         return redirect("/productos/".$id."/edit");
     }
     public function changeState($id,$state){
        
         $productos=Productos::find($id);    
         if ($productos==null) {
-            alert()->error('Productos','producto no encontrado');
+            alert()->error('Productos','Producto no encontrado.');
             return redirect("/productos/index");
         }
             $productos->update(["state"=>$state]);
-            alert()->success('Productos','Cambio de estado hecho');
+            alert()->success('Productos','Cambio de estado con exito.');
             return redirect("/productos");
         
     }

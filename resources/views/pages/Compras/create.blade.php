@@ -39,6 +39,7 @@
                                         </option>
                                     </select>
                                 </div>
+                               
 
                                 <div class="col-12 col-md-6 form-group">
                                     <input name="price_total" type="text" class="form-control " id="total" placeholder="Precio" required="required" required readonly>
@@ -164,7 +165,7 @@
                     </button>
                 </div>
                 <div class="col-12 col-md-3 col-lg-2">
-                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                    <a href="{{ route('compras.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                 </div>
             </div>
         </div>

@@ -233,7 +233,7 @@
             <div class="col-12">
                 <div class="row ">
                     <div class="col d-flex justify-content-center">
-                        <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark">Volver</a>
+                        <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
             </div>

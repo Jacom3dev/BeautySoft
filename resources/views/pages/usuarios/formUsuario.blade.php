@@ -73,11 +73,11 @@
 
                 <div class="row pt-4 pb-1 justify-content-end">
                     <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
-                        <button type="submit" class="btn principal-color btn-block text-white" id="btn-user">Registrar</button>
+                        <button type="submit" class="btn principal-color btn-block text-white" id="btn-user" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar usuario">Registrar</button>
                     </div>
                     
                     <div class="col-12 col-sm-4 col-lg-2 ">
-                        <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark btn-block">Volver</a>
+                        <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
         <div class="col-12">
             <div class="row mt-3">
                 <div class="col d-flex justify-content-center">
-                    <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark">Volver</a>
+                    <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                 </div>
             </div>
         </div>

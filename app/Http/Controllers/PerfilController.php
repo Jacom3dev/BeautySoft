@@ -96,7 +96,7 @@ class PerfilController extends Controller
         $input = $request->all();
         $usuario = User::find($id);
         $usuario->update($input);
-        alert()->success('Usuario','Informacion editada con exito');
+        alert()->success('Usuario','Información editada exitosamente.');
         return  Redirect()->route('usuarios.perfil');
     }
 
@@ -106,7 +106,7 @@ class PerfilController extends Controller
         $input['password'] = Hash::make($request->password);
         $usuario = User::find($id);
         $usuario->update($input);
-        alert()->success('Usuario','Informacion editada con exito');
+        alert()->success('Usuario','Información editada exitosamente.');
         return  Redirect()->route('usuarios.perfil');
     }
 }

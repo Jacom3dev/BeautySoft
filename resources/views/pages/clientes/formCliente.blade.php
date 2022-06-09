@@ -64,12 +64,17 @@
                 </div>
                 <div class="row py-4 justify-content-end">
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($cliente)?'Editar':'Registrar'}}
-                        </button>
+
+                            @if(isset($value))
+                            <button type="submit" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar cliente"> Registrar </button>
+                            @else
+                            <button type="submit" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar cliente"> Editar </button>
+
+                            @endif
+                      
                     </div>
                     <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" " data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
+                        <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
             </form>
@@ -80,7 +85,7 @@
         <div class="col-12 ">
             <div class="row mt-3 ">
                 <div class="col d-flex justify-content-center ">
-                    <a href="{{route( 'clientes.index')}} " class="btn btn-outline-dark " " data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
+                    <a href="{{route( 'clientes.index')}} " class="btn btn-outline-dark " data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
         </div>

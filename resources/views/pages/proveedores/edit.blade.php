@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-10 col-md-8 col-lg-7 mt-4 p-2 bg-white rounded">
             <h3 class="text-center"> <strong style="color: rgba(2, 93, 113, 1);">Editar Proveedor.</strong></h3>
-            <form action="{{route('proveedores.update',$proveedor->NIT)}}" method="POST"">
+            <form action="{{route('proveedores.update',$proveedor->NIT)}}" method="POST">
                 @csrf
                 @method("PUT")
                 <input type="hidden" name="NIT" value="{{$proveedor->NIT}}">
@@ -68,7 +68,7 @@
                 
                 <div class="row justify-content-end pb-3 pr-3">
                     <div class="col-12 col-md-4 pb-md-0 pb-3">
-                        <button type="submit" class=" btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar Proveedor">Editar</button>
+                        <button type="submit" class=" btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar informacion del proveedor">Editar</button>
                     </div>
                     <div class="col-12 col-md-3">
                         <a href="{{route('proveedores.index')}}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir Atrás">Volver</a>

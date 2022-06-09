@@ -9,10 +9,10 @@
     <form action="{{route('existencias.index')}}" method="get">
         <div class="row justify-content-end pt-4">
             <div class="col-3">
-                <input class="form-control" type="text" name="textoBusqueda" id="textoBusqueda" placeholder="Buscar">
+                <input class="form-control" type="text" name="textoBusqueda" id="textoBusqueda" placeholder="Buscar" >
             </div>
             <div class="col-1">
-                <button type="submit" class="btn principal-color text-white">Buscar</button>
+                <button type="submit" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Buscar productos existentes">Buscar</button>
             </div>
         </div>
     </form>
@@ -79,7 +79,7 @@
                                 <li class="list-group-item"> <b> Precio Venta: </b>&#36;{{number_format($value->price_sale)}}</li>
                             </ul>
                             <div class="card-body text-center">
-                                <a href="{{route('compras.create')}}" class="btn principal-color text-white">Comprar Producto</a>
+                                <a href="{{route('compras.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar compra de productos">Comprar Producto</a>
                             </div>
                         </div>
                         

@@ -106,13 +106,13 @@ class ServiciosController extends Controller
                     }else {
                         DB::rollBack();
                       
-                        alert()->error('Servicios','Servicio no  creado');
+                        alert()->error('Servicios','Servicio no registrado.');
                         return redirect("/servicios/create/");
                     }
                 }
                 DB::commit();
 
-                alert()->success('Servicios','Servicio   creado con exito');
+                alert()->success('Servicios','Servicio  registrado exitosamente.');
                 return redirect("/servicios");
             }else {
                
@@ -125,7 +125,7 @@ class ServiciosController extends Controller
                     "state"=>1,
                 ]);
                 DB::commit();
-                alert()->success('Servicios','Servicio   creado con exito');
+                alert()->success('Servicios','Servicio registrado exitosamente.');
                 return redirect("/servicios");
             }
             
@@ -134,7 +134,7 @@ class ServiciosController extends Controller
         }catch(\Exception $e){
             DB::rollBack();
             dd($e);
-            alert()->error('Servicios','Servicio no  creado');
+            alert()->error('Servicios','Servicio no  registrado.');
             return redirect("/servicios/create/");
         }
 
@@ -165,7 +165,7 @@ class ServiciosController extends Controller
         ->get();
         
         if ($servicios==null) {
-            alert()->error('servicios','servicio no encontrado');
+            alert()->error('Servicios','servicio no encontrado.');
             return redirect("/servicios/index");
         }
         return view("pages.servicios.detalleServicios",compact("servicios","detalle","producto"));
@@ -197,7 +197,7 @@ class ServiciosController extends Controller
         $prec = $prec-$precio;
         
         if ($servicios==null) {
-            alert()->error('servicios','servicio no encontrado');
+            alert()->error('Servicios','Servicio no encontrado.');
             return redirect("/servicios/index");
         }
        
@@ -223,7 +223,7 @@ class ServiciosController extends Controller
                 $prec=$this->eliminar($id,$servicios->price_sale);
                 
                 if ($servicios==null) {
-                    alert()->error('Servicios','El servicio no existe');
+                    alert()->error('Servicios','El servicio no existe.');
                     return redirect("servicios/create");
                 }
               
@@ -260,14 +260,14 @@ class ServiciosController extends Controller
 
                         DB::rollBack();
                         
-                        alert()->error('Servicios','Servicio no  creado');
+                        alert()->error('Servicios','Servicio no creado.');
                         return redirect("/servicios/ceate");
                    
                     }
                 }
 
                 DB::commit();
-                alert()->success('Servicios','Servicio   editado con exito');
+                alert()->success('Servicios','Servicio editado exitosamente.');
                 return redirect("/servicios");
 
             }else {
@@ -281,7 +281,7 @@ class ServiciosController extends Controller
                     "price"=>$prec,
                 ]);
                 DB::commit();
-                alert()->success('Servicios','Servicio   editado con exito');
+                alert()->success('Servicios','Servicio editado exitosamente.');
                 return redirect("/servicios");
 
             }
@@ -289,8 +289,8 @@ class ServiciosController extends Controller
             
         }catch(\Exception $e){
             DB::rollBack();
-            dd($e);
-            alert()->error('Servicios','Servicio no editado con exito');
+            // dd($e);
+            alert()->error('Servicios','Servicio no editado.');
             return redirect("/servicios/".$id."/edit");
         }
     }
@@ -338,7 +338,7 @@ class ServiciosController extends Controller
         $cita=Cita::all();
         $citaD=detalle_cita_servicios::all(); 
         if ($servicios==null) {
-            alert()->error('servicios','servicios no encontrado');
+            alert()->error('Servicios','Servicio no encontrado.');
             return redirect("/servicios/index");
         }
         foreach ($cita as $key ) {
@@ -349,15 +349,15 @@ class ServiciosController extends Controller
                         if ($key->state_id == 1 || $key->state_id == 3) {
                             
                             $servicios->update(["state"=>$state]);
-                            alert()->success('Servicios','Cambio de estado hecho');
+                            alert()->success('Servicios','Cambio de estado con exito.');
                             
                             return redirect("/servicios");
                         }else {
-                            alert()->error('Servicios','no se puede cambiar el estado');
+                            alert()->error('Servicios','No se puede cambiar el estado.');
                             return redirect("/servicios");
                         }
                     }else {
-                        alert()->error('servicios','servicios no encontrado');
+                        alert()->error('Servicios','servicio no encontrado.');
                         return redirect("/servicios/index");
                     }
                 }
@@ -365,7 +365,7 @@ class ServiciosController extends Controller
             }
         }
         $servicios->update(["state"=>$state]);
-                    alert()->success('Servicios','Cambio de estado hecho');
+                    alert()->success('Servicios','Cambio de estado con exito.');
                     return redirect("/servicios");
 
     }

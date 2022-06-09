@@ -51,8 +51,8 @@
                         @endif
                         </label>
 
-                        <input type="file"  id="img" placeholder="Imagen" onchange="imagen()" value="{{$productos->img}} "class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*"  
-                        style="display: none; width: 100%;" >
+                        <input type="file"  id="img" placeholder="Imagen" onchange="imagen()" value="{{$productos->img}} "class="form-control @error('img') is-invalid @enderror"  name="img" accept="image/*"  
+                        style="display: none; width: 100%;"  >
                         @error('img')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -66,7 +66,7 @@
 
                 <div class="row px-4 pb-3 justify-content-end">
                     <div class="col-12 col-lg-4 pb-lg-0 pb-3">
-                        <button type="submit" onclick="crear()" class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Actualizar informacion">
+                        <button type="submit" onclick="crear()" class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar información">
                             Editar
                         </button>
                     </div>
@@ -78,7 +78,7 @@
                             @csrf
                             @method("DELETE")
                             <div class="col form-group">
-                                <button type="submit" onclick="eliminar_imagen()" class="btn btn-danger btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Eliminar imagen">
+                                <button type="submit" onclick="eliminar_imagen()" class="btn btn-danger btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Eliminar la imagen del producto">
                                     eliminar imagen
                                 </button>
                             </div>
@@ -86,7 +86,7 @@
                     </div>
                     @endif
                     <div class="col-12 col-lg-2">
-                        <a href="/productos" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                        <a href="/productos" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 
                 </div>

@@ -98,7 +98,7 @@
 
                                 <div class="col-12 pb-md-0 pb-3 d-flex justify-content-end">
                                     <button type="button" onclick="agregar_Producto()" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="Agregar producto"
+                                        data-bs-placement="left" title="Agregar producto al servicio"
                                         class="btn principal-color text-white"><i class="fas fa-plus"></i>
 
                                         <span> Agregar producto</span>
@@ -143,12 +143,12 @@
 
                     <div class="row pb-3 px-4 justify-content-end">
                         <div class="col-12 col-md-6 col-lg-3 pb-md-0 pb-3">
-                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear ">
+                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar servicio ">
                                 Crear
                             </button>
                         </div>
                         <div class="col-12 col-md-3 col-lg-2">
-                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
 
@@ -308,11 +308,11 @@
 
         swalWithBootstrapButtons.fire({
             title: '¿Estas seguro?',
-            text: "El servico se Agregara",
+            text: "El servicio se agregará",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Si, seguro',
-            cancelButtonText: 'No, cancele',
+            confirmButtonText: 'Si, seguro.',
+            cancelButtonText: 'No, cancelar.',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {

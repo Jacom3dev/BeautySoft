@@ -14,7 +14,7 @@
            <div class="icon">
              <i class="ion ion-person-stalker"></i>
            </div>
-           <a href="{{route('clientes.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('clientes.index')}}" class="small-box-footer" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver informacion de clientes">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-md-6 col-12">
@@ -27,7 +27,7 @@
            <div class="icon">
              <i class="ion ion-cash"></i>
            </div>
-           <a href="{{route('ventas.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('ventas.index')}}" class="small-box-footer" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver informacion de ventas">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-md-6 col-12">
@@ -40,7 +40,7 @@
            <div class="icon">
              <i class="ion ion-bag"></i>
            </div>
-           <a href="{{route('compras.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('compras.index')}}" class="small-box-footer" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver informacion de compras">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
       <div class="col-lg-3 col-md-6 col-12">
@@ -53,14 +53,14 @@
            <div class="icon">
              <i class="ion ion-calendar"></i>
            </div>
-           <a href="{{route('agenda.index')}}" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+           <a href="{{route('agenda.index')}}" class="small-box-footer" data-bs-toggle="tooltip" data-bs-placement="left" title="Ver informacion de citas">Más información <i class="fas fa-arrow-circle-right"></i></a>
          </div>
       </div>
    </div>
    <div class="row justify-content-end">
      <div class="col-6 col-md-3">
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-block principal-color" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-primary btn-block principal-color" data-toggle="modal" data-target="#exampleModal" data-bs-toggle="tooltip" data-bs-placement="left" title="Generar informe en exel">
         Generar informe
       </button>
 
@@ -79,10 +79,10 @@
                 <div class="col-12">
                     <ul class="nav nav-pills d-flex justify-content-around">
                         <li class="nav-item">
-                            <a class=" btn btn-outline-dark active" aria-current="page" data-toggle="tab" href="#Vent">Informe Ventas</a>
+                            <a class=" btn btn-outline-dark active" aria-current="page" data-toggle="tab" href="#Vent" data-bs-toggle="tooltip" data-bs-placement="left" title="Generar informe de ventas">Informe Ventas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark" href="#Comp" data-toggle="tab">Informe Compras</a>
+                            <a class="btn btn-outline-dark" href="#Comp" data-toggle="tab" data-bs-toggle="tooltip" data-bs-placement="left" title="Generar informe de compras">Informe Compras</a>
                         </li>
                         </li>
                     </ul>
@@ -105,8 +105,8 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                            <button type="submit" class="btn principal-color text-white">Generar</button>
-                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Generar informe">Generar</button>
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Cerrar</button>
                       </div>
                     </form>
                   </div>

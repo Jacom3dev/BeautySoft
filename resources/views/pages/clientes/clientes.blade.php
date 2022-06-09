@@ -16,7 +16,7 @@
                     <thead class="text-center">
                         <tr>
                             <th>Nombre</th>
-                            <th>Email</th>
+                            <th>Correo</th>
                             <th>Tipo documento</th>
                             <th>Documento</th>
                             <th>Celular</th>

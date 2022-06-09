@@ -21,6 +21,7 @@ class RolesController extends Controller
     public function index()
     {
         $roles = Roles::all();
+        
         return view('pages.roles.roles',compact("roles"));
     }
 
@@ -31,7 +32,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('pages.roles.formRol');
+        $roles="registrar";
+        return view('pages.roles.formRol',compact("roles"));
+        
     }
 
     /**
@@ -43,7 +46,7 @@ class RolesController extends Controller
     public function store(StoreRoles $request)
     {
         Roles::create($request->all());
-        alert()->success('Rol','Rol registrado');
+        alert()->success('Rol','Rol registrado exitosamente.');
         return Redirect()->route('roles.index');
     }
 
@@ -68,10 +71,11 @@ class RolesController extends Controller
     {
         $rol = Roles::find($id);
         if ($rol==null) {
-            alert()->error('roles','rol no encontrado');
+            alert()->error('Roles','Rol no encontrado.');
             return redirect("/roles/index");
         }
-        return view('pages.roles.formRol',compact('rol'));
+        $roles="editar";
+        return view('pages.roles.formRol',compact('rol','roles'));
     }
 
     /**
@@ -86,7 +90,7 @@ class RolesController extends Controller
         $input = $request->all();
         $rol = Roles::find($id);
         $rol->update($input);
-        alert()->success('Rol','Rol  editado con exito');
+        alert()->success('Rol','Rol  editado exitosamente.');
         return  Redirect()->route('roles.index');
     }
 
@@ -106,11 +110,11 @@ class RolesController extends Controller
             $users = User::all();
             $rol = Roles::find($id);
             if ($rol==null) {
-                alert()->error('roles','rol no encontrado');
+                alert()->error('Roles','Rol no encontrado.');
                 return redirect("/roles/index");
             }
             if ($id == 1) {
-                alert()->error('Ups','No se puede deshabilitar el rol administrador');
+                alert()->error('Ups','No se puede deshabilitar el rol administrador.');
                 return Redirect()->route('roles.index');
             }else {
                 try {
@@ -125,16 +129,16 @@ class RolesController extends Controller
                             ]);
                         }
                     }
-                    alert()->success('Rol','Cambio de estado con exito');
+                    alert()->success('Rol','Cambio de estado con exito.');
                     return Redirect()->route('roles.index');
                 } catch (\Throwable $th) {
-                    alert()->error('Rol','El rol no existe');
+                    alert()->error('Rol','El rol no existe.');
                     return Redirect()->route('roles.index');
                 }
 
             }
         }else {
-            alert()->info('Ups','El estado del rol no existe');
+            alert()->info('Ups','El estado del rol no existe.');
             return Redirect()->route('roles.index');
         }
 

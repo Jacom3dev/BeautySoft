@@ -51,9 +51,9 @@
                     </div>
                     
                     <div class="col-md-12 form-group overflow-auto">
-                        <label for="img" id="label_img"  class="btn principal-color btn-block text-white mt-3"><i class="fas fa-image"></i> <t>Seleccionar</t> Imagen<c></c> <small></small></label>
-                        <input type="file" id="img" placeholder="Imagen" onchange="imagen()"  value="{{old('img')}}"class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*" value="null" 
-                        style="display: none; width: 100%;">
+                        <label for="img" id="label_img"  class="btn principal-color btn-block text-white mt-3"><i class="fas fa-image" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"></i> <t>Seleccionar</t> Imagen<c></c> <small></small></label>
+                        <input type="file" id=  "img" placeholder="Imagen" onchange="imagen()"  value="{{old('img')}}"class="form-control @error('img') is-invalid @enderror" name="img" accept="image/*" value="null" 
+                        style="display: none; width: 100%;" >
                         @error('img')
                         <span class="invalid-feedback" role="alert">
                             <small>{{ $message }}</small>
@@ -65,12 +65,12 @@
 
                 <div class="row py-4 justify-content-end">
                     <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
-                        <button type="submit" onclick="crear()" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear">
-                            Crear   
+                        <button type="submit" onclick="crear()" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar el producto">
+                            Registrar   
                         </button>
                     </div>
                     <div class="col-12 col-sm-4 col-lg-2">
-                        <a href="/productos" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Retroceder" >Volver</a>
+                        <a href="/productos" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás" >Volver</a>
                     </div>
                 </div>
                
@@ -107,11 +107,11 @@
 
         swalWithBootstrapButtons.fire({
             title: '¿Estas seguro?',
-            text: "El producto se creara",
+            text: "El producto será registrado.",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Si, seguro',
-            cancelButtonText: 'No, cancele',
+            confirmButtonText: 'Si, seguro.',
+            cancelButtonText: 'No, cancelar.',
             confirmButtonColor: 'rgba(2, 93, 113, 1)',
             cancelButtonColor: 'red',
             reverseButtons: false

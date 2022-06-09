@@ -9,11 +9,11 @@
                     <div class="col-12">
                         <ul class="nav nav-pills d-flex justify-content-around">
                             <li class="nav-item">
-                                <a class=" btn btn-outline-dark active  m-2 m-md-0" aria-current="page" data-toggle="tab" href="#prod" data-bs-toggle="tooltip" data-bs-placement="left" title="Vender productos">Generar Venta de
+                                <a class=" btn btn-outline-dark active  m-2 m-md-0" aria-current="page" data-toggle="tab" href="#prod" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar venta de productos">Generar Venta de
                                     Productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class=" btn btn-outline-dark  m-2 m-md-0" href="#serv" data-toggle="tab" data-bs-toggle="tooltip" data-bs-placement="left" title=" Vender servicios">Generar Venta de Servicios</a>
+                                <a class=" btn btn-outline-dark  m-2 m-md-0" href="#serv" data-toggle="tab" data-bs-toggle="tooltip" data-bs-placement="left" title=" Registrar venta de servicios">Generar Venta de Servicios</a>
                             </li>
                             </li>
                         </ul>
@@ -105,7 +105,7 @@
                                                         </div>
                                                         <div class="col-12 pb-3 d-flex justify-content-end">
                                                             <button class="btn principal-color text-white"
-                                                                onclick="agregar_producto()" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto">
+                                                                onclick="agregar_producto()" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto a la venta">
                                                                 <i class="fas fa-plus"></i>
                                                                 <span> Agregar Producto</span>
                                                             </button>
@@ -161,7 +161,7 @@
                                                                 readonly />
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
-                                                            <button class="btn principal-color text-white"
+                                                            <button class="btn principal-color text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar servicio a la venta"
                                                                 onclick="agregar_servicio()" type="button">
                                                                 <i class="fas fa-plus"></i>
                                                                 <span> Agregar Servicio</span>
@@ -200,7 +200,7 @@
 
                     <div class="row justify-content-end">
                         <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
-                            <button type="submit" class="btn btn-block principal-color text-white">
+                            <button type="submit" class="btn btn-block principal-color text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar venta">
                                 Crear
                             </button>
                         </div>
@@ -216,7 +216,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3> <strong style="color: rgba(2, 93, 113, 1);">Nuevo Cliente</strong></h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"  data-bs-toggle="tooltip" data-bs-placement="left" title="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             </div>
@@ -263,13 +263,13 @@
 
                                     <div class="row py-4 justify-content-end">
                                         <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
-                                            <button type="button" class="btn principal-color btn-block text-white" id="clienteNuevo">
+                                            <button type="button" class="btn principal-color btn-block text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar nuevo cliente" id="clienteNuevo" >
                                                 Registrar
                                             </button>
                                         </div>
                                         <div class="col-12 col-sm-4 col-lg-3">
-                                            <button type="button" class="btn btn-outline-dark btn-block" data-dismiss="modal">Volver</button>
-                                            {{-- <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" ">Volver</a> --}}
+                                            <button type="button" class="btn btn-outline-dark btn-block" data-dismiss="modal"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</button>
+                                            {{-- <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a> --}}
                                         </div>
                                     </div>
                                 </form>

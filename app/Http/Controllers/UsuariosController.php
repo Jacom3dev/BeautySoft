@@ -57,7 +57,7 @@ class UsuariosController extends Controller
             'rol_id' => $user['rol_id'],
             'password' => Hash::make($user['password']),
         ]);
-        alert()->success('Usuario','Usuario  registrado con exito');
+        alert()->success('Usuario','Usuario  registrado exitosamente.');
         return Redirect()->route('usuarios.index');
     }
 
@@ -76,7 +76,7 @@ class UsuariosController extends Controller
 
 
         if ($user == null) {
-            alert()->error('Usuario','Usuario no encontrado');
+            alert()->error('Usuario','Usuario no encontrado.');
             return  Redirect()->route('usuarios.index');
         }
         return view('pages.usuarios.detalle',compact("user"));
@@ -93,7 +93,7 @@ class UsuariosController extends Controller
         $user = User::find($id);
         $roles = Roles::all()->where('id','!=', 1)->where('state',1);
         if ($user == null) {
-            alert()->error('Usuario','Usuario no encontrado');
+            alert()->error('Usuario','Usuario no encontrado.');
             return  Redirect()->route('usuarios.index');
         }
         
@@ -112,11 +112,11 @@ class UsuariosController extends Controller
         $input = $request->all();
         $usuario = User::find($id);
         if ($usuario == null) {
-            alert()->error('Usuario','Usuario no encontrado');
+            alert()->error('Usuario','Usuario no encontrado.');
             return  Redirect()->route('usuarios.index');
         }
         $usuario->update($input);
-        alert()->success('Usuario','Usuario  editado con exito');
+        alert()->success('Usuario','Usuario editado exitosamente.');
         return  Redirect()->route('usuarios.index');
     }
 
@@ -131,13 +131,13 @@ class UsuariosController extends Controller
     {
         $usuario = User::find($id);
         if ($usuario == null) {
-            alert()->error('Usuario','Usuario no encontrado');
+            alert()->error('Usuario','Usuario no encontrado.');
             return  Redirect()->route('usuarios.index');
         }
         $usuario->update([
             'state' => !$state
         ]);
-        alert()->success('Usuario','Cambio de estado con exito');
+        alert()->success('Usuario','Cambio de estado con exito.');
         return  Redirect()->route('usuarios.index');
     }
     public function updatePassword(UpdatePasswordUser $request, $id)
@@ -146,11 +146,11 @@ class UsuariosController extends Controller
         $input['password'] = Hash::make($request->password);
         $usuario = User::find($id);
         if ($usuario == null) {
-            alert()->error('Usuario','Usuario no encontrado');
+            alert()->error('Usuario','Usuario no encontrado.');
             return  Redirect()->route('usuarios.index');
         }
         $usuario->update($input);
-        alert()->success('Usuario','Contraseña editada con exito');
+        alert()->success('Usuario','Contraseña editada exitosamente.');
         return  Redirect()->route('usuarios.index');
     }
 

@@ -25,13 +25,19 @@
                 </div>
                 <div class="row mt-3 justify-content-end py-3 ">
                     <div class="col-4">
-                        <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($rol)?'Editar':'Registrar'}}
+                        @if($roles == "registrar")
+                        <button type="submit" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar rol ">
+                           Registrar
                         </button>
+                        @else
+                        <button type="submit" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar rol">
+                           Editar
+                        </button>
+                        @endif
                     </div>
                     
                     <div class="col-2 d-flex justify-content-center">
-                        <a href="{{route('roles.index')}}" class="btn btn-outline-dark btn-block" ">Volver</a>
+                        <a href="{{route('roles.index')}}" class="btn btn-outline-dark btn-block"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
             </form>
@@ -42,7 +48,7 @@
         <div class="col-12">
             <div class="row mt-3">
                 <div class="col d-flex justify-content-center">
-                    <a href="{{route('roles.index')}}" class="btn btn-outline-dark" ">Volver</a>
+                    <a href="{{route('roles.index')}}" class="btn btn-outline-dark" >Volver</a>
                 </div>
             </div>
         </div>
