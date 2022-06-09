@@ -57,7 +57,7 @@
 
                         <div class="row mb-0">
                             <div class="col offset-md-4">
-                                <button type="submit" class="boton">
+                                <button type="submit" class="boton" >
                                     {{ __('Cambiar contraseña') }}
                                 </button>
                             </div>

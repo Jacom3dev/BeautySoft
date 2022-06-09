@@ -48,7 +48,7 @@
                             <div class="row mb-2">
                                 <div class="col d-flex justify-content-end">
                                     @if (Route::has('password.request'))
-                                    <a class="recuperar" href="{{ route('password.request') }}" target="_blank">
+                                    <a class="recuperar" href="{{ route('password.request') }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="left" title="Reestablecer contraseña mediante correo">
                                         {{ __('Restablecer Contraseña') }}
                                     </a>
                                     @endif
@@ -56,7 +56,7 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col d-flex justify-content-center">
-                                    <button type="submit" class="boton">
+                                    <button type="submit" class="boton" data-bs-toggle="tooltip" data-bs-placement="left" title="Ingresar al aplicativo BeautySoft">
                                        Iniciar sesión
                                     </button>
                                 </div>

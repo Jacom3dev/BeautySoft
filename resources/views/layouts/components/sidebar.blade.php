@@ -26,7 +26,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="{{route('dashboard.index')}}" class="nav-link">
+            <a href="{{route('dashboard.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a informes">
               <i class="fas fa-chart-bar"></i>
               <p>
                 Inicio
@@ -35,7 +35,7 @@
           </li> 
           @if (Auth::user()->rol_id == 1)
             <li class="nav-item">
-              <a href="{{route('roles.index')}}" class="nav-link">
+              <a href="{{route('roles.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de roles">
                 <i class="fas fa-user-lock"></i>
                 <p>
                   Roles
@@ -43,7 +43,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{route('usuarios.index')}}" class="nav-link">
+              <a href="{{route('usuarios.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de usuarios">
                 <i class="fas fa-users"></i>
                 <p>
                   Usuarios
@@ -53,7 +53,7 @@
           @endif
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Desplegar menú productos">
               <i class="fab fa-product-hunt"></i>
               <p>
                 Productos
@@ -62,19 +62,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('productos.index')}}" class="nav-link">
+                <a href="{{route('productos.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de productos">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Productos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('servicios.index')}}" class="nav-link">
+                <a href="{{route('servicios.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de servicios">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Servicios</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('existencias.index')}}" class="nav-link">
+                <a href="{{route('existencias.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de existencias">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Existencias</p>
                 </a>
@@ -83,7 +83,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Desplegar menú de compras">
               <i class="fas fa-shopping-cart"></i>
               <p>
                 Compras
@@ -92,13 +92,13 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="{{route('compras.index')}}" class="nav-link">
+                <a href="{{route('compras.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de compras">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Compras</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('proveedores.index')}}" class="nav-link">
+                <a href="{{route('proveedores.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de proveedores">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Proveedores</p>
                 </a>
@@ -107,7 +107,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="{{route('agenda.index')}}" class="nav-link">
+            <a href="{{route('agenda.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Abrir agenda">
               <i class="fas fa-money-check"></i>
               <p>
                 Agenda
@@ -116,7 +116,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Desplegar menú de ventas">
               <i class="fas fa-tags"></i>
               <p>
                 Ventas
@@ -125,13 +125,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{route('clientes.index')}}" class="nav-link">
+                <a href="{{route('clientes.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de clientes">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clientes</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('ventas.index')}}" class="nav-link">
+                <a href="{{route('ventas.index')}}" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir a información de ventas">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ventas</p>
                 </a>
