@@ -329,6 +329,8 @@ function crear() {
             showCancelButton: true,
             confirmButtonText: 'Si, seguro',
             cancelButtonText: 'No, cancele',
+            confirmButtonColor: 'rgba(2, 93, 113, 1)',
+            cancelButtonColor: 'red',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {
