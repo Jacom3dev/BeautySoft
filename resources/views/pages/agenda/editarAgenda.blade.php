@@ -258,6 +258,8 @@ input:valid + span::after {
                     showCancelButton: true,
                     confirmButtonText: 'Si, seguro',
                     cancelButtonText: 'No, cancele',
+                    confirmButtonColor: 'rgba(2, 93, 113, 1)',
+                    cancelButtonColor: 'red',
                     reverseButtons: false
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -278,6 +280,7 @@ input:valid + span::after {
                             icon: 'error',
                             title: 'Revice que desea cambiar e intente de nuevo ',
                             showConfirmButton: false,
+                            confirmButtonColor: 'rgba(2, 93, 113, 1)',
                             timer:2000
                         })
                     }

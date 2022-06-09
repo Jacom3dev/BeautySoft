@@ -313,6 +313,8 @@
             showCancelButton: true,
             confirmButtonText: 'Si, seguro.',
             cancelButtonText: 'No, cancelar.',
+            confirmButtonColor: 'rgba(2, 93, 113, 1)',
+            cancelButtonColor: 'red',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {

@@ -329,6 +329,7 @@ input:valid+span:after {
                     title: '!Ocurrio un Error¡',
                     text: 'Por favor seleccione un producto o coloque una cantidad mayor a 0 ',
                     showConfirmButton: false,
+                    confirmButtonColor: 'rgba(2, 93, 113, 1)',
                     timer: 2500
                 })
             
