@@ -42,7 +42,7 @@
                                
 
                                 <div class="col-12 col-md-6 form-group">
-                                    <input name="price_total" type="text" class="form-control " id="total" placeholder="Precio" required="required" required readonly>
+                                    <input name="price_total" type="text" class="form-control " id="total" placeholder="Precio Total" required="required" required readonly>
                                 </div>
                             </div>
                         </div>
@@ -53,6 +53,7 @@
                                 <div class="chart tab-pane active" id="Exis" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
+                                        <label for="productos">Productos</label>
                                             <select class="js-example-basic-single form-control w-100" name="productos" id="productos" onchange="Agg_Attr()" style="width: 100%;">
                                                 <option value="">Producto</option>
                                                 @foreach ($productos as $Key => $product)
@@ -65,9 +66,11 @@
                                         </div>
 
                                         <div class="col-12 col-md-6 form-group">
+                                        <label for="amount">Cantidad</label>
                                             <input name="amount" type="number" class="form-control " id="amount" placeholder="Cantidad">
                                         </div>
                                         <div class="col-12 col-md-6 form-group">
+                                        <label for="price_sale">Precio Venta*</label>
                                             <input type="number" placeholder="Precio venta*" value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_sale">
                                             @error('price_sale')
                                             <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
@@ -75,7 +78,8 @@
                                         </div>
 
                                         <div class="col-12 col-md-6 form-group">
-                                            <input type="number" placeholder="Precio compra" value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buys">
+                                        <label for="price_buys">Precio Compra*</label>
+                                            <input type="number" placeholder="Precio compra*" value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buys">
                                             @error('price_buys')
                                             <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror
@@ -95,12 +99,14 @@
                                 <div class="chart tab-pane" id="New" style="position: relative;">
                                     <div class="row g-3">
                                         <div class="col-12 form-group mt-3">
+                                        <label for="nombre">Nombre*</label>
                                             <input type="text" placeholder="Nombre*" class="form-control  @error('name') is-invalid @enderror" name="name" id="nombre"> @error('name')
                                             <div class="invalid-feedback">{{$message}}</div>
                                             @enderror
                                         </div>
 
                                         <div class="col-12 col-md-6 form-group">
+                                        <label for="cantidad">Cantidad*</label>
                                             <input type="number" placeholder="Cantidad*" class="form-control @error('amount') is-invalid @enderror" name="amount" value="amount" id="cantidad"> @error('amount')
                                             <div class="invalid-feedback">El campo debe tener como minimo 1 de cantidad.</div>
                                             @enderror
@@ -109,6 +115,7 @@
 
 
                                         <div class="col-12 col-md-6 form-group">
+                                        <label for="price_saleNew">Precio Venta*</label>
                                             <input type="number" placeholder="Precio venta*" value="{{old('price_sale')}}" class="form-control @error('price_sale') is-invalid @enderror" name="price_sale" id="price_saleNew">
                                             @error('price_sale')
                                             <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
@@ -116,7 +123,8 @@
                                         </div>
 
                                         <div class="col-12 col-md-6 form-group">
-                                            <input type="number" placeholder="Precio compra" value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buysNew">
+                                        <label for="price_buysNew">Precio Compra*</label>
+                                            <input type="number" placeholder="Precio compra*" value="{{old('price_buys')}}" class="form-control @error('price_buys') is-invalid @enderror" name="price_buys" id="price_buysNew">
                                             @error('price_buys')
                                             <div class="invalid-feedback">El campo debe tener como minimo 3 digitos.</div>
                                             @enderror

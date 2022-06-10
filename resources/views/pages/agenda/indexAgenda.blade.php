@@ -104,7 +104,7 @@ input:valid+span:after {
 
                                     <div class="col-md-6 form-group">
                                         <label for="tiempo">Duración*</label>
-                                        <input type="number" name="" id="tiempo" style="width: 100%;" class="form-control " placeholder="Duración*">
+                                        <input type="number" name="tiempo" id="tiempo" style="width: 100%;" class="form-control " placeholder="Duración*" required>
                                     </div>
                                   
                                     <div class="col-md-12 form-group mb-4">
