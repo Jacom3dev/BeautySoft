@@ -26,7 +26,7 @@ class UpdateProveedores extends FormRequest
         return [
             'enterprise' => ['required','min:3','max:50'],
             'supplier' =>['required','regex:/^[\pL\s\-]+$/u','min:3','max:50'],
-            'cell'=>['numeric','min:10'],
+            'cell'=>['required','regex:/(3)[0-9]{9}/'],
             'email' => ['nullable','string', 'max:50'],
             
         ];

@@ -22,7 +22,6 @@
                             <th>Empresa</th>
                             <th>Teléfono</th>
                             <th>Correo</th>
-                            <th>Dirección</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -44,12 +43,6 @@
 
                             @endif
                             
-                            @if($value->direction != '')
-                            <td><span> {{$value->direction}}</span></td>
-                            @else
-                             <td><span>Sin direccion</span></td>
-
-                            @endif
                           @if ($value->state)
                             <td class="text-center"><span class="badge badge-primary">Activo</span></td>  
                           @else

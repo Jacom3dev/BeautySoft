@@ -32,7 +32,8 @@ class ClientesController extends Controller
     public function create()
     {
         $documentos = Documentos::all();
-        return view('pages.clientes.formCliente',compact('documentos'));
+        $value ="Create";
+        return view('pages.clientes.formCliente',compact('documentos','value'));
     }
 
     /**
@@ -44,13 +45,13 @@ class ClientesController extends Controller
     public function store(StoreClientes $request)
     {
         Clientes::create($request->all());
-        alert()->success('Cliente','Cliente registrado');
+        alert()->success('Cliente','Cliente registrado exitosamente.');
         return Redirect()->route('clientes.index');
     }
     public function storedos(StoreClientes $request)
     {
         Clientes::create($request->all());
-        alert()->success('Cliente','Cliente registrado');
+        alert()->success('Cliente','Cliente registrado exitosamente.');
         return Redirect()->route('ventas.create');
     }
 
@@ -70,7 +71,7 @@ class ClientesController extends Controller
 
 
         if ($cliente == null) {
-            alert()->error('Cliente','Cliente no encontrado');
+            alert()->error('Cliente','Cliente no encontrado.');
             return  Redirect()->route('clientes.index');
         }
         return view('pages.clientes.detalle',compact("cliente"));
@@ -86,7 +87,7 @@ class ClientesController extends Controller
     {
         $cliente = Clientes::find($id);
         if ($cliente == null) {
-            alert()->error('Cliente','Cliente no encontrado');
+            alert()->error('Cliente','Cliente no encontrado.');
             return  Redirect()->route('clientes.index');
         }
         $documentos = Documentos::all();
@@ -105,7 +106,7 @@ class ClientesController extends Controller
         $input = $request->all();
         $cliente = Clientes::find($id);
         $cliente->update($input);
-        alert()->success('Cliente','Cliente  editado con exito');
+        alert()->success('Cliente','Cliente  editado exitosamente.');
         return  Redirect()->route('clientes.index');
     }
 

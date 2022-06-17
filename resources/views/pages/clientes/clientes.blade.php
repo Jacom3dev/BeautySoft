@@ -16,11 +16,8 @@
                     <thead class="text-center">
                         <tr>
                             <th>Nombre</th>
-                            <th>Email</th>
                             <th>Tipo documento</th>
                             <th>Documento</th>
-                            <th>Celular</th>
-                            <th>Dirección</th>
                             <th>Estado</th>
                             <th>Acciones</th>
                         </tr>
@@ -29,15 +26,8 @@
                         @foreach ($clientes as $cliente)
                         <tr>
                           <td>{{$cliente->name}}</td>
-                          <td>{{$cliente->email}}</td>
                           <td>{{$cliente->document_type}}</td>
                           <td>{{$cliente->document}}</td>
-                          <td>{{$cliente->cell}}</td>
-                          @if ($cliente->direction !='')
-                          <td><span>{{$cliente->direction}}</span></td>
-                          @else
-                          <td><span>Sin direccion</span></td>
-                          @endif
 
 
                           @if ($cliente->state)

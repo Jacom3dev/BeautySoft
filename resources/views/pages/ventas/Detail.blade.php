@@ -3,12 +3,12 @@
 @section('content')
     <div class="container">
         
-        <div class="row" >
+        <div class="row justify-content-center" >
             <div class="col-12 text-center py-2">
                 <h3> <strong style="color: rgba(2, 93, 113, 1);">Detalle de la Venta.</strong></h3>
             </div>
-            <div class="col-4">
-                <div class="card" style="width: 16rem; margin-left:100px;">
+            <div class="col-6 col-md-4">
+                <div class="card card-detalle">
                     <div class="card-body">
                         <p class="card-title">Registrado por: </p><p class="card-text">{{ $Ventas->usuario->name }}</p>
                         <p class="card-title ">Nombre Cliente: </p><p class="card-text">{{ $Ventas->cliente->name }}</p>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7" > 
+            <div class="col-12 col-md-7" > 
                 
                 <div class="card-header ">
                     <ul class="nav nav-pills justify-content-center">
@@ -76,7 +76,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $value->amount }}</td>
-                                                            <td>{{ $value->price }}</td>
+                                                            <td>&#36;{{number_format(  $value->price_sale) }}</td>
                                                             <td class="text-center">
                                                                 @if ($value->state == 1)
                                                                     <!-- <a  class="btn  btn-primary btn-ms " >Activo</a> -->
@@ -116,7 +116,7 @@
                                                         <tr>
                                                             <td>{{ $value->name }}</td>
                                                             <td>{{ $value->description }}</td>
-                                                            <td>{{ $value->price }}</td>
+                                                            <td>&#36;{{number_format(  $value->price) }}</td>
                                                             <td class="text-center">
                                                                 @if ($value->state == 1)
                                                                     <!-- <a  class="btn  btn-primary btn-ms " >Activo</a> -->
@@ -164,7 +164,7 @@
                                                                 @endif
                                                             </td>
                                                             <td>{{ $value->amount }}</td>
-                                                            <td>{{ $value->price }}</td>
+                                                            <td>&#36;{{number_format(  $value->price_sale) }}</td>
                                                             <td class="text-center">
                                                                 @if ($value->state == 1)
                                                                     <!-- <a  class="btn  btn-primary btn-ms " >Activo</a> -->
@@ -204,7 +204,7 @@
                                                         <tr>
                                                             <td>{{ $value->name }}</td>
                                                             <td>{{ $value->description }}</td>
-                                                            <td>{{ $value->price }}</td>
+                                                            <td>&#36;{{number_format( $value->price )}}</td>
                                                             <td class="text-center">
                                                                 @if ($value->state == 1)
                                                                     <!-- <a  class="btn  btn-primary btn-ms " >Activo</a> -->
@@ -233,7 +233,7 @@
             <div class="col-12">
                 <div class="row ">
                     <div class="col d-flex justify-content-center">
-                        <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark">Volver</a>
+                        <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
             </div>

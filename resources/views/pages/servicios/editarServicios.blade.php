@@ -16,12 +16,13 @@
                     @csrf
                     @method("PUT")
                     <div class="row py-3 px-4 ">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             
                             <div class="row">
                                 <div class="col-12 col-md-6 form-group">
 
-                                    <input type="text" placeHolder="Nombre*" value="{{$servicios->name}}"
+                                <label for="name">Nombre*</label>
+                                    <input type="text" id="name" placeHolder="Nombre*" value="{{$servicios->name}}"
                                         class="form-control  @error('name') is-invalid @enderror" name="name">
                                     @error('name')
                                          <span class="invalid-feedback" role="alert">
@@ -31,7 +32,8 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 form-group">
-                                    <input type="number" placeholder="precio mano de obra*" value="{{$prec}}"
+                                    <label for="mano-obra">Precio mano de obra*</label>
+                                    <input type="number" id="mano-obra" placeholder="Precio mano de obra*" value="{{$prec}}"
                                         class="form-control @error('price') is-invalid @enderror" name="price">
                                     @error('price')
                                          <span class="invalid-feedback" role="alert">
@@ -42,6 +44,7 @@
 
                                 <div class="col-12  form-group">
 
+                                <label for="descri">Descripción</label>
                                     <textarea name="description" placeholder="Descripción" id="descri" 
                                         class="form-control @error('descriptcion') is-invalid @enderror ">{{$servicios->description}}</textarea>
                                     @error('descriptcion')
@@ -52,9 +55,10 @@
                                 </div>
 
                                 <div class="col-12 pt-4 form-group">
+                                    <label for="producto">Productos</label>
                                     <select name="producto_id" id="producto"
                                         class=" js-example-basic-single form-control @error('producto') is-invalid @enderror"
-                                        onchange="precio_totalp()">
+                                        onchange="precio_totalp()" style="width: 100%;">
                                         <option value="" disabled selected>Productos </option>
                                         @foreach ($producto as $value)
                                             @if ($value->state != 0)
@@ -73,10 +77,10 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 form-group">
+                                    <label for="Cantidad">Cantidad</label>
 
                                     <input  type="number" placeholder="Cantidad*" id="Cantidad"
-                                        class="form-control @error('precioP') is-invalid @enderror" name="Cantidad"
-                                        value="1">
+                                        class="form-control @error('precioP') is-invalid @enderror" name="Cantidad">
 
                                     @error('Cantidad')
                                         <small class="">{{ $message }}</small>
@@ -84,6 +88,7 @@
                                 </div>
 
                                 <div class="col-12 col-md-6 form-group">
+                                    <label for="precioP">Precio unidad</label>
                                     <input type="text" placeholder="Precio producto" id="precioP"
                                         class="form-control @error('precioP') is-invalid @enderror" name="precioP" readonly>
 
@@ -94,9 +99,9 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-12 d-flex justify-content-end">
+                                <div class="col-12 pb-md-0 pb-3 d-flex justify-content-end">
                                     <button type="button" onclick="agregar_Producto()" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="Agregar producto"
+                                        data-bs-placement="left" title="Agregar producto al servicio"
                                         class="btn principal-color text-white"><i class="fas fa-plus"></i>
 
                                         <span> Agregar producto</span>
@@ -106,10 +111,11 @@
                             </div>
                         </div>
 
-                        <div class="col-12 col-sm-8 col-md-6">
+                        <div class="col-12 col-md-6">
                             <div class="row g-3">
                                 <div class="col-12 form-group">
 
+                                <label for="preciototalP">Precio total</label>
                                     <input type="text" placeholder="Precio final" id="preciototalP" value="{{$precio}}"
                                         class="form-control @error('precioP') is-invalid @enderror" name="precioP" readonly>
 
@@ -159,13 +165,13 @@
                     </div>
 
                     <div class="row pb-3 px-4 justify-content-end">
-                        <div class="col-6 col-lg-2">
-                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Actualizar">
+                        <div class="col-12 col-md-6 col-lg-3 pb-md-0 pb-3">
+                            <button type="submit" onclick="crear()"class="btn btn-block principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar información de servicio">
                                 Actualizar
                             </button>
                         </div>
-                        <div class="col-3 col-lg-1">
-                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver</a>
+                        <div class="col-12 col-md-3 col-lg-2">
+                            <a href="{{ route('servicios.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
 
@@ -318,11 +324,13 @@ function crear() {
 
         swalWithBootstrapButtons.fire({
             title: '¿Estas seguro?',
-            text: "El servico se Editara",
+            text: "El servicio se editará",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Si, seguro',
-            cancelButtonText: 'No, cancele',
+            confirmButtonText: 'Si, seguro.',
+            cancelButtonText: 'No, cancelar.',
+            confirmButtonColor: 'rgba(2, 93, 113, 1)',
+            cancelButtonColor: 'red',
             reverseButtons: false
         }).then((result) => {
             if (result.isConfirmed) {

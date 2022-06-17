@@ -65,10 +65,11 @@ input:valid+span:after {
                             {{-- CLIENTE FORM --}}
                             <div class="col-12  col-md-12 col-lg-6">
                                 <div class="row">
-                                    <div class="col-6 form-group">
-                                        <select name="cliente_id"
+                                    <div class="col-12 col-md-6 form-group">
+                                        <label for="cliente">Cliente*</label>
+                                        <select name="cliente_id" id="cliente"
                                             class="js-example-basic-single form-control @error('cliente_id') is-invalid @enderror "
-                                            style="width: 100%">
+                                            style="width: 100%" required>
                                             <option value="" selected>Cliente</option>
                                             @foreach ($clientes as $value)
                                                 @if($value->state != 0)
@@ -76,14 +77,14 @@ input:valid+span:after {
                                                 @endif
                                             @endforeach
                                         </select>
-    
                                         @error('cliente_id')
-                                            <div class="invalid-feedback">{{ $message }}</div>
+                                            <small class="text-danger">{{ $message }}</small>
                                         @enderror
     
                                     </div>
 
                                     <div class="col-md-6 form-group">
+                                        <label for="fechaC">Fecha</label>
                                         <input type="date" id="fechaC" class="form-control @error('fecha') is-invalid @enderror"
                                             name="date" readonly>
                                         @error('fecha')
@@ -92,6 +93,7 @@ input:valid+span:after {
                                     </div>
     
                                     <div class="col-md-6 form-group">
+                                        <label for="horaC">Hora*</label>
                                         <input type="time" id="horaC"  min="08:00" max="19:30"class="form-control @error('hora') is-invalid @enderror"
                                             name="hourI">
                                             <span class="validity"></span>
@@ -101,10 +103,12 @@ input:valid+span:after {
                                     </div>
 
                                     <div class="col-md-6 form-group">
-                                        <input type="number" name="" id="tiempo" style="width: 100%;" class="form-control " placeholder="Duración*">
+                                        <label for="tiempo">Duración*</label>
+                                        <input type="number" name="tiempo" id="tiempo" style="width: 100%;" class="form-control " placeholder="Duración*" required>
                                     </div>
                                   
-                                    <div class="col-md-12 form-group mb-5">
+                                    <div class="col-md-12 form-group mb-4">
+                                        <label for="descri">Descripción</label>
                                         <textarea name="description" id="descri" class="form-control @error('descripcion') is-invalid @enderror "
                                             placeholder="Descripción"></textarea>
                                         @error('descripcion')
@@ -114,10 +118,11 @@ input:valid+span:after {
                                     </div>
                                     
                                     <div class="col-12 col-lg-6  form-group">
+                                        <label for="servicio">Servicios</label>
     
                                         <select name="servicio_id" id="servicio"
-                                            class=" form-control @error('servicio') is-invalid @enderror"
-                                            onchange="precio_total()">
+                                            class="js-example-basic-single @error('servicio') is-invalid @enderror"
+                                            onchange="precio_total()"  required style="width: 100%;">
                                             <option value="">Servicios</option>
                                             @foreach ($servicios as $value)
                                                 @if($value->state != 0)
@@ -133,6 +138,7 @@ input:valid+span:after {
                                     </div>
     
                                     <div class="col-12 col-lg-6  form-group">
+                                        <label for="precio">Precio Servicio</label>
     
                                         <input type="text" id="precio"
                                             class="form-control @error('precio') is-invalid @enderror" name="precio" 
@@ -157,6 +163,7 @@ input:valid+span:after {
                             <div class="col-12 col-md-12 col-lg-6">
                                 <div class=" row">
                                     <div class="col-12  form-group">
+                                        <label for="preciototal">Precio total</label>
                                         <input type="text" id="preciototal"
                                             class="form-control @error('precio') is-invalid @enderror text-center" name="price"
                                             placeholder="Precio Total" readonly>
@@ -192,7 +199,7 @@ input:valid+span:after {
                     <div class="col-6 col-md-4 col-lg-3">
                       
 
-                        <button type="button" onclick="CrearCita()" class="btn principal-color text-white w-100"
+                        <button type="submit" onclick="CrearCita()" class="btn principal-color text-white w-100"
                             id="btnCrear" data-bs-toggle="tooltip" data-bs-placement="left" title="Crear Cita">Agendar</button>
                     </div>
                     <div class="col-6 col-md-4 col-lg-2">
@@ -200,9 +207,6 @@ input:valid+span:after {
                             data-bs-dismiss="modal" data-bs-toggle="tooltip" data-bs-placement="left" title="Regresar">Volver
                         </a>
                     </div>
-
-
-
                 </div>
                 </form>
             </div>
@@ -325,6 +329,7 @@ input:valid+span:after {
                     title: '!Ocurrio un Error¡',
                     text: 'Por favor seleccione un servicio.',
                     showConfirmButton: false,
+                    confirmButtonColor: 'rgba(2, 93, 113, 1)',
                     timer: 2500
                 })
             

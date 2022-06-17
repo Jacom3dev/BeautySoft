@@ -37,6 +37,7 @@ class StoreUsers extends FormRequest
     public function attributes()
     {
         return [
+            'rol_id'=> 'rol',
             'name' => 'nombre',
             'email' => 'correo',
             'cell' => 'celular',

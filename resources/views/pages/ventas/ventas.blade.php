@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col mt-4">
-                <a href="{{ route('ventas.create') }}" class="btn principal-color text-white">
+                <a href="{{ route('ventas.create') }}" class="btn principal-color text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar venta" >
                     <i class="fas fa-tag"></i>
                     Crear Venta</a>
             </div>

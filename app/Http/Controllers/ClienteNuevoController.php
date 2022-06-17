@@ -15,7 +15,7 @@ class ClienteNuevoController extends Controller
     {
         if (isset($request)) {
             Clientes::create($request->all());
-            alert()->success('Cliente','Cliente registrado');
+            alert()->success('Cliente','Cliente registrado exitosamente.');
             return Redirect()->route('ventas.create');
 
         }else {

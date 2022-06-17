@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col mt-3">  
-            <a href="{{route('roles.create')}}" class="btn principal-color text-white">
+            <a href="{{route('roles.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar rol">
                 <i class="fas fa-lock"></i>
                 Registrar Rol
             </a>
@@ -41,9 +41,9 @@
                                     @endif
                                     <a href="{{route("roles.changeState",['id'=>$rol->id,'state'=>$rol->state])}}">
                                         @if ($rol->state)
-                                            <i class="fas fa-lock text-danger"></i>
+                                            <i class="fas fa-lock text-danger " data-bs-toggle="tooltip" data-bs-placement="left" title="Deshabilitar"></i>
                                         @else
-                                            <i class="fas fa-lock-open text-primary"></i>
+                                            <i class="fas fa-lock-open text-primary" data-bs-toggle="tooltip" data-bs-placement="left" title="Habilitar"></i>
                                         @endif
                                     </a>
                                 @endif

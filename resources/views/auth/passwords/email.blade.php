@@ -35,7 +35,7 @@
 
                     <div class="row">
                         <div class="col d-flex justify-content-center">
-                            <button class="boton mt-3" type="submit">Enviar</button>
+                            <button class="boton mt-3" type="submit" data-bs-toggle="tooltip" data-bs-placement="left" title="Enviar correo de recuperación">Enviar</button>
                         </div>
                     </div>
                     <div class="row">

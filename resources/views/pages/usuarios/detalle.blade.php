@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="col-12 col-md-6 py-3">
-                        <h5 class="card-title "> <b>EMail:</b> </h5>
+                        <h5 class="card-title "> <b>Correo:</b> </h5>
                         <p class="card-text">
                             @if (isset($user->email))
                             {{$user->email}}
@@ -35,7 +35,12 @@
                     <div class="col-12 col-md-6 py-3">
                         <h5 class="card-title "> <b>Numero de teléfono:</b> </h5>
                         <p class="card-text">
-                            {{$user->cell}}
+                            
+                            @if (isset($user->cell))
+                                {{$user->cell}}
+                            @else
+                                Sin Celular.    
+                            @endif
                         </p>
                     </div>
 
@@ -73,7 +78,7 @@
                 <div class="card-foother">
                     <div class="row my-2 justify-content-end">
                         <div class="col d-flex justify-content-center">
-                            <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark" ">Volver</a>
+                            <a href="{{route('usuarios.index')}}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
                 </div>

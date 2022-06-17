@@ -197,8 +197,6 @@ class AgendaController extends Controller
         $horaF = \Carbon\Carbon::parse($cita->hourF)->format('h:i A');
         $fecha = strftime("  %d %b %Y", strtotime( date('Y-m-d') ));
         
-        $horaI =null;
-        $horaF = null;
        
         if ($cita==null) {
             
@@ -251,8 +249,7 @@ class AgendaController extends Controller
         $inicio = new DateTime($cita->hourI);
         $fin= new DateTime($cita->hourF);
         $minutos=$inicio->diff($fin);
-        $i =$minutos->format('%i');
-        strval($i); 
+        $i =$minutos->format('%i'); 
         if ($cita==null) {
             alert()->error('Agenda','El producto no existe');
             return redirect("/agenda/create");

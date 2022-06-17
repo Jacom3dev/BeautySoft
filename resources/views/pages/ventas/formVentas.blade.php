@@ -9,11 +9,11 @@
                     <div class="col-12">
                         <ul class="nav nav-pills d-flex justify-content-around">
                             <li class="nav-item">
-                                <a class=" btn btn-outline-dark active  m-2 m-md-0" aria-current="page" data-toggle="tab" href="#prod" data-bs-toggle="tooltip" data-bs-placement="left" title="Vender productos">Generar Venta de
+                                <a class=" btn btn-outline-dark active  m-2 m-md-0" aria-current="page" data-toggle="tab" href="#prod" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar venta de productos">Generar Venta de
                                     Productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class=" btn btn-outline-dark  m-2 m-md-0" href="#serv" data-toggle="tab" data-bs-toggle="tooltip" data-bs-placement="left" title=" Vender servicios">Generar Venta de Servicios</a>
+                                <a class=" btn btn-outline-dark  m-2 m-md-0" href="#serv" data-toggle="tab" data-bs-toggle="tooltip" data-bs-placement="left" title=" Registrar venta de servicios">Generar Venta de Servicios</a>
                             </li>
                             </li>
                         </ul>
@@ -26,11 +26,11 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-10 col-sm-5 form-group">
+                                    <div class="col-10 col-md-5 form-group">
                                         <select class="js-example-basic-single form-control
                                             @error('cliente') is-invalid border border-warning  @enderror" name="cliente"
-                                            id="cliente">
-                                            <option value="" disabled selected>
+                                            id="cliente" style="width: 100%;" required>
+                                            <option value="" disabled selected >
                                                 Clientes
                                             </option>
                                             @foreach($clientes as $value)
@@ -45,7 +45,7 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <div class="col-2 col-sm-1">
+                                    <div class="col-2 col-md-1">
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-block principal-color text-white" data-toggle="modal" title="Agregar cliente inmediato" data-target="#exampleModal">
                                         <i class="fas fa-plus"></i>
@@ -74,11 +74,12 @@
 
                                         <div class="chart tab-pane active" id="prod" style="position: relative;">
                                             <div class="row">
-                                                <div class="col-12 col-sm-6">
+                                                <div class="col-12 col-md-6">
                                                     <div class="row pt-0 pt-sm-4">
                                                         <div class="col-12 form-group">
+                                                            <label for="producto">Productos</label>
                                                             <select class="js-example-basic-single form-control"
-                                                                name="producto" id="producto" onchange="todoprod()">
+                                                                name="producto" id="producto" onchange="todoprod()" style="width: 100%;">
                                                                 <option value="" disabled selected>
                                                                     Productos
                                                                 </option>
@@ -90,26 +91,28 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
-                                                        <div class="col-6 form-group">
+                                                        <div class="col-12 col-md-6 form-group">
+                                                            <label for="cantidad">Cantidad</label>
                                                             <input type="hidden" name="cant" id="canti" />
                                                             <input class="form-control" type="number" name="cantidad"
                                                                 id="cantidad" placeholder="Cantidad" />
                                                         </div>
-                                                        <div class="col-6 form-group">
+                                                        <div class="col-12 col-md-6 form-group">
+                                                            <label for="precio_producto">Precio Unidad</label>
                                                             <input class="form-control" type="number" name="precio_producto"
                                                                 id="precio_producto" placeholder="Precio de Producto"
                                                                 readonly />
                                                         </div>
                                                         <div class="col-12 pb-3 d-flex justify-content-end">
                                                             <button class="btn principal-color text-white"
-                                                                onclick="agregar_producto()" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto">
+                                                                onclick="agregar_producto()" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar producto a la venta">
                                                                 <i class="fas fa-plus"></i>
                                                                 <span> Agregar Producto</span>
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6">
+                                                <div class="col-12 col-md-6">
                                                     <div class="row">
                                                         <!-- TBL Productos -->
                                                         <div class="col-12 table-responsive  tbl_scroll">
@@ -133,12 +136,13 @@
 
                                         <div class="chart tab-pane" id="serv" style="position: relative;">
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12 col-md-6">
                                                     <div class="row">
                                                         <div class="col-12 form-group mt-4">
-                                                            <select class="js-example-basic-single form-control w-100" style="width: 100%;"
+                                                            <label for="servicio">Servivios</label>
+                                                            <select class="js-example-basic-single form-control w-100"
                                                                 name="servicio" id="servicio"
-                                                                onchange="cargar_precio_servicio()">
+                                                                onchange="cargar_precio_servicio()" style="width: 100%;">
                                                                 <option value="" disabled selected>
                                                                     Servicios
                                                                 </option>
@@ -151,12 +155,13 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-12 form-group">
+                                                            <label for="precio_servicio">Precio servicio</label>
                                                             <input class="form-control" type="number" name="precio_servicio"
                                                                 id="precio_servicio" placeholder="Precio de Servicio"
                                                                 readonly />
                                                         </div>
                                                         <div class="col-12 d-flex justify-content-end">
-                                                            <button class="btn principal-color text-white"
+                                                            <button class="btn principal-color text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Agregar servicio a la venta"
                                                                 onclick="agregar_servicio()" type="button">
                                                                 <i class="fas fa-plus"></i>
                                                                 <span> Agregar Servicio</span>
@@ -164,7 +169,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12 col-md-6">
                                                     <div class="row">
                                                         <!-- TBL Servicios -->
                                                         <div class="col-12 table-responsive tbl_scroll">
@@ -194,24 +199,24 @@
                     </div>
 
                     <div class="row justify-content-end">
-                        <div class="col-6 col-lg-2">
-                            <button type="submit" class="btn btn-block principal-color text-white">
+                        <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
+                            <button type="submit" class="btn btn-block principal-color text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar venta">
                                 Crear
                             </button>
                         </div>
-                        <div class="col-3 col-lg-1">
-                            <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <a href="{{ route('ventas.index') }}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                         </div>
                     </div>
                 </form>
 
-                <!-- Modal -->
+                <!-- Modal clientes -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3> <strong style="color: rgba(2, 93, 113, 1);">Nuevo Cliente</strong></h3>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"  data-bs-toggle="tooltip" data-bs-placement="left" title="Cerrar">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             </div>
@@ -257,14 +262,14 @@
 
 
                                     <div class="row py-4 justify-content-end">
-                                        <div class="col-6 col-sm-6 col-lg-4">
-                                            <button type="button" class="btn principal-color btn-block text-white" id="clienteNuevo">
+                                        <div class="col-12 col-sm-6 col-lg-4 pb-md-0 pb-3">
+                                            <button type="button" class="btn principal-color btn-block text-white"  data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar nuevo cliente" id="clienteNuevo" >
                                                 Registrar
                                             </button>
                                         </div>
-                                        <div class="col-6 col-sm-4 col-lg-2">
-                                            <button type="button" class="btn btn-outline-dark btn-block" data-dismiss="modal">Volver</button>
-                                            {{-- <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" ">Volver</a> --}}
+                                        <div class="col-12 col-sm-4 col-lg-3">
+                                            <button type="button" class="btn btn-outline-dark btn-block" data-dismiss="modal"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</button>
+                                            {{-- <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block"  data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a> --}}
                                         </div>
                                     </div>
                                 </form>

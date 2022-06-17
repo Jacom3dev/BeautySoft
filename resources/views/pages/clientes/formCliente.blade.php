@@ -9,13 +9,15 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="{{isset($cliente)?$cliente->name:old('name')}}"> 
+                        <label for="name">Nombre*</label>
+                        <input type="text" id="name" class="form-control @error('name') is-invalid border border-warning  @enderror" name="name" placeholder="Nombre*" value="{{isset($cliente)?$cliente->name:old('name')}}"> 
                         @error('name')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="text" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" placeholder="Correo" value="{{isset($cliente)?$cliente->email:old('email')}}">
+                        <label for="email">Correo</label>
+                        <input type="text" id="email" class="form-control @error('email') is-invalid border border-warning  @enderror" name="email" placeholder="Correo" value="{{isset($cliente)?$cliente->email:old('email')}}">
                         @error('email')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -23,7 +25,8 @@
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="number" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
+                        <label for="cell">teléfono</label>
+                        <input type="number" id="cell" class="form-control @error('cell') is-invalid border border-warning  @enderror" name="cell" placeholder="teléfono" value="{{isset($cliente)?$cliente->cell:old('cell')}}">
                         @error('cell')
                             <small class="text-danger">{{ $message }}</small> 
                         @enderror
@@ -31,7 +34,8 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm-6 mt-2">
-                        <select class="form-control" class="form-control @error('document_id') is-invalid border border-warning  @enderror" name="document_id">
+                        <label for="tipoD">Tipo documento*</label>
+                        <select class="form-control" id="tipoD" class="form-control @error('document_id') is-invalid border border-warning  @enderror" name="document_id">
                             <option value="">Tipo de documento</option>
                             @foreach ($documentos as $documento)
                             <option value="{{$documento->id}}">{{$documento->name}}</option>
@@ -42,7 +46,8 @@
                         @enderror
                     </div>
                     <div class="col-12 col-sm-6 mt-2">
-                        <input type="number" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="{{isset($cliente)?$cliente->document:old('document')}}">
+                        <label for="numD">Numero documento*</label>
+                        <input type="number" id="numD" class="form-control @error('document') is-invalid border border-warning  @enderror" name="document" placeholder="Documento*" value="{{isset($cliente)?$cliente->document:old('document')}}">
                         @error('document')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -50,7 +55,8 @@
                 </div>
                 <div class="row">
                     <div class="col mt-2">
-                        <input type="text" class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
+                        <label for="dir">Dirección</label>
+                        <input type="text" id="dir" class="form-control @error('direction') is-invalid border border-warning  @enderror" name="direction" placeholder="Dirección" value="{{isset($cliente)?$cliente->direction:old('direction')}}">
                         @error('direction')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -58,12 +64,17 @@
                 </div>
                 <div class="row py-4 justify-content-end">
                     <div class="col-6 col-sm-6 col-lg-4">
-                        <button type="submit" class="btn principal-color btn-block text-white">
-                            {{isset($cliente)?'Editar':'Registrar'}}
-                        </button>
+
+                            @if(isset($value))
+                            <button type="submit" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar cliente"> Registrar </button>
+                            @else
+                            <button type="submit" class="btn principal-color btn-block text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar cliente"> Editar </button>
+
+                            @endif
+                      
                     </div>
                     <div class="col-6 col-sm-4 col-lg-2">
-                        <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" " data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
+                        <a href="{{route('clientes.index')}}" class="btn btn-outline-dark btn-block" data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
             </form>
@@ -74,7 +85,7 @@
         <div class="col-12 ">
             <div class="row mt-3 ">
                 <div class="col d-flex justify-content-center ">
-                    <a href="{{route( 'clientes.index')}} " class="btn btn-outline-dark " " data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
+                    <a href="{{route( 'clientes.index')}} " class="btn btn-outline-dark " data-bs-toggle="tooltip" data-bs-placement="left" title="Ir atrás">Volver</a>
                     </div>
                 </div>
         </div>

@@ -151,7 +151,8 @@ class ComprasController extends Controller
                             "buys_id" => $compra->id,
                             "product_id" => $value,
                             "amount" => $input["amounts"][$key],
-                            "price"=>$input["prices_buy"][$key]
+                            "price_buys"=>$input["price_buysPN"][$key],
+                            "price_sale"=>$input["price_salePN"][$key],
                         ]);
                        
                             $producto = Productos::find($value);
@@ -162,14 +163,13 @@ class ComprasController extends Controller
 
                 DB::commit();
                 
-                alert()->success('Compra','Compra realizada con exito.');
+                alert()->success('Compra','Compra realizada exitosamente.');
                 return redirect("compras/");
                
         } catch (\Exception $e) {
         DB::rollBack(); 
-            dd($e);
-            alert()->error('Compra', 'No se pudo crear la compra');
-            return redirect("compras/create");
+            alert()->error('Compra', 'No se pudo registrar la compra.');
+            // return redirect("compras/create");
         }
 
     }
@@ -179,7 +179,7 @@ class ComprasController extends Controller
     {
         $Compra = Compra::find($id);
         if ($Compra==null) {
-            alert()->error('Compra','Compra no encontrada');
+            alert()->error('Compra','Compra no encontrada.');
             return redirect("/compra/index");
         }
         $productos = Productos::select("productos.*", "detalle_compra.*")
@@ -198,7 +198,7 @@ class ComprasController extends Controller
         $Comp = Compra::find($id);
         if ($Comp == null) {
             
-            alert()->error('Compra','Compra no encontrada');
+            alert()->error('Compra','Compra no encontrada.');
             return redirect("/compra/index");
         }
         
@@ -216,7 +216,7 @@ class ComprasController extends Controller
                     ]);
                 }
            
-        alert()->success('Compra','cambio de estado exitoso.');
+        alert()->success('Compra','cambio de estado con exito.');
         return Redirect()->route('compras.index');
     }
 }

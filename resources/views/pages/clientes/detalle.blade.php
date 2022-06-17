@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="col-12 col-md-6 py-3">
-                        <h5 class="card-title "> <b>EMail:</b> </h5>
+                        <h5 class="card-title "> <b>Correo:</b> </h5>
                         <p class="card-text">
                             @if (isset($cliente->email))
                             {{$cliente->email}}
@@ -86,12 +86,12 @@
                 <div class="card-foother">
                     <div class="row my-2 justify-content-end">
                         <div class="col d-flex justify-content-center">
-                            <a href="{{route('clientes.index')}}" class="btn btn-outline-dark" ">Volver</a>
+                            <a href="{{route('clientes.index')}}" class="btn btn-outline-dark" title="Ir atrás">Volver</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {{-- x --}}
+      
     </div>
 @endsection

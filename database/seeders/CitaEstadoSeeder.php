@@ -16,13 +16,16 @@ class CitaEstadoSeeder extends Seeder
     public function run()
     { 
         DB::table('estado_cita')->insert([
-        'name' => 'Cancelado',
+            'name' => 'Cancelado',
         ]);
         DB::table('estado_cita')->insert([
-        'name' => 'pendiente',
+            'name' => 'pendiente',
         ]);
         DB::table('estado_cita')->insert([
             'name' => 'en ejecucion',   
-            ]);
+        ]);
+        DB::table('estado_cita')->insert([
+            'name' => 'Realizada',   
+        ]);
     }
 }

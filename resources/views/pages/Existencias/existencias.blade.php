@@ -9,10 +9,10 @@
     <form action="{{route('existencias.index')}}" method="get">
         <div class="row justify-content-end pt-4">
             <div class="col-3">
-                <input class="form-control" type="text" name="textoBusqueda" id="textoBusqueda" placeholder="Buscar">
+                <input class="form-control" type="text" name="textoBusqueda" id="textoBusqueda" placeholder="Buscar" >
             </div>
             <div class="col-1">
-                <button type="submit" class="btn principal-color text-white">Buscar</button>
+                <button type="submit" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Buscar productos existentes">Buscar</button>
             </div>
         </div>
     </form>
@@ -31,9 +31,9 @@
             @foreach ( $productos as $value  )
 
                 @if($value->amount < 5)
-                    <div class="col-3">
+                    <div class="col-md-6 col-lg-3 col-7">
                         
-                        <div class="card "  style="width: 15rem;">
+                        <div class="card  card-detalle">
                             {{-- <img src="{{$value->img}}" class="card-img-top" style=" height: 13rem;" alt="{{$value->img}}"> --}}
                             <div class="card-header p-3 ">
                                 @if($value->img != "")
@@ -61,8 +61,8 @@
                         
                     </div>
                 @else
-                    <div class="col-3 flex-wrap-row">
-                        <div class="card w-1" style="width: 15rem;">
+                    <div class="col-md-6 col-lg-3 col-7 flex-wrap-row">
+                        <div class="card w-1 card-detalle" >
                             <div class="card-header p-3">
                                 @if($value->img != "")
                                 <img src="{{$value->img}}" class="card-img-top" style="height: 13rem;">
@@ -79,7 +79,7 @@
                                 <li class="list-group-item"> <b> Precio Venta: </b>&#36;{{number_format($value->price_sale)}}</li>
                             </ul>
                             <div class="card-body text-center">
-                                <a href="{{route('compras.create')}}" class="btn principal-color text-white">Comprar Producto</a>
+                                <a href="{{route('compras.create')}}" class="btn principal-color text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Registrar compra de productos">Comprar Producto</a>
                             </div>
                         </div>
                         

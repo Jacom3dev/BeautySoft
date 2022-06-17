@@ -123,7 +123,28 @@ i {
     font-size: 1.2rem;
 }
 
-.tabla_informe{
+.tabla_informe {
     border: 2px;
     background-color: #174853;
+}
+
+@media (max-width: 300px) {
+    .card-detalle {
+        width: 2rem;
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-detalle {
+        width: 12rem;
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-detalle {
+        width: 10rem;
+        margin-left: 0px;
+    }
 }

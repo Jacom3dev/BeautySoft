@@ -16,6 +16,7 @@ class CreatServisTable extends Migration
         Schema::create('servicios', function (Blueprint $table) {
             $table->BigIncrements('id');
             $table->String('name',50);
+            $table->Float('price_work',10,2);
             $table->String('description',350)->nullable();
             $table->Float('price',10,2);
             $table->Boolean('state');
