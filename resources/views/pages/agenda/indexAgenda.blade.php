@@ -323,7 +323,7 @@ input:valid+span:after {
                     position: 'center',
                     icon: 'error',
                     title: '!Ocurrio un Error¡',
-                    text: 'Por favor seleccione un producto o coloque una cantidad mayor a 0 ',
+                    text: 'Por favor seleccione un servicio.',
                     showConfirmButton: false,
                     timer: 2500
                 })
